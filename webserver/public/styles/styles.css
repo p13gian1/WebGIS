@@ -1,0 +1,129 @@
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+js-map
+{
+  display: none;
+}
+
+.map {
+ height: 90.7vh;
+ width: 100vw;
+ display: none;
+}
+
+.fpl
+{
+  display: none;
+}
+
+.navbar-brand {
+cursor: default;
+}
+
+
+p {
+  
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: default;
+
+}
+
+
+
+h2 {
+  color: white;
+  font-family: verdana;
+  font-size: 18px;
+  background-color: rgba(0,0,0,0.2);
+}
+
+h3 {
+  color: white;
+  text-align: center;
+}
+
+h4 {
+
+  color: white;
+  font-family: verdana;
+  font-size: 18px;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.place{
+  color: white;
+  z-index:100;
+  position: fixed;
+  left: 860px;
+  bottom: 20px; 
+
+}
+
+.speed-label{
+  color: white;
+  z-index:100;
+  position: fixed;
+  left: 220px;
+  bottom: 0px; 
+}
+
+
+
+.aip-info
+{
+  
+ 
+  position: fixed;
+  left: 20px;
+ height: auto;
+  z-index:120;
+  width:auto;
+  color: yellow;
+  box-shadow: -3px 3px 15px black;
+}
+
+
+
+.animate-button
+		{	left: 180px;
+			bottom: 0.5em;
+		}
+
+    .ol-button i
+		{	color: inherit;
+		}
+
+.ol-control.ol-layerswitcher .panel 
+{	background-color: rgba(0,0,0,0.3);
+  color: white;
+	border-radius: 0 0 2px 2px;
+	clear: both;
+	display: block; 
+} 
+
+.ol-unselectable.ol-control.ol-bar.ol-right.ol-top
+{
+  top:400px;
+}
+
+.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed /* manipulate collapsed menu layers */
+{
+  background-color: rgba(0,0,0,0.1);
+  top: 10px;
+}
+
+.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed.ol-forceopen /* manipulate button menu layers */
+{
+  top: 10px;
+}

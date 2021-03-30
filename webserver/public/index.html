@@ -1,0 +1,177 @@
+
+<!doctype html> 
+ <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+      <title>Web GIS Πτυχιακή Εργασία</title>
+      <link rel = "icon" href = "./libs/images/icon.png" type = "image/x-icon"> 
+      
+      <!---Bootstrap css-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="./libs/v6.0.0-dist/ol.css">
+      <link rel="stylesheet" href="./styles/styles.css">
+      <script src="./libs/v6.0.0-dist/jquery-3.5.1.js"></script>
+      
+
+      <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" />
+      <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
+      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL,Object.assign"></script>
+      <script type="text/javascript" src="./libs/v6.0.0-dist/ol-ext.js"></script>
+    
+      <link rel="stylesheet" href="./libs/fontassets/fontmaki2.css" />
+      <link rel="stylesheet" href="./libs/v6.0.0-dist/ol-ext.css" />       <!-- Keep this file!-->
+    
+      <script type="text/javascript" src="./libs/fontassets/FontMaki2Def.js"></script>
+      <script type="text/javascript" src="./libs/fontassets/FontAwesomeDef.js"></script>
+     
+    </head>
+  
+<body>
+
+  <div style="display: none" id="mouse-position"></div> <!-- KEEP IT Hidden element to get mouse coordinates-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary"> <!-- navbar-dark bg-primary for blue color, navbar-dark bg-dark for black, navbar navbar-light" style="background-color: #e3f2fd;
+                                                                for custom color-->
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="./libs/images/iconc.png" width="60" height="60" class="d-inline-block" alt="">
+      Web-GIS
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" id="home_link">
+          <a class="nav-link active" onclick="reLoad()" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tooltip" title="Create a Flight Plan" data-placement="bottom" href="#" onclick="menuClickFPL()">Flight Plan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tooltip" title="Go to map" data-placement="bottom" href="#" onclick="menuClickAFISAerodrome(19.9122,39.6019,'',0)">Map</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="tooltip" title="View an AFIS aerodrome map" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            AFIS
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" id='LGKC' href="#" onclick="menuClickAFISAerodrome(23.016744,36.274314, 'LGKC - Kithira - Alexandros Onasis',1)">LGKC - Kithira - Alexandros Onasis</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(25.113695,37.020900, 'LGPA - Paros',1)">LGPA - Paros</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(25.368236,37.081308, 'LGNX - Naxos',1)">LGNX - Naxos</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(29.576413,36.141699, 'LGKJ - Kastellorizo - Megisti',1)">LGKJ - Kastellorizo - Megisti</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(26.910019,35.421371, 'LGKS - Kassos',1)">LGKS - Kassos</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(24.474170,36.696941, 'LGML - Milos',1)">LGML - Milos</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(21.840096,40.288983, 'LGKZ - Kozani - Filippos',1)">LGKZ - Kozani - Filippos</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(21.280818,40.446784, 'LGKA - Kastoria - Aristotelis',1)">LGKA - Kastoria - Aristotelis</a></li>
+            <li><a class="dropdown-item" href="#" onclick="menuClickAFISAerodrome(26.346631,37.683005, 'LGIK - Ikaria - Ikaros',1)">LGIK - Ikaria - Ikaros</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">NOTAMs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">METARs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Options</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Preferences</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="tooltip" title="Help" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Help
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" id='Documentation' href="#" onclick="">Documentation</a></li>
+            <li><a class="dropdown-item" id='About' href="#" onclick="">About</a></li>
+          </ul>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" onsubmit="return doSearch()">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" >Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div id='main-page' >
+ <p></p>
+ <p></p>
+  <p>
+    <br><br><br><br>
+    <h3>Πτυχιακή Εργασία</h3>
+    <br><br><br><br>
+  <h3>«Εφαρμογή web GIS για την υποστήριξη</h3>
+  <br>
+  </p>
+  <h3> και παροχή πληροφοριών στην αεροναυτιλία.»</h3>
+  <br><br>
+  <p><h3>ΓΙΑΝΝΙΟΣ ΑΝΤΩΝΙΟΣ</h3></p>
+</div>
+
+
+
+<div id='flight-plan' class='fpl'>
+  <p></p>
+  <p></p>
+   <p>
+     <br><br><br><br>
+     <h3>Φόρμα συμπλήρωσης FPL</h3>
+
+ </div>
+
+
+
+
+
+
+ 
+<div id='js-map' class='map'>
+
+  <p class="aip-info">
+   
+  </p>
+
+  <h3 class="place" id="place-label" id="head"></h3>
+
+  <h2 class="speed-label" id="id-speed">
+      aircraft speed: <input id="speed" type="range" min="0" max="10" step="0.01" value="0.004">
+  </h2>
+  
+
+
+</div>
+
+
+
+
+<script src="https://cdn.maptiler.com/ol-mapbox-style/v5.0.2/olms.js"></script>
+<script src='./source/menu.js'></script>
+<script src='./source/layers.js'></script>
+<script src='./source/main.js'></script>
+<script src='./source/controls.js'></script>
+<script src='./source/fly.js'></script>
+<script src='./source/splashes.js'></script>
+<script src='./source/cursors.js'></script>
+<!-- bootstrap js -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+ 
+</body>
+</html>
+
+
+
