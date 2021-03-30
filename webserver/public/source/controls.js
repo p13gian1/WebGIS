@@ -3,40 +3,6 @@ var mainbarControls = new ol.control.Bar();
 mainbarControls.setPosition('top');
 map.addControl(mainbarControls);
 
-//    /* Nested toobar with one control activated at once */
-//   var nestedControls = new ol.control.Bar ({ toggleOne: true, group:true });
-//   mainbarControls.addControl (nestedControls);
-
-
-//   var selectCtrl = new ol.control.Toggle(
-//     {	html: '<i class="fa fa-hand-pointer-o"></i>',
-//       className: "select",
-//       title: "Select",
-//       interaction: new ol.interaction.Select (),
-//       active:true,
-//        onToggle: function(active)
-//        {
-//       	// $("#info").text("Select is "+(active?"activated":"deactivated"));
-//        }
-//     });
-// nestedControls.addControl(selectCtrl);
-
-// // Add editing tools
-// var pedit = new ol.control.Toggle(
-//     {	html: '<i class="fa fa-map-marker" ></i>',
-//       className: "edit",
-//       title: 'Point',
-//       // ,
-//       // interaction: new ol.interaction.Draw
-// 			// 		({	type: 'Point'
-// 			// 			//source: vector.getSource()
-// 			// 		}),
-//       onToggle: function(active)
-//       {	
-//         // $("#info").text("Edition is "+(active?"activated":"deactivated"));
-//       }
-//     });
-// nestedControls.addControl ( pedit );
 
 
 // mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));

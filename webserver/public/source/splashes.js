@@ -1,14 +1,4 @@
-// if (document.addEventListener) {
-//   document.addEventListener('contextmenu', function(e) {
-//     alert("You've tried to open context menu"); //here you draw your own menu
-//     e.preventDefault();
-//   }, false);
-// } else {
-//   document.attachEvent('oncontextmenu', function() {
-//     alert("You've tried to open context menu");
-//     window.event.returnValue = false;
-//   });
-// }
+
 
 $("#js-map" ).contextmenu(function(e) {
  
@@ -36,11 +26,6 @@ $("#js-map" ).contextmenu(function(e) {
   showQuery(mouseLongitude,mouseLatitude,tongleContext);
 });
 
-
-// map.on('click', function(evt){
-//     // console.log(evt.coordinate);
-//     console.log("right"+ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'));
-// });
 
 
 
