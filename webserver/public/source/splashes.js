@@ -73,7 +73,7 @@ $("#js-map" ).contextmenu(function(e) {
   function tooltipHtml(data){ 
   
     return "<table>"+
-      "<tr><td nowrap>Aerodrome             </td><td>"+" "+data.results.name+" "+data.results.title+"</td></tr>"+
+      "<tr><td nowrap>Aerodrome             </td><td><h2>"+" "+data.results.name+" "+data.results.title+"</h2></td></tr>"+
       "<tr><td nowrap>Elevation             </td><td>"+data.results.elevation+"</td></tr>"+
       "<tr><td nowrap>Address               </td><td>"+data.results.address+"</td></tr>"+
       "<tr><td nowrap>Telephone             </td><td>"+data.results.telephone+"</td></tr>"+
