@@ -1,14 +1,20 @@
-//
+
+
+
 adjc='s';
+adjc=adjc+'ir';
+adjc=adjc+'c';
+adjc=adjc+'liv';
+adjc=adjc+'e';
 const path= require('path');
 const bodyParser=require('body-parser');
 
 const express=require('express');
-adjc=adjc+'ir';
+
 const app=express();
 const publicDirectoryPath=path.join(__dirname, '../public');
 
-adjc=adjc+'c';
+
 
 app.use(express.static(publicDirectoryPath));
 app.use(bodyParser.json({type: "application/json"}));
@@ -18,7 +24,7 @@ var cors = require('cors');   // added to avoid cross origin check below!
 app.use(cors());              // https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
 
 
-adjc=adjc+'liv';
+
 const Pool = require ('pg').Pool;
 const config = {
    host: 'localhost',
@@ -26,7 +32,7 @@ const config = {
    database: 'airgisdb',
    port: 5432
 };
-adjc=adjc+'e';
+
 config.password = adjc;
 const pool = new Pool (config);
 
