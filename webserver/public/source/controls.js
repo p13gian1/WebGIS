@@ -79,7 +79,7 @@ var vfrMapButton = new ol.control.Toggle(
 
      
       //map.removeLayer(airwaysLayer);
-      $(".aip-info").css("left","800px");
+      // $(".aip-info").css("left","800px");
      }
   });
   nestedFlightRules.addControl(vfrMapButton);
@@ -106,6 +106,10 @@ var vfrMapButton = new ol.control.Toggle(
         active:true,
          onToggle: function(active)
          {
+
+          styleCallSignLabel.text="1973";
+         // console.log(styleCallSignLabel)
+
           //  $(".aip-info").text((active?"activated":""));
          }
       });
@@ -152,5 +156,18 @@ map.addControl(mousePositionControl);
 
 
 
+testAircraftbutton=new ol.control.Button ({
+  html: '<h4>Aircraft</h4>',
+  className: "aircraftObject-button",
+  title: 'Test button aircraft object',
+  handleClick: ()=> { 
+    aircraftId=aircraftId+1;
+    createAircraftLayer();
+    animateFeature();
+    
+    
+    
+  }
+  });
 
-
+map.addControl(testAircraftbutton);

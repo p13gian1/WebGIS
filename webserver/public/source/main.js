@@ -1,5 +1,7 @@
 var tongleContext=false;
 
+var aircraftId=0;
+
 
 
 init=(a,b,mapFlag)=>{

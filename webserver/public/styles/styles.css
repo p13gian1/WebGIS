@@ -95,6 +95,8 @@ h4 {
 
 
 
+
+
 .animate-button
 		{	left: 180px;
 			bottom: 0.5em;
@@ -103,6 +105,16 @@ h4 {
     .ol-button i
 		{	color: inherit;
 		}
+
+.aircraftObject-button
+    {
+      width:auto;
+      left:1200px;
+      bottom: 0.5em;
+    }
+
+
+
 
 .ol-control.ol-layerswitcher .panel 
 {	background-color: rgba(0,0,0,0.3);
