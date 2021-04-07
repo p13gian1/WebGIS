@@ -1,8 +1,11 @@
   var aircraftLayer=[];
   var aircraftRouteSource=[]
-  var aircrafts=['SX-BIM','SX-AJT','D-EGHJ']
 
-  // var style2=[];
+//test arrays aircrafts, routes  
+  var aircrafts=['SX-BIM','SX-AJT','D-EGHJ','OAL054','AEE604','OAL055','SEH081','SEH082'];
+  var routes=['./data/route0.gpx','./data/route0.gpx','./data/route0.gpx','./data/route3.gpx','./data/route4.gpx','./data/route5.gpx','./data/route6.gpx','./data/route7.gpx']
+
+
 
   var style = [
       new ol.style.Style({
@@ -52,10 +55,10 @@
     })
     })
   ];
-  // style2[aircraftId]=style;
-  // console.log(aircraftId);
+ 
 
-  // console.log(style2);
+
+
 
  var callSignLabel = new ol.style.RegularShape({
   radius: 0,
@@ -64,61 +67,6 @@
 
 var styleCallSignLabel;
   
-
-
-  // var o = 
-  // new ol.style.Style({
-  //   image: callSignLabel,
-  //   // stroke: new ol.style.Stroke({
-  //   //   color: [255,0,0],
-  //   //   width: 2
-  //   // }),
-  //   // fill: new ol.style.Fill({
-  //   //   color: [0,0,255,0.3]
-  //   // }),
-  //   text: new ol.style.Text({
-  //     offsetY: -55,
-  //     rotation: 0,
-  //     //placement: 'line',
-  //     text: 'SX-BIM',       //call sign
-  //     overflow: true,
-  //     font: 15 + 'px Calibri,sans-serif',
-  //     fill: new ol.style.Fill({
-  //       color: 'navy'
-  //       }),
-  //       stroke: new ol.style.Stroke({
-  //       width: 2,
-  //       color: '#f80'
-  //       }),
-  //       })   
-  // });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   var altitudeLabel = new ol.style.RegularShape({
@@ -186,22 +134,9 @@ $("#speed").click(function() {
 
 
 
-// //sliderSpeedValue=0.01;
-
-  // Vector layer
-  
-  // var vector = new ol.layer.Vector({
-  //   title: 'Aircrafts',
-  //   source: source,
-  //   style: style
-  // });
-  // vector.setZIndex(10);
-  
 
 
 
-  //$(window).on("load", function(){ console.log("loaded"); vector.changed(); });
-  // vector.changed(); // redraw vector in order to load font of aeroplane 
 
   // Animation
   
@@ -224,7 +159,7 @@ var source;
 
   source = new ol.source.Vector({
     //url: '../data/192553.gpx',
-    url: './data/route.gpx',
+    url: routes[aircraftId],
     format: new ol.format.GPX()
   });
 
@@ -334,6 +269,7 @@ var source;
 
      
      featureCallSignLabel.setStyle(styleCallSignLabel);
+     featureCallSignLabel.setId(aircraftId);
     //  featureCallSignLabel.set('myStyle', styleCallSignLabel)
     //  featureCallSignLabel.setId(aircraftId);
      aircraftLayer[aircraftId].getSource().addFeature(featureCallSignLabel);
@@ -449,7 +385,25 @@ var source;
      aircraftLayer[aircraftId].animateFeature ( featureCallSignLabel, animationFeatureCallSignLabel);
      aircraftLayer[aircraftId].animateFeature ( featureAltitudeLabel, animationFeatureAltitudeLabel);
      aircraftLayer[aircraftId].animateFeature ( featureVelocityLabel, animationFeatureVelocityLabel);
-   
+
+     animationFeatureCallSignLabel.once('animationend', function(e)
+     {	 
+       
+      if (e.feature) { 
+      var id=e.feature.getId();
+        
+        aircraftLayer[id].getSource().clear();
+
+      
+      console.log('end');
+      console.log('id'+id);
+      console.log(e.feature);
+     }
+     });
+
+
+
+  
      if (aircraftId>0){
       for (var i=0; i<10; i++){
       aircraftLayer[aircraftId].changed();
@@ -457,7 +411,7 @@ var source;
      }
    
     }
-
+//  map.render();
    
 
 });
