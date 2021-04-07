@@ -107,7 +107,16 @@ var vfrMapButton = new ol.control.Toggle(
          onToggle: function(active)
          {
 
-          styleCallSignLabel.text="1973";
+        //   var f=aircraftLayer[0].getSource().getFeatures()[2].get('myStyle');
+        // // console.log(f.text.text);
+
+        // aircraftLayer[0].getSource().getFeatures()[2].setStyle('');
+        //  aircraftLayer[0].getSource().getFeatures()[2].setStyle(o);
+
+        //  aircraftLayer[0].changed;
+        
+        //  console.log(f);
+          // .styleCallSignLabel.text_.text_="1973";
          // console.log(styleCallSignLabel)
 
           //  $(".aip-info").text((active?"activated":""));

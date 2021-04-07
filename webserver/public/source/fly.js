@@ -1,7 +1,8 @@
   var aircraftLayer=[];
   var aircraftRouteSource=[]
+  var aircrafts=['SX-BIM','SX-AJT','D-EGHJ']
 
-  var style2=[];
+  // var style2=[];
 
   var style = [
       new ol.style.Style({
@@ -51,42 +52,74 @@
     })
     })
   ];
-  style2[aircraftId]=style;
-  console.log(aircraftId);
+  // style2[aircraftId]=style;
+  // console.log(aircraftId);
 
-  console.log(style2);
+  // console.log(style2);
 
  var callSignLabel = new ol.style.RegularShape({
   radius: 0,
   points: 0
 });
 
-var styleCallSignLabel = 
-  new ol.style.Style({
-    image: callSignLabel,
-    // stroke: new ol.style.Stroke({
-    //   color: [255,0,0],
-    //   width: 2
-    // }),
-    // fill: new ol.style.Fill({
-    //   color: [0,0,255,0.3]
-    // }),
-    text: new ol.style.Text({
-      offsetY: -55,
-      rotation: 0,
-      //placement: 'line',
-      text: 'SX-BIM',       //call sign
-      overflow: true,
-      font: 15 + 'px Calibri,sans-serif',
-      fill: new ol.style.Fill({
-        color: 'navy'
-        }),
-        stroke: new ol.style.Stroke({
-        width: 2,
-        color: '#f80'
-        }),
-        })   
-  });
+var styleCallSignLabel;
+  
+
+
+  // var o = 
+  // new ol.style.Style({
+  //   image: callSignLabel,
+  //   // stroke: new ol.style.Stroke({
+  //   //   color: [255,0,0],
+  //   //   width: 2
+  //   // }),
+  //   // fill: new ol.style.Fill({
+  //   //   color: [0,0,255,0.3]
+  //   // }),
+  //   text: new ol.style.Text({
+  //     offsetY: -55,
+  //     rotation: 0,
+  //     //placement: 'line',
+  //     text: 'SX-BIM',       //call sign
+  //     overflow: true,
+  //     font: 15 + 'px Calibri,sans-serif',
+  //     fill: new ol.style.Fill({
+  //       color: 'navy'
+  //       }),
+  //       stroke: new ol.style.Stroke({
+  //       width: 2,
+  //       color: '#f80'
+  //       }),
+  //       })   
+  // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   var altitudeLabel = new ol.style.RegularShape({
     radius: 0,
@@ -117,8 +150,8 @@ var styleCallSignLabel =
       points: 0
     });
     
-    var styleVelocityLabel = 
-      new ol.style.Style({
+    var styleVelocityLabel;
+    styleVelocityLabel = new ol.style.Style({
         image: velocityLabel,
           text: new ol.style.Text({
           offsetY: -25,
@@ -139,7 +172,7 @@ var styleCallSignLabel =
 
 
   // Offset image
-  style[1].getImage().getAnchor()[1] += 0
+ // style[1].getImage().getAnchor()[1] += 0
   
   
 
@@ -254,6 +287,7 @@ var source;
      {
        featureAircraft.setStyle(style[2]);
      }
+     source.addFeature(featureAircraft);
      
      //style[1].text_.text_ ='SX';
      animationFeatureAircraft = new ol.featureAnimation.Path({
@@ -265,8 +299,45 @@ var source;
      });
    
      featureCallSignLabel = new ol.Feature(new ol.geom.Point([0,0]));
+
+
+     styleCallSignLabel=new ol.style.Style({
+      image: callSignLabel,
+      // stroke: new ol.style.Stroke({
+      //   color: [255,0,0],
+      //   width: 2
+      // }),
+      // fill: new ol.style.Fill({
+      //   color: [0,0,255,0.3]
+      // }),
+      text: new ol.style.Text({
+        offsetY: -55,
+        rotation: 0,
+        //placement: 'line',
+        text: aircrafts[aircraftId],       //call sign
+        overflow: true,
+        font: 15 + 'px Calibri,sans-serif',
+        fill: new ol.style.Fill({
+          color: 'navy'
+          }),
+          stroke: new ol.style.Stroke({
+          width: 2,
+          color: '#f80'
+          }),
+          })   
+    });
+
+
+
+
+
+
      
      featureCallSignLabel.setStyle(styleCallSignLabel);
+    //  featureCallSignLabel.set('myStyle', styleCallSignLabel)
+    //  featureCallSignLabel.setId(aircraftId);
+     aircraftLayer[aircraftId].getSource().addFeature(featureCallSignLabel);
+
      //style[2].text_.text_ ='SX';
      animationFeatureCallSignLabel = new ol.featureAnimation.Path({
        path: path,
@@ -275,8 +346,8 @@ var source;
        speed: sliderSpeedValue
        
      });
-
-
+     
+    
 
      featureAltitudeLabel = new ol.Feature(new ol.geom.Point([0,0]));
      
@@ -292,10 +363,32 @@ var source;
 
    
      featureVelocityLabel = new ol.Feature(new ol.geom.Point([0,0]));
+
+
+     styleVelocityLabel = new ol.style.Style({
+      image: velocityLabel,
+        text: new ol.style.Text({
+        offsetY: -25,
+        rotation: 0,
+        text: sliderSpeedValue,       //velocity
+        overflow: true,
+        font: 15 + 'px Calibri,sans-serif',
+        fill: new ol.style.Fill({
+          color: 'navy'
+          }),
+        stroke: new ol.style.Stroke({
+        width: 2,
+        color: '#f80'
+        }),
+      })  
+  });
+
+
+
      
      featureVelocityLabel.setStyle(styleVelocityLabel);
-     styleVelocityLabel.text_.text_ = sliderSpeedValue; //gets the speed of the value of the slider
-     
+    // styleVelocityLabel.text_.text_ = sliderSpeedValue; //gets the speed of the value of the slider
+  
      animationFeatureVelocityLabel = new ol.featureAnimation.Path({
        path: path,
        rotate: false,
@@ -303,7 +396,8 @@ var source;
        speed: sliderSpeedValue
        
      });
-   
+     aircraftLayer[aircraftId].getSource().addFeature(featureVelocityLabel);
+
    
    
    

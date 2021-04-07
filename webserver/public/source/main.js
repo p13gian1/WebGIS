@@ -1,6 +1,6 @@
 var tongleContext=false;
 
-var aircraftId=0;
+var aircraftId=-1;
 
 
 
