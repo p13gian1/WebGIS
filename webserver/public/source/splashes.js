@@ -1,9 +1,5 @@
-
-
 $("#js-map" ).contextmenu(function(e) {
- 
-  e.preventDefault();
-
+ e.preventDefault();
  let coord=(document.getElementById("mouse-position").textContent);
  console.log(coord);
  coord=coord.replace(',','');
@@ -12,10 +8,7 @@ $("#js-map" ).contextmenu(function(e) {
  mouseLatitude=parseFloat(coordArray[1]);
  console.log(mouseLongitude);
  console.log(mouseLatitude);
-  
-
-
-  
+   
   if (tongleContext==false){
     tongleContext=true;
   }
@@ -26,52 +19,27 @@ $("#js-map" ).contextmenu(function(e) {
   showQuery(mouseLongitude,mouseLatitude,tongleContext);
 });
 
-
-
-
-  function showQuery(mouseLongitude,mouseLatitude,active){
-    
+function showQuery(mouseLongitude,mouseLatitude,active){  
     console.log('into showQuery');
-
 
     fetch('http://localhost:3000/aip?long='+mouseLongitude+'&lat='+mouseLatitude).then((response)=>{
       response.json().then((data) => {
-        console.log(data.results)
-        
-
+        console.log(data.results) 
 
         fetch('http://localhost:3000/info?q='+data.results.name).then((response)=>{
           response.json().then((data) => {
             console.log(data.results)
             // $(".aip-info").html('test').wrap('<pre />');
-            
-    
+                
           $(".aip-info").html((active?tooltipHtml(data):""));
           // $(".aip-info").text("Select is "+(active?"activated":"deactivated"));
           })
         });
-
-
-
-
-
-
-
-        
-
       })
-    });
-
-
-
-
-
-   
+    });   
   }
-
   
-  function tooltipHtml(data){ 
-  
+  function tooltipHtml(data){   
     return "<table>"+
       "<tr><td nowrap>Aerodrome             </td><td><h2>"+" "+data.results.name+" "+data.results.title+"</h2></td></tr>"+
       "<tr><td nowrap>Elevation             </td><td>"+data.results.elevation+"</td></tr>"+
@@ -84,6 +52,7 @@ $("#js-map" ).contextmenu(function(e) {
       "<tr><td nowrap>Fuel                  </td><td>"+data.results.fuel+"</td></tr>"+
       "<tr><td nowrap>Fuelling Facilities   </td><td>"+data.results.fuellingfacilities+"</td></tr>"+
       "<tr><td nowrap>Fire Fighting Cat     </td><td>"+data.results.firefighting+"</td></tr>"+
-      "<tr><td nowrap>Tawiway Width         </td><td>"+data.results.taxiwaywidth+"</td></tr>"+       "<tr><td nowrap>Runway                </td><td>"+data.results.runway+"</td></tr>"+
+      "<tr><td nowrap>Tawiway Width         </td><td>"+data.results.taxiwaywidth+"</td></tr>"+
+      "<tr><td nowrap>Runway                </td><td>"+data.results.runway+"</td></tr>"+
       "</table>";
   }
