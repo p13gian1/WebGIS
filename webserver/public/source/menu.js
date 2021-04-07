@@ -14,6 +14,7 @@ menuClickFPL=()=>{
     document.getElementById("flight-plan").style.display = "block";
     $('#main-page').hide();
     $('#js-map').hide();
+    logMessage();
    }  
 
 menuClickAFISAerodrome=(a,b,c,mapFlag)=>{

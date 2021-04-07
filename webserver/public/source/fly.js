@@ -176,7 +176,8 @@ var source;
     });
     aircraftLayer[aircraftId].setZIndex(10);
     map.addLayer(aircraftLayer[aircraftId]); 
-                                 
+    
+    log("New Plane Created");
   }
 
 
@@ -189,6 +190,7 @@ var source;
     if (source.getState() === 'ready') {
       path = source.getFeatures()[0];
       console.log('path ready');
+      log("Plane's path ready");
     }
    
 
@@ -380,19 +382,53 @@ var source;
        map.getView().setRotation(e.rotation||0)
      })
      /**/
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
      aircraftLayer[aircraftId].animateFeature ( featureShadow, animationFeatureShadow );
      aircraftLayer[aircraftId].animateFeature ( featureAircraft, animationFeatureAircraft );
      aircraftLayer[aircraftId].animateFeature ( featureCallSignLabel, animationFeatureCallSignLabel);
      aircraftLayer[aircraftId].animateFeature ( featureAltitudeLabel, animationFeatureAltitudeLabel);
      aircraftLayer[aircraftId].animateFeature ( featureVelocityLabel, animationFeatureVelocityLabel);
 
+     
+    //  animationFeatureCallSignLabel.once('animationstart',function(e)
+    //  {	 
+    //   if (e.feature) {  
+    
+    //   var id=e.feature.getId();
+    //     var arr=e.feature.getStyle().getText().getText();
+    //     log(arr+" departed");
+    //     aircraftLayer[id].getSource().clear();
+
+
+      
+    //   console.log('start');
+    //   console.log('id'+id);
+    //   console.log(e.feature);
+    // }
+    //  });
+
      animationFeatureCallSignLabel.once('animationend', function(e)
      {	 
        
       if (e.feature) { 
       var id=e.feature.getId();
-        
+        var arr=e.feature.getStyle().getText().getText();
+        log(arr+" arrived");
         aircraftLayer[id].getSource().clear();
+
 
       
       console.log('end');
@@ -400,6 +436,15 @@ var source;
       console.log(e.feature);
      }
      });
+     
+
+
+
+
+
+
+
+
 
 
 

@@ -25,6 +25,7 @@ js-map
 .fpl
 {
   display: none;
+  color: greenyellow;
 }
 
 .navbar-brand {
@@ -139,3 +140,5 @@ h4 {
 {
   top: 10px;
 }
+
+

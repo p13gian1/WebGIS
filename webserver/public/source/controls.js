@@ -106,7 +106,7 @@ var vfrMapButton = new ol.control.Toggle(
         active:true,
          onToggle: function(active)
          {
-
+         
         //   var f=aircraftLayer[0].getSource().getFeatures()[2].get('myStyle');
         // // console.log(f.text.text);
 
@@ -132,7 +132,10 @@ var animationButton = new ol.control.Button (
   title: "Press to animate a flight",
   handleClick: function()
     {	
+      aircraftId=aircraftId+1;
+      createAircraftLayer();
       animateFeature();
+      
     }
 });
 map.addControl(animationButton);
@@ -170,9 +173,6 @@ testAircraftbutton=new ol.control.Button ({
   className: "aircraftObject-button",
   title: 'Test button aircraft object',
   handleClick: ()=> { 
-    aircraftId=aircraftId+1;
-    createAircraftLayer();
-    animateFeature();
     
     
     

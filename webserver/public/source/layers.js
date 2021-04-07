@@ -32,7 +32,7 @@ const map = new ol.Map({
 })
 olms.apply(map, styleJson);
 
-
+log("Base Layer Loaded");
 
 var aerodromesLayer=new ol.layer.Image({
   title: 'Aerodromes',
@@ -43,6 +43,8 @@ var aerodromesLayer=new ol.layer.Image({
         })
     });
 map.addLayer(aerodromesLayer);
+
+log("Aerodrome Layer Loaded");
 
   var airwaysLayer=new ol.layer.Image({
     title: 'Airways',
@@ -58,6 +60,8 @@ map.addLayer(aerodromesLayer);
 map.addLayer(airwaysLayer);
 airwaysLayer.setOpacity(0.4);
 
+log("Airways Layer Loaded");
+
 var navaidsLayer=new ol.layer.Image({
   title: 'Navaids',
   source: new ol.source.ImageWMS({
@@ -67,6 +71,7 @@ var navaidsLayer=new ol.layer.Image({
     })
 });
 map.addLayer(navaidsLayer);
+log("Navaids Layer Loaded");
 
 var waypointsLayer=new ol.layer.Image({
   title: 'Waypoints',
@@ -77,6 +82,7 @@ var waypointsLayer=new ol.layer.Image({
     })
 });
 map.addLayer(waypointsLayer);
+log("Waypoints Layer Loaded");
 
 aerodromesLayer.setZIndex(9);
 airwaysLayer.setZIndex(7);
