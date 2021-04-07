@@ -1,4 +1,3 @@
-
 var styleJson = 'https://api.maptiler.com/maps/e31d675e-d790-422f-9bdb-8e53ed2c77a3/style.json?key=uvpLhVXDl2QlWUYsQzXs';
 const map = new ol.Map({
   controls: ol.control.defaults().extend([
@@ -7,13 +6,10 @@ const map = new ol.Map({
     // }),
     new ol.control.ScaleLine({units: 'nautical'
                               // ,bar: true
-                              
-                            })
-
+                              })
   ]),
   view: new ol.View({
     center: ol.proj.fromLonLat([
-      
       // 24,38 // LGAV
       19.9122,39.6019 // LGKR
     ]),
@@ -54,8 +50,6 @@ log("Aerodrome Layer Loaded");
     serverType:'geoserver'
     })
   });
-
-
   
 map.addLayer(airwaysLayer);
 airwaysLayer.setOpacity(0.4);
@@ -90,28 +84,13 @@ navaidsLayer.setZIndex(8);
 waypointsLayer.setZIndex(5);
 
 // var airwaysOpacity=Number($("#airways-opacity").val());
-
 // $("#airways-opacity").change(function() {
 //   airwaysOpacity=Number($("#airways-opacity").val());
 //   airwaysLayer.setOpacity(airwaysOpacity);
-
 // })
-
-
 /*
   $('[data-toggle="tooltip"]').tooltip({
     trigger : 'hover'
-
   });
   $('[data-toggle="tooltip"]').tooltip('hide');
 */
-
-
-
-
-
-
-
-
-
-

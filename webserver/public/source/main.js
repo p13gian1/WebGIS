@@ -1,35 +1,16 @@
 var tongleContext=false;
-
 var aircraftId=-1;
 
-
-
 init=(a,b,mapFlag)=>{
-
-
   map.updateSize(); 
-
- 
-
-  
-  
-
 
   $(function()
   {
       $('LGKC').click(function(event) {  
-      
-  
-        alert('working!');
-   
+      alert('working!');
       })
   });
-
-
-
 if (mapFlag==1){ 
-
-
 flyTo(ol.proj.fromLonLat([a,b]), function () {});
   /*
  map.getView().animate({
@@ -40,14 +21,10 @@ flyTo(ol.proj.fromLonLat([a,b]), function () {});
   \
 })
 */
-
 }
-
 }
-
 
 flyTo=(location, done)=> {
- 
   var duration = 4000;
   var zoom = 11;
   var parts = 2;

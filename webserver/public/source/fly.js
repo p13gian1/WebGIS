@@ -5,8 +5,6 @@
   var aircrafts=['SX-BIM','SX-AJT','D-EGHJ','OAL054','AEE604','OAL055','SEH081','SEH082'];
   var routes=['./data/route0.gpx','./data/route0.gpx','./data/route0.gpx','./data/route3.gpx','./data/route4.gpx','./data/route5.gpx','./data/route6.gpx','./data/route7.gpx']
 
-
-
   var style = [
       new ol.style.Style({
       image: new ol.style.Shadow({
@@ -56,19 +54,12 @@
     })
   ];
  
-
-
-
-
  var callSignLabel = new ol.style.RegularShape({
   radius: 0,
   points: 0
 });
 
-var styleCallSignLabel;
-  
-
-
+  var styleCallSignLabel;
   var altitudeLabel = new ol.style.RegularShape({
     radius: 0,
     points: 0
@@ -116,44 +107,17 @@ var styleCallSignLabel;
           }),
         })  
     });
-
-
-
   // Offset image
  // style[1].getImage().getAnchor()[1] += 0
-  
-  
-
-
-var sliderSpeedValue=0.04;
-
-$("#speed").click(function() {
+ var sliderSpeedValue=0.04;
+ $("#speed").click(function() {
   sliderSpeedValue=Number($("#speed").val());
                              }) ;
-
-
-
-
-
-
-
-
   // Animation
-  
-  // Add a feature on the map
   var featureShadow,featureAircraft,featureCallSignLabel,featureAltitudeLabel, featureVelocityLabel;
   var animationFeatureShadow,animationFeatureAircraft,animationFeatureCallSignLabel, animationFeatureAltitudeLabel, animationFeatureVelocityLabel;
- /////////////////////////////////////////////////////////////////////////
- //             create aircraft object and layer
-   
-
- 
-
-var path;
-
-
-
-var source;
+  var path;
+  var source;
 
  createAircraftLayer=() =>{
 
@@ -162,10 +126,6 @@ var source;
     url: routes[aircraftId],
     format: new ol.format.GPX()
   });
-
-
-  
-
 
     console.log('into createAircraftLayer');
     console.log('aircraftId',aircraftId);
@@ -176,33 +136,23 @@ var source;
     });
     aircraftLayer[aircraftId].setZIndex(10);
     map.addLayer(aircraftLayer[aircraftId]); 
-    
     log("New Plane Created");
   }
-
-
  
  animateFeature=() =>{
   //aircraftLayer[aircraftId].changed();
-  
-  
+    
   source.once('change',function(e){
     if (source.getState() === 'ready') {
       path = source.getFeatures()[0];
       console.log('path ready');
       log("Plane's path ready");
     }
-   
-
-
+  
   console.log('into animateFeature');
   console.log('aircraftId',aircraftId);
-  
-
-
-
-
-   if (path) {
+   
+  if (path) {
      featureShadow = new ol.Feature(new ol.geom.Point([0,0]));
      
      featureShadow.setStyle(style[0]);
@@ -212,15 +162,13 @@ var source;
        rotate: true,
        easing: 'linear',
        speed: sliderSpeedValue
-       
-     });
+      });
 
      featureAircraft = new ol.Feature(new ol.geom.Point([0,0]));
      if (spriteIsPlane)
      {
        featureAircraft.setStyle(style[1]);
      } else
-
      {
        featureAircraft.setStyle(style[2]);
      }
@@ -232,11 +180,9 @@ var source;
        rotate: true,
        easing: 'linear',
        speed: sliderSpeedValue
-       
-     });
+      });
    
      featureCallSignLabel = new ol.Feature(new ol.geom.Point([0,0]));
-
 
      styleCallSignLabel=new ol.style.Style({
       image: callSignLabel,
@@ -263,30 +209,20 @@ var source;
           }),
           })   
     });
-
-
-
-
-
-
-     
+    
      featureCallSignLabel.setStyle(styleCallSignLabel);
      featureCallSignLabel.setId(aircraftId);
     //  featureCallSignLabel.set('myStyle', styleCallSignLabel)
     //  featureCallSignLabel.setId(aircraftId);
      aircraftLayer[aircraftId].getSource().addFeature(featureCallSignLabel);
-
      //style[2].text_.text_ ='SX';
      animationFeatureCallSignLabel = new ol.featureAnimation.Path({
        path: path,
        rotate: false,
        easing: 'linear',
-       speed: sliderSpeedValue
-       
+       speed: sliderSpeedValue     
      });
      
-    
-
      featureAltitudeLabel = new ol.Feature(new ol.geom.Point([0,0]));
      
      featureAltitudeLabel.setStyle(styleAltitudeLabel);
@@ -295,13 +231,10 @@ var source;
        path: path,
        rotate: false,
        easing: 'linear',
-       speed: sliderSpeedValue
-       
+       speed: sliderSpeedValue      
      });
-
    
      featureVelocityLabel = new ol.Feature(new ol.geom.Point([0,0]));
-
 
      styleVelocityLabel = new ol.style.Style({
       image: velocityLabel,
@@ -320,9 +253,6 @@ var source;
         }),
       })  
   });
-
-
-
      
      featureVelocityLabel.setStyle(styleVelocityLabel);
     // styleVelocityLabel.text_.text_ = sliderSpeedValue; //gets the speed of the value of the slider
@@ -332,88 +262,23 @@ var source;
        rotate: false,
        easing: 'linear',
        speed: sliderSpeedValue
-       
-     });
+       });
      aircraftLayer[aircraftId].getSource().addFeature(featureVelocityLabel);
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-
-/*
-   if (path) {
-     g = new ol.Feature(new ol.geom.Point([0,0]));
-     
-     g.setStyle(style2);
-     //style[1].text_.text_ ='SX';
-     anim2 = new ol.featureAnimation.Path({
-       path: path,
-       rotate: false,
-       easing: 'linear',
-       speed: Number($("#speed").val())
-       
-     });
-
-   }
-
-
-
-*/
-
-
-
-
-     /** / 
-     source.addFeature(f);
-     anim.on('animationend', function(e)
-     {	if (e.feature) source.removeFeature(e.feature);
-     });
-     /**/
-     /** /
-     anim.on('animating', (e) => {
-       map.getView().setCenter(e.geom.getCoordinates())
-       map.getView().setRotation(e.rotation||0)
-     })
-     /**/
-
-    
-
-
-
-
-
-
-
-
-
-
-
 
      aircraftLayer[aircraftId].animateFeature ( featureShadow, animationFeatureShadow );
      aircraftLayer[aircraftId].animateFeature ( featureAircraft, animationFeatureAircraft );
      aircraftLayer[aircraftId].animateFeature ( featureCallSignLabel, animationFeatureCallSignLabel);
      aircraftLayer[aircraftId].animateFeature ( featureAltitudeLabel, animationFeatureAltitudeLabel);
      aircraftLayer[aircraftId].animateFeature ( featureVelocityLabel, animationFeatureVelocityLabel);
-
      
     //  animationFeatureCallSignLabel.once('animationstart',function(e)
     //  {	 
     //   if (e.feature) {  
-    
     //   var id=e.feature.getId();
     //     var arr=e.feature.getStyle().getText().getText();
     //     log(arr+" departed");
     //     aircraftLayer[id].getSource().clear();
-
-
-      
+     
     //   console.log('start');
     //   console.log('id'+id);
     //   console.log(e.feature);
@@ -422,50 +287,27 @@ var source;
 
      animationFeatureCallSignLabel.once('animationend', function(e)
      {	 
-       
       if (e.feature) { 
       var id=e.feature.getId();
         var arr=e.feature.getStyle().getText().getText();
         log(arr+" arrived");
         aircraftLayer[id].getSource().clear();
-
-
-      
+     
       console.log('end');
       console.log('id'+id);
       console.log(e.feature);
      }
      });
      
-
-
-
-
-
-
-
-
-
-
-
-  
      if (aircraftId>0){
       for (var i=0; i<10; i++){
       aircraftLayer[aircraftId].changed();
       }
      }
-   
-    }
-//  map.render();
-   
-
-});
-
-
+     }
+//  map.render(); 
+     });
    }
-
-
-
   //  for (var i=0; i<4; i++){
   //   setTimeout (animateFeature, i*500);
   // }
