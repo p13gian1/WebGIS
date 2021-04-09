@@ -116,12 +116,17 @@ var mousePositionControl = new ol.control.MousePosition({
 });
 map.addControl(mousePositionControl);
 
-testAircraftbutton=new ol.control.Button ({
-  html: '<h4>T</h4>',
-  className: "aircraftObject-button",
-  title: 'Test button aircraft object',
-  handleClick: ()=> { 
-      
-  }
+testAircraftbutton= new ol.control.Toggle(
+  {	html: '<h4>T</h4>',
+    className: "aircraftObject-button",
+    title: "Test button aircraft object",
+    //interaction: new ol.interaction.Select (),
+    active:false,
+     onToggle: function(active)
+     {
+      $(".map").css({"width": active?"70vw":""});
+     // map.addLayer(airwaysLayer);
+      // $("#info").text("Select is "+(active?"activated":"deactivated"));
+     }
   });
 map.addControl(testAircraftbutton);

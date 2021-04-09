@@ -26,20 +26,28 @@
       <name>KOR</name>
       <overfly>false</overfly>
     </rtept>
+    <rtept lat="38.061389" lon="22.697778">
+      <name>PIKAD</name>
+      <overfly>false</overfly>
+    </rtept>
     <rtept lat="38.315000" lon="22.232222">
       <name>IXONI</name>
       <overfly>false</overfly>
     </rtept>
-    <rtept lat="38.524722" lon="21.841944">
-      <name>ELVAS</name>
+    <rtept lat="38.158983" lon="21.429403">
+      <name>ARA</name>
       <overfly>false</overfly>
     </rtept>
-    <rtept lat="38.985000" lon="20.968333">
-      <name>GARTA</name>
+    <rtept lat="38.594167" lon="20.941389">
+      <name>SOTEG</name>
       <overfly>false</overfly>
     </rtept>
-    <rtept lat="39.262222" lon="20.430278">
-      <name>PARNA</name>
+    <rtept lat="38.874444" lon="20.653889">
+      <name>ROTSA</name>
+      <overfly>false</overfly>
+    </rtept>
+    <rtept lat="39.220833" lon="20.303333">
+      <name>MALED</name>
       <overfly>false</overfly>
     </rtept>
     <rtept lat="39.443858" lon="20.072775">

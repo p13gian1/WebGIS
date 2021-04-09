@@ -3,7 +3,7 @@
 
 //test arrays aircrafts, routes  
   var aircrafts=['SX-BIM','SX-AJT','D-EGHJ','OAL054','AEE604','OAL055','SEH081','SEH082'];
-  var routes=['./data/route0.gpx','./data/route0.gpx','./data/route0.gpx','./data/route3.gpx','./data/route4.gpx','./data/route5.gpx','./data/route6.gpx','./data/route7.gpx']
+  var routes=['./data/LGKJ-LGAV.gpx','./data/LGKR-LGAV.gpx','./data/LGTS-LGAV.gpx','./data/LGKC-LGKR.gpx','./data/route4.gpx','./data/route5.gpx','./data/route6.gpx','./data/route7.gpx']
 
   var style = [
       new ol.style.Style({
@@ -25,8 +25,10 @@
         glyph: 'maki2-airport',
         fontSize: 1,     
         radius: 15, 
-        offsetX: -10,
-        offsetY: -10,
+         offsetX: -5,    //offsets!!
+         offsetY: -5,
+
+
        // rotation: Math.PI/4,
        //rotateWithView: true,
        // color: 'navy',
