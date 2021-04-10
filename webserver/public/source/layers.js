@@ -78,6 +78,7 @@ var waypointsLayer=new ol.layer.Image({
 map.addLayer(waypointsLayer);
 log("Waypoints Layer Loaded");
 
+
 aerodromesLayer.setZIndex(9);
 airwaysLayer.setZIndex(7);
 navaidsLayer.setZIndex(8);
