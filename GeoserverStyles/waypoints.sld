@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" version="1.1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:se="http://www.opengis.net/se" xmlns:ogc="http://www.opengis.net/ogc">
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:ogc="http://www.opengis.net/ogc" xmlns:se="http://www.opengis.net/se" version="1.1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
   <NamedLayer>
     <se:Name>waypoints</se:Name>
     <UserStyle>
@@ -26,7 +26,7 @@
         <se:Rule>
           <se:TextSymbolizer>
             <se:Label>
-              <ogc:PropertyName>name</ogc:PropertyName>
+              <ogc:PropertyName>label</ogc:PropertyName>
             </se:Label>
             <se:Font>
               <se:SvgParameter name="font-family">MS Shell Dlg 2</se:SvgParameter>
@@ -40,7 +40,7 @@
                 </se:AnchorPoint>
                 <se:Displacement>
                   <se:DisplacementX>0</se:DisplacementX>
-                  <se:DisplacementY>4</se:DisplacementY>
+                  <se:DisplacementY>-10</se:DisplacementY>
                 </se:Displacement>
               </se:PointPlacement>
             </se:LabelPlacement>
