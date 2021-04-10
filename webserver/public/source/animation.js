@@ -1,5 +1,10 @@
+<<<<<<< HEAD
   //
   //
+=======
+ //////////////////////////////// 
+  
+>>>>>>> ver 1.2 11-4-2021
   var aircraftLayer=[];
   var aircraftRouteSource=[]
 
