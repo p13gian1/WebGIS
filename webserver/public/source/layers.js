@@ -71,7 +71,7 @@ var waypointsLayer=new ol.layer.Image({
   title: 'Waypoints',
   source: new ol.source.ImageWMS({
     url:'http://localhost:8080/geoserver/airGIS/wms',
-    params:{'LAYERS':'airGIS:waypoints'},
+    params:{'LAYERS':'airGIS:waypoints_layer'},
     serverType:'geoserver'
     })
 });
