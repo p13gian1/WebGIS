@@ -84,18 +84,69 @@ var vfrMapButton = new ol.control.Toggle(
       });
       nestedFlightRules.addControl(ifrHighMapButton);
 
-var animationButton = new ol.control.Button (
-{	html: '<i class="maki2-airport"></i>',
-  className: "animate-button",
-  title: "Press to animate a flight",
-  handleClick: function()
-    {	
-      aircraftId=aircraftId+1;
-      createAircraftLayer();
-      animateFeature();
-    }
-});
-map.addControl(animationButton);
+
+
+
+
+var flightControls = new ol.control.Bar();
+flightControls.setPosition('bottom');
+map.addControl(flightControls);
+
+// mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));
+flightControls.addControl( new ol.control.Button (
+  {	html: '<i class="maki2-airport"></i>',
+    className: "animate-button",
+    title: "Press to animate a flight",
+    handleClick: function()
+      {	
+        aircraftId=aircraftId+1;
+        createAircraftLayer();
+        animateFeature();
+      }
+  }) );
+
+  flightControls.addControl( new ol.control.Toggle (
+    {	html: '<a>R</a>',
+      className: "route-button",
+      title: "Press to view the route of a flight",
+      active:false,
+      onToggle: function(active)
+        {	
+          if (active){
+            routeVisibility=true;
+          } else
+          {
+            routeVisibility = false;
+          }
+
+          lengthOfLayers=map.getLayers().getLength();
+          if (lengthOfLayers>5) {
+          for (var i=6; i<lengthOfLayers; i++){
+            console.log(i);
+            map.getLayers().getArray()[i].setVisible(routeVisibility);
+          }
+         } 
+
+
+
+        }
+    }) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var ctrl = new ol.control.LayerSwitcher(
 {}
