@@ -1,5 +1,6 @@
   var aircraftLayer=[];
-  var aircraftRouteSource=[]
+  var aircraftRouteSource=[];
+  var routeVisibility=false;
 
 //test arrays aircrafts, routes  
   var aircrafts=['SXBIM','SXAJT','DEGHJ','OAL054','AEE604','OAL055','SEH081','SEH082'];
@@ -211,15 +212,11 @@ vectorLineAirway[aircraftId]=new ol.source.Vector({});
   pathLayer[aircraftId]=new ol.layer.Vector({
     title: 'pathLine',
     source: vectorLineAirway[aircraftId],
+    visible: routeVisibility,
     style: new ol.style.Style({
-        stroke: new ol.style.Stroke({ color: getRandomColor(), width: 10 }),
- 
+       stroke: new ol.style.Stroke({ color: getRandomColor(), width: 10 }),        
        zindex:-1,
-      //declutter: true
- 
- 
- 
- 
+      //declutter: true 
     })
   }); 
 
@@ -404,7 +401,7 @@ vectorLineAirway[aircraftId]=new ol.source.Vector({});
 
 
 
-
+55
 
 
 
