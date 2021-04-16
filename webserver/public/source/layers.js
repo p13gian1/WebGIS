@@ -1,4 +1,5 @@
-var styleJson = 'https://api.maptiler.com/maps/e31d675e-d790-422f-9bdb-8e53ed2c77a3/style.json?key=uvpLhVXDl2QlWUYsQzXs';
+var styleJson1 = 'https://api.maptiler.com/maps/e31d675e-d790-422f-9bdb-8e53ed2c77a3/style.json?key=uvpLhVXDl2QlWUYsQzXs';
+var styleJson2 = 'https://api.maptiler.com/maps/52cf67a2-9470-46ef-98b0-215feb1fe7be/style.json?key=uvpLhVXDl2QlWUYsQzXs';
 const map = new ol.Map({
   controls: ol.control.defaults().extend([
     // new ol.control.FullScreen({
@@ -26,7 +27,8 @@ const map = new ol.Map({
     */
   target: 'js-map'
 })
-olms.apply(map, styleJson);
+styleJson=styleJson1;
+olms(map, styleJson);
 
 // log("Base Layer Loaded");
 

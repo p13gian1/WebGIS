@@ -80,6 +80,14 @@ var vfrMapButton = new ol.control.Toggle(
          onToggle: function(active)
          {
         //$(".aip-info").text((active?"activated":""));
+         if (active){
+           styleJson=styleJson1;
+         } else {
+        styleJson=styleJson2;
+      }
+     map.getLayers().getArray().splice(4,1);
+     olms(map,styleJson);
+
          }
       });
       nestedFlightRules.addControl(ifrHighMapButton);
@@ -121,7 +129,7 @@ flightControls.addControl( new ol.control.Button (
 
           lengthOfLayers=map.getLayers().getLength();
           if (lengthOfLayers>5) {
-          for (var i=6; i<lengthOfLayers; i++){
+          for (var i=6; i<lengthOfLayers; i=i+2){
             console.log(i);
             map.getLayers().getArray()[i].setVisible(routeVisibility);
           }
