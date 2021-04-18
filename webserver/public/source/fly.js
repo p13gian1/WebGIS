@@ -148,6 +148,7 @@
                                    source: source,
                                    id: (100+aircraftId),
                                    style: style
+                                   
     });
     aircraftLayer[aircraftId].setZIndex(10);
     map.addLayer(aircraftLayer[aircraftId]); 
@@ -161,6 +162,7 @@ routeVector[aircraftId]=new ol.source.Vector({});
     title: 'Aircraft Route',
     source: routeVector[aircraftId],
     visible: routeVisibility,
+    updateWhileAnimating: true,
     style: new ol.style.Style({
        stroke: new ol.style.Stroke({ color: getRandomColor(), width: 10 }),        
        zindex:-1,
@@ -170,10 +172,6 @@ routeVector[aircraftId]=new ol.source.Vector({});
 
 
 //--------------------------------
-
-
-
-
 
 
 
@@ -224,6 +222,11 @@ routeVector[aircraftId]=new ol.source.Vector({});
        aircraftFeature.setStyle(style[2]);
      }
      source.addFeature(aircraftFeature);
+    // var layersLenght=map.getLayers().getArray().length;
+    // for (var i=0; i<layersLenght;i++)
+    // {
+    //   map.getLayers().getArray()[i].changed();
+    // }
      
      //style[1].text_.text_ ='SX';
      aircraftAnimationFeature = new ol.featureAnimation.Path({
@@ -386,12 +389,24 @@ routeVector[aircraftId]=new ol.source.Vector({});
       console.log(e.feature);
      }
      });
+
+
+
+
+
+
+    //  $(window).on("load", function(){  
+    //   if (aircraftId>0){
+    //    for (var i=0; i<10; i++){
+    //    aircraftLayer[aircraftId].changed();
+    //    }
+    //   }
+    // });
+
+
+
+
      
-     if (aircraftId>0){
-      for (var i=0; i<10; i++){
-      aircraftLayer[aircraftId].changed();
-      }
-     }
      }
 //  map.render(); 
      });
