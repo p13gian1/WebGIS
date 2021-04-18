@@ -85,8 +85,22 @@ var vfrMapButton = new ol.control.Toggle(
          } else {
         styleJson=styleJson2;
       }
-     map.getLayers().getArray().splice(4,1);
-     olms(map,styleJson);
+     //console.log("getBaseLayer"+getIndexOfBaseLayer());
+     var indexOfBaseLayer=getIndexOfBaseLayer();
+     map.getLayers().getArray().splice(indexOfBaseLayer,1);
+    // map.getLayers().getArray().splice(4,1);
+    map.render();
+   // map.getLayers().getArray()[4].setMap(null);
+   olms(map,styleJson);
+   
+
+   setTimeout(function () { indexOfBaseLayer=getIndexOfBaseLayer();
+    map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},1000          )
+    
+     
+
+
+
 
          }
       });
@@ -128,15 +142,17 @@ flightControls.addControl( new ol.control.Button (
           }
 
           lengthOfLayers=map.getLayers().getLength();
-          if (lengthOfLayers>5) {
-          for (var i=6; i<lengthOfLayers; i=i+2){
+          console.log(routeVisibility);
+          for (var i=0; i<lengthOfLayers; i=i+1){
             console.log(i);
-            map.getLayers().getArray()[i].setVisible(routeVisibility);
-          }
+
+            if (map.getLayers().getArray()[i].get('title')=='Aircraft Route')
+            {
+              map.getLayers().getArray()[i].setVisible(routeVisibility);
+            }
+         
          } 
-
-
-
+      
         }
     }) );
 
@@ -189,3 +205,24 @@ testAircraftbutton= new ol.control.Toggle(
      }
   });
 map.addControl(testAircraftbutton);
+
+
+
+function getIndexOfBaseLayer(){
+  
+console.log('into function');
+ for (var i=0;i<map.getLayers().getArray().length;i++)
+{
+  console.log(i);
+  if (map.getLayers().getArray()[i].get("mapbox-layers")=='water')
+{
+  console.log('matched!'+i);
+  return i;
+}
+
+}
+} 
+
+
+
+
