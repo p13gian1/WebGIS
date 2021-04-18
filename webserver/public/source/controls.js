@@ -79,29 +79,6 @@ var vfrMapButton = new ol.control.Toggle(
         active:true,
          onToggle: function(active)
          {
-        //$(".aip-info").text((active?"activated":""));
-         if (active){
-           styleJson=styleJson1;
-         } else {
-        styleJson=styleJson2;
-      }
-     //console.log("getBaseLayer"+getIndexOfBaseLayer());
-     var indexOfBaseLayer=getIndexOfBaseLayer();
-     map.getLayers().getArray().splice(indexOfBaseLayer,1);
-    // map.getLayers().getArray().splice(4,1);
-    map.render();
-   // map.getLayers().getArray()[4].setMap(null);
-   olms(map,styleJson);
-   
-
-   setTimeout(function () { indexOfBaseLayer=getIndexOfBaseLayer();
-    map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},1000          )
-    
-     
-
-
-
-
          }
       });
       nestedFlightRules.addControl(ifrHighMapButton);
@@ -205,6 +182,60 @@ testAircraftbutton= new ol.control.Toggle(
      }
   });
 map.addControl(testAircraftbutton);
+
+
+
+var baseMapButton = new ol.control.Toggle(
+  {	html: '<a>B</a>',
+    className: "base-map-button",
+    title: "Base Map button",
+    //interaction: new ol.interaction.Select (),
+    active:true,
+     onToggle: function(active)
+     {
+    //$(".aip-info").text((active?"activated":""));
+     if (active){
+       styleJson=styleJson1;
+     } else {
+    styleJson=styleJson2;
+  }
+ //console.log("getBaseLayer"+getIndexOfBaseLayer());
+ var indexOfBaseLayer=getIndexOfBaseLayer();
+ map.getLayers().getArray().splice(indexOfBaseLayer,1);
+// map.getLayers().getArray().splice(4,1);
+map.render();
+// map.getLayers().getArray()[4].setMap(null);
+olms(map,styleJson);
+
+
+setTimeout(function () { indexOfBaseLayer=getIndexOfBaseLayer();
+map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},2000          )
+
+   }
+  });
+  map.addControl(baseMapButton);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
