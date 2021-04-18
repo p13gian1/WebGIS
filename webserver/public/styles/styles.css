@@ -114,7 +114,11 @@ h4 {
       bottom: 0.5em;
     }
 
-
+.base-map-button
+{
+  left: 10px;
+  top: 20em;
+}
 
 
 .ol-control.ol-layerswitcher .panel 
