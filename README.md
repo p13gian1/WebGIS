@@ -14,7 +14,7 @@
       mouse drag.
 - [x] Έγιναν διορθώσεις στα css των φορμών A.I.P και Flight Plan ώστε το κείμενο πάνω σε αυτές να μην είναι selectable.
 
-![Ver 1.5 Screenshot](https://github.com/p13gian1/WebGIS/screenshots/blob/master/ver_1-5.PNG)
+![Ver 1.5 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-5.PNG)
 
 
 **********************
