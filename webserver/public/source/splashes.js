@@ -11,10 +11,12 @@ $("#js-map" ).contextmenu(function(e) {
    
   if (tongleContext==false){
     tongleContext=true;
+    $('.aip-info').css('display','block');
   }
   else
   {
     tongleContext=false;
+    $('.aip-info').css('display','none');
   }
   showQuery(mouseLongitude,mouseLatitude,tongleContext);
 });

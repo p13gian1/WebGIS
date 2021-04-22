@@ -50,7 +50,7 @@
           <a class="nav-link active" onclick="reLoad()" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tooltip" title="Create a Flight Plan" data-placement="bottom" href="#" onclick="menuClickFPL()">Flight Plan</a>
+          <a class="nav-link" data-toggle="tooltip" title="AFTN Terminal" data-placement="bottom" href="#" onclick="menuClickAFTN()">AFTN</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tooltip" title="Go to map" data-placement="bottom" href="#" onclick="menuClickAFISAerodrome(19.9122,39.6019,'',0)">Map</a>
@@ -119,17 +119,68 @@
   <br><br>
   <p><h3>ΓΙΑΝΝΙΟΣ ΑΝΤΩΝΙΟΣ</h3></p>
 </div>
-<div id='flight-plan' class='fpl'>
- <!-- <p></p>
-  <p></p>
-   <p>
-     <br><br><br><br>
-     <h3>Φόρμα συμπλήρωσης FPL</h3>-->
-     <br><br><h3>Log File</h3><br><br>
+<div id='aftn-terminal' class='aftn'>
+      <br><br><h3>Log File</h3><br><br>
   </div>
 <div id='js-map' class='map'>
   <p class="aip-info">
   </p>
+  
+  <div class="fpl-form-margin">
+  <div class="fpl-form">
+    <form class="fpl-inner" spellcheck="false"> <!--action=""-->
+      <label for="fname" style="margin-right:3px;"><b>(</b></label>
+      <label for="fname"><b>FPL</b></label>
+      <label for="fname" style="margin-left:3px;"><b>-</b></label>
+      <input type="text" id="fname" name="fname" style="width:50px; margin:3px;" maxlength="5" size="5">
+      <label for="lname"><b>-</b></label>
+      <input type="text" id="lname" name="lname" style="width:20px; margin:3px;" maxlength="1" size="1">
+      <label for="lname"></label>
+      <input type="text" id="lname" name="lname" style="width:20px; margin:3px;" maxlength="1" size="1">
+      <br>
+      <label for="lname"><b>-</b></label>
+      <input type="text" id="lname" name="lname" style="width:25px; margin:3px;" maxlength="2" size="2">
+      <label for="lname"></label>
+      <input type="text" id="lname" name="lname" style="width:45px; margin:3px;" maxlength="4" size="4">
+      <label for="lname"><b>/</b></label>
+      <input type="text" id="lname" name="lname" style="width:20px; margin:3px;" maxlength="1" size="1">
+      <label for="lname"><b>-</b></label>
+      <input type="text" id="lname" name="lname" style="width:55px; margin:3px;" maxlength="6" size="6">
+      <br>
+      <label for="lname"><b>-</b></label>
+      <input type="text" id="lname" name="lname" style="width:45px; margin:3px;" maxlength="4" size="4">
+      <label for="lname"></label>
+      <input type="text" id="lname" name="lname" style="width:45px; margin:3px;" maxlength="4" size="4">
+      <br>
+      <label for="fname"><b>-</b></label>
+      <input type="text" id="fname" name="fname" style="width:55px; margin:3px;" maxlength="5" size="5">
+      <label for="fname"><b></b></label>
+      <input type="text" id="fname" name="fname" style="width:55px; margin:3px;" maxlength="5" size="5">
+      <label for="fname"><b>🠖</b></label>
+      <textarea type="text" id="fname" name="fname" wrap="soft" rows="3" cols="10" style="width:240px; height:100px; margin:3px; margin-bottom:0px; resize:none;" maxlength="120" size="120"></textarea>      
+      <br>
+      <label for="lname"><b>-</b></label>
+      <input type="text" id="lname" name="lname" style="width:45px; margin:3px;" maxlength="4" size="4">
+      <label for="lname"></label>
+      <input type="text" id="lname" name="lname" style="width:45px; margin:3px;" maxlength="4" size="4">
+      <label for="fname"><b>🠖</b></label>
+      <input type="text" id="fname" name="fname" style="width:45px; margin:3px;" maxlength="4" size="4">
+      <label for="fname"><b>🠖</b></label>
+      <input type="text" id="fname" name="fname" style="width:45px; margin:3px;" maxlength="4" size="4">
+      <br>
+      <textarea type="text" id="fname" name="fname" wrap="soft" rows="3" cols="10" style="width:240px; height:70px; margin:3px; margin-bottom:0px; resize:none;" maxlength="150" size="150"></textarea>
+      <label for="fname"><b>)</b></label>
+
+
+
+
+
+
+    <br><br><br><br><br>
+    <input type="submit" value="Submit" style="background-color:rgba(0,0,0,0.1)">
+    </form>
+  </div>
+</div>
   <h3 class="place" id="place-label" id="head"></h3>
   <h2 class="speed-label" id="id-speed">
       aircraft speed: <input id="speed" type="range" min="0" max="10" step="0.01" value="0.004">

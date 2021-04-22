@@ -18,13 +18,13 @@ handleClick: ()=> {
 }));
 
 mainbarControls.addControl (new ol.control.Button ({
-html: '<a>F</a>',
-title: 'Fill a FPL',
+html: '<a>A</a>',
+title: 'AFTN Terminal',
 handleClick: function() { 
   if (document.exitFullscreen) {
      document.exitFullscreen();
   }
-     menuClickFPL();
+     menuClickAFTN();
 }
 }));
 mainbarControls.addControl (new ol.control.FullScreen());
@@ -168,20 +168,36 @@ var mousePositionControl = new ol.control.MousePosition({
 });
 map.addControl(mousePositionControl);
 
-testAircraftbutton= new ol.control.Toggle(
-  {	html: '<h4>T</h4>',
+fillFPLbutton= new ol.control.Toggle(
+  {	html: '<h4>F</h4>',
     className: "aircraftObject-button",
     title: "Test button aircraft object",
     //interaction: new ol.interaction.Select (),
     active:false,
      onToggle: function(active)
      {
-      $(".map").css({"width": active?"70vw":""});
-     // map.addLayer(airwaysLayer);
-      // $("#info").text("Select is "+(active?"activated":"deactivated"));
+      // $(".map").css({"width": active?"70vw":""});
+
+    
+       //$(".fpl-form").css({"display": active?"block":"none"});
+       if (active){
+        $(".fpl-form").css("display","block");
+        $(".fpl-form-margin").css("display","block");
+        // for (var i=0;i<400;i=i+1)
+        // {
+        //   setTimeout(function (){
+        //     $(".fpl-form").css("height",i);
+        //   },700)
+        // }
+       }
+       else {
+       $(".fpl-form").css("display","none");
+       $(".fpl-form-margin").css("display","none");
+      }
+
      }
   });
-map.addControl(testAircraftbutton);
+map.addControl(fillFPLbutton);
 
 
 
@@ -209,7 +225,7 @@ olms(map,styleJson);
 
 
 setTimeout(function () { indexOfBaseLayer=getIndexOfBaseLayer();
-map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},2000          )
+map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},4000          )
 
    }
   });

@@ -4,11 +4,11 @@ reLoad=()=> {
     $('#main-page').show();
     // $('#id-speed').hide();
     $('#js-map').hide();
-    $('#flight-plan').hide();
+    $('#aftn-terminal').hide();
    }
 
-menuClickFPL=()=>{
-    document.getElementById("flight-plan").style.display = "block";
+menuClickAFTN=()=>{
+    document.getElementById("aftn-terminal").style.display = "block";
     $('#main-page').hide();
     $('#js-map').hide();
     logMessage();
@@ -16,7 +16,7 @@ menuClickFPL=()=>{
 
 menuClickAFISAerodrome=(a,b,c,mapFlag)=>{
   document.getElementById("js-map").style.display="block";
-  $('#flight-plan').hide();
+  $('#aftn-terminal').hide();
   //$('#js-map').css('display','block');
   $('#head').show();
   $('#main-page').hide();
