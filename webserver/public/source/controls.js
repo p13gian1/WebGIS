@@ -10,8 +10,9 @@ html: '<a>H</a>',
 title: 'Home',
 handleClick: ()=> { 
   // document.getElementById("js-map").requestFullscreen();
-  if (document.exitFullscreen) {
+  if (fullScreen==true) {
    document.exitFullscreen();
+   prevStateFullScreen=true;
 }
    reLoad();
 }
@@ -21,8 +22,9 @@ mainbarControls.addControl (new ol.control.Button ({
 html: '<a>A</a>',
 title: 'AFTN Terminal',
 handleClick: function() { 
-  if (document.exitFullscreen) {
+  if (fullScreen==true) {
      document.exitFullscreen();
+     prevStateFullScreen=true;
   }
      menuClickAFTN();
 }
@@ -233,6 +235,16 @@ map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},4000          )
 
 
 
+  //checking if map is on fullscreen mode
+  map.getControls().getArray()[4].getControls()[2].on('enterfullscreen',function(){
+    fullScreen=true;
+    console.log(fullScreen);
+  })
+  map.getControls().getArray()[4].getControls()[2].on('leavefullscreen',function(){
+    fullScreen=false;
+    console.log(fullScreen);
+  })
+  
 
 
 

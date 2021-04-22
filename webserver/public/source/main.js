@@ -1,9 +1,17 @@
 var tongleContext=false;
 var aircraftId=-1;
+var fullScreen=false;
+var prevStateFullScreen=false;
 
 
 init=(a,b,mapFlag)=>{
   map.updateSize(); 
+
+  if (prevStateFullScreen==true)
+  {
+    document.getElementById('js-map').requestFullscreen();
+    prevStateFullScreen=false;
+  }
 
   $(function()
   {
@@ -59,9 +67,6 @@ flyTo=(location, done)=> {
     callback
   );
 }
-
-
-
 
 
 
