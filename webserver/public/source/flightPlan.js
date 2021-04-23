@@ -1,3 +1,32 @@
+var fpl=document.getElementById('fpl');
+
+$('.fpl-form').change(function(){
+if (fpl.aircraftID.value=='SXAJT')
+{
+    
+    fetch('http://localhost:3000/coordinates?q='+fpl.departureAerodrome.value).then((response)=>{
+      response.json().then((data) => {
+        console.log(data.results) 
+      })
+    });     
+    
+    fetch('http://localhost:3000/coordinates?q='+fpl.destinationAerodrome.value).then((response)=>{
+      response.json().then((data) => {
+        console.log(data.results) 
+      })
+    }); 
+
+
+    
+    console.log('MATCHED!');
+}
+});
+
+
+
+
+
+/*
 fpl={    
 callSign: String,
 flightRules: String,
@@ -32,3 +61,4 @@ aircraftColorAndMarkings: string,
 remark: string,
 pilotInCommand: string}
 }
+*/

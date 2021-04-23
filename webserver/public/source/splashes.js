@@ -58,3 +58,15 @@ function showQuery(mouseLongitude,mouseLatitude,active){
       "<tr><td nowrap>Runway                </td><td>"+data.results.runway+"</td></tr>"+
       "</table>";
   }
+
+  map.on('moveend',function(){
+ 
+    console.log(map.getView().getCenter());
+    let coord=map.getView().getCenter();
+    
+    console.log(coord[0]);
+    console.log(coord[1]);
+    
+
+
+  })

@@ -33,7 +33,7 @@ mainbarControls.addControl (new ol.control.FullScreen());
 
 /* mainbar FlightRules */
 var mainbarFlightRules = new ol.control.Bar();
-mainbarFlightRules.setPosition('right-top');
+mainbarFlightRules.setPosition('top-right');
 map.addControl(mainbarFlightRules);
 
 var nestedFlightRules= new ol.control.Bar ({ toggleOne: true, group:true });
@@ -90,7 +90,7 @@ var vfrMapButton = new ol.control.Toggle(
 
 
 var flightControls = new ol.control.Bar();
-flightControls.setPosition('bottom');
+flightControls.setPosition('top-left');
 map.addControl(flightControls);
 
 // mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));
@@ -171,9 +171,9 @@ var mousePositionControl = new ol.control.MousePosition({
 map.addControl(mousePositionControl);
 
 fillFPLbutton= new ol.control.Toggle(
-  {	html: '<h4>F</h4>',
-    className: "aircraftObject-button",
-    title: "Test button aircraft object",
+  {	html: '<a>F</a>',
+    className: "fill-flp-button",
+    title: "Fill a Flight Plan",
     //interaction: new ol.interaction.Select (),
     active:false,
      onToggle: function(active)
@@ -236,25 +236,60 @@ map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},4000          )
 
 
   //checking if map is on fullscreen mode
-  map.getControls().getArray()[4].getControls()[2].on('enterfullscreen',function(){
+  map.getControls().getArray()[3].getControls()[2].on('enterfullscreen',function(){
     fullScreen=true;
     console.log(fullScreen);
   })
-  map.getControls().getArray()[4].getControls()[2].on('leavefullscreen',function(){
+  map.getControls().getArray()[3].getControls()[2].on('leavefullscreen',function(){
     fullScreen=false;
     console.log(fullScreen);
   })
   
 
 
+var scaleLineButton=new ol.control.ScaleLine({                                                  units: 'nautical'
+                              
+  // ,bar: true
+  });
+
+  map.addControl(scaleLineButton);
+
+
+var targetControl =  new ol.control.Target ({	style: [new ol.style.Style({
+  image: new ol.style.RegularShape({
+    radius: 10,
+    points: 2,
+    fill: new ol.style.Fill({
+    
+  }),
+    stroke: new ol.style.Stroke({
+    width: 2,
+    color: [0,0,0,1]
+ }),
+})
+}),
+new ol.style.Style({
+  image: new ol.style.RegularShape({
+    radius: 10,
+    points: 2,
+    rotation: Math.PI/2,
+    fill: new ol.style.Fill({
+    
+  }),
+    stroke: new ol.style.Stroke({
+    width: 2,
+    color: [0,0,0,1]
+ }),
+})
+})
+],
+  
+  
+  composite: '',zIndex: 25000 });
 
 
 
-
-
-
-
-
+  map.addControl(targetControl);
 
 
 

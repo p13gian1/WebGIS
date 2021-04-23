@@ -5,9 +5,7 @@ const map = new ol.Map({
     // new ol.control.FullScreen({
     // // labelActive: '-'
     // }),
-    new ol.control.ScaleLine({units: 'nautical'
-                              // ,bar: true
-                              })
+    
   ]),
   view: new ol.View({
     center: ol.proj.fromLonLat([

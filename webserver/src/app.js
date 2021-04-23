@@ -32,8 +32,7 @@ app.get('/hello', (req, res) => {
       res.json('hello world!');      
 });
 app.get('/aip',async (req, res) => {
-   // req.query.q
-   // ? SELECT * FROM AIP WHERE AERODROME='KRK
+  
 try {
    const template = 'SELECT * FROM AERODROMES WHERE (LONG > $1 - 0.1) AND (LONG < $1 + 0.1)  AND (LAT > $2 - 0.1) AND (LAT < $2 + 0.1)';
    const response = await pool.query(template, [req.query.long, req.query.lat ]);
@@ -50,9 +49,28 @@ catch(err){
 }
 })
 
+app.get('/coordinates',async (req, res) => {
+ 
+try {
+   const template = 'SELECT * FROM (SELECT * FROM AERODROMES UNION SELECT * FROM WAYPOINTS UNION SELECT * FROM NAVAIDS) AS A WHERE NAME=$1';
+   const response = await pool.query(template, [req.query.q]);
+   if (response.rowCount== 0){
+      res.json({status: 'notfound', searchTerm: req.query.q});
+   }
+   else {
+      res.json({status: 'ok', results: response.rows[0]});
+   }
+   console.log(response);
+}
+catch(err){
+   console.error('Error running query'+err);
+}
+})
+
+
 app.get('/info',async (req, res) => {
    // req.query.q
-   // ? SELECT * FROM AIP WHERE AERODROME='KRK
+   // ? SELECT * FROM AIP WHERE AERODROME='KRK'
 try {
    const template = 'SELECT * FROM AIP WHERE NAME = $1';
    const response = await pool.query(template, [req.query.q]);

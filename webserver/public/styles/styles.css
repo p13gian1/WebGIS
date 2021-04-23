@@ -14,8 +14,23 @@ js-map
   display: none;
 }
 
+
+.map-info-bar{
+  text-align: center;
+  color: white;
+  z-index:2000;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.6);
+}
+
+
+
+
 .map {
- height: 90.7vh;
+ height: 93.9vh;
  width: 100vw;
  display: none;
 }
@@ -25,6 +40,51 @@ js-map
   display: none;
   color: greenyellow;
 }
+
+
+/*custom colors for navbar*/
+
+.navbar-custom {
+  background-color: #f10ccb;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: rgba(0,0, 255, 0.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(0,0, 255, 0.8);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: rgba(0,0, 255, 0.8);
+}
+
+
+/*custom navbar height*/
+.navbar {
+  max-height: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .navbar-brand {
 cursor: default;
@@ -74,13 +134,15 @@ h4 {
   z-index:100;
   position: fixed;
   left: 220px;
-  bottom: 0px; 
+  bottom: 20px; 
 }
 
 
 
 .aip-info,.aip-info-header
 {
+  font-family: 'Times New Roman', Times, sans-serif;
+  font-size: 14px;
   display:none;
   padding: 5px;
   outline: 1px solid black;
@@ -103,21 +165,21 @@ h4 {
 
 
 
-
+/*
 .animate-button
 		{	left: 180px;
 			bottom: 0.5em;
 		}
-
+*/
     .ol-button i
-		{	color: inherit;
+		{	color: inherit; /*custom color for button*/
 		}
 
-.aircraftObject-button
+.fill-flp-button
     {
-      width:auto;
+      
       left:1200px;
-      bottom: 0.5em;
+      top: 0.5em;
     }
 
 .base-map-button
@@ -125,6 +187,25 @@ h4 {
   left: 10px;
   top: 20em;
 }
+
+.ol-attribution.ol-unselectable.ol-control.ol-collapsed
+{
+  position:fixed;
+  bottom: 30px;
+}
+
+
+
+
+
+.ol-scale-line.ol-unselectable
+{
+  position:fixed;
+  bottom: 30px;
+}
+
+
+
 
 
 .ol-control.ol-layerswitcher .panel 
@@ -218,13 +299,6 @@ h4 {
 
 
 
-.testButton
-{
-position:absolute;  
-right:70px;
-top:40px;
-
-}
 
 .fpl-form :nth-child(n) {
 /* background-color:rgba(0,0,0,0.0);*/
