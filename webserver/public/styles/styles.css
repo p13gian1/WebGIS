@@ -15,16 +15,6 @@ js-map
 }
 
 
-.map-info-bar{
-  text-align: center;
-  color: white;
-  z-index:2000;
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  width: 100vw;
-  background-color: rgba(0,0,0,0.6);
-}
 
 
 
@@ -45,21 +35,21 @@ js-map
 /*custom colors for navbar*/
 
 .navbar-custom {
-  background-color: #f10ccb;
+  background-color: #0026ff;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-  color: rgba(0,0, 255, 0.8);
+  color: rgba(255,255, 255, 0.5);
 }
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-  color: rgba(0,0, 255, 0.8);
+  color: rgba(255,255, 255, 0.5);
 }
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-  color: rgba(0,0, 255, 0.8);
+  color: rgba(255,255, 255, 0.9);
 }
 
 
@@ -333,4 +323,27 @@ textarea[type=text] {
 .aip-info h2{
 
 cursor: move;
+}
+
+long-map-center{
+  position:fixed;
+  left:900;
+
+}
+
+lat-map-center
+{
+  position:fixed;
+  left:1400;
+}
+
+
+.map-info-bar{
+  color: white;
+  z-index:2000;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.6);
 }

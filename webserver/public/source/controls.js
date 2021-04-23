@@ -1,4 +1,5 @@
 var spriteIsPlane=false;
+var mapCenterIsVisible=false;
 
 var mainbarControls = new ol.control.Bar();
 mainbarControls.setPosition('top');
@@ -136,6 +137,43 @@ flightControls.addControl( new ol.control.Button (
     }) );
 
 
+    
+
+
+    flightControls.addControl( new ol.control.Toggle (
+      {	html: '<a>C</a>',
+        className: "map-center-button",
+        title: "Press to view the center of the map",
+        active:false,
+        onToggle: function(active)
+          {	
+            if (active){
+              mapCenterIsVisible=true;
+            } else
+            {
+              mapCenterIsVisible=false;
+            }
+            
+            map.getControls().getArray()[21].setVisible(mapCenterIsVisible);
+          }
+        
+          
+          }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -206,7 +244,7 @@ map.addControl(fillFPLbutton);
 var baseMapButton = new ol.control.Toggle(
   {	html: '<a>B</a>',
     className: "base-map-button",
-    title: "Base Map button",
+    title: "Press to change base map colours",
     //interaction: new ol.interaction.Select (),
     active:true,
      onToggle: function(active)
@@ -278,18 +316,20 @@ new ol.style.Style({
   }),
     stroke: new ol.style.Stroke({
     width: 2,
-    color: [0,0,0,1]
+    color:  [0,0,0,1]
  }),
 })
 })
 ],
   
-  
-  composite: '',zIndex: 25000 });
+  visible: mapCenterIsVisible,
+  composite: '',
+  zIndex: 25000 });
 
 
 
   map.addControl(targetControl);
+  
 
 
 

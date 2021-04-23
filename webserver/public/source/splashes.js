@@ -59,14 +59,17 @@ function showQuery(mouseLongitude,mouseLatitude,active){
       "</table>";
   }
 
+  var longCenterMap=document.getElementById('long-map-center');
+  var latCenterMap=document.getElementById('lat-map-center');
+
+
+
   map.on('moveend',function(){
  
     console.log(map.getView().getCenter());
     let coord=map.getView().getCenter();
-    
-    console.log(coord[0]);
-    console.log(coord[1]);
-    
-
-
+  
+    coord=ol.proj.transform([coord[0], coord[1]], 'EPSG:3857','EPSG:4326');
+    longCenterMap.innerText='Long: '+coord[0].toFixed(4);
+    latCenterMap.innerText='Lat: '+coord[1].toFixed(4);
   })
