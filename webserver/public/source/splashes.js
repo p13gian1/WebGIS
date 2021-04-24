@@ -73,3 +73,26 @@ function showQuery(mouseLongitude,mouseLatitude,active){
     longCenterMap.innerText='Long: '+coord[0].toFixed(4);
     latCenterMap.innerText='Lat: '+coord[1].toFixed(4);
   })
+
+
+  var utcTime=document.getElementById('utc-time');
+  var utcDate=document.getElementById('utc-date');
+
+$(window).on('load',function() {
+
+  function timer(){
+  console.log('test utc');
+  utcTime.innerText=('UTC: '+getUTCFullTime());
+
+  utcDate.innerText=('Date: '+ getUTCdateICAO());
+  }
+
+  var timerForEver=setInterval(timer,1000);
+
+  });
+
+
+
+
+
+

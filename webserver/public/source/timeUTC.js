@@ -1,3 +1,4 @@
+
 function getUTCtime(){
 var s;
 var t = new Date();
@@ -8,6 +9,28 @@ var t = new Date();
   s = h.toString()  + m.toString();
   return s;
 }
+
+function getUTCFullTime(){
+  var f;
+  var t = new Date();
+    var h = callibrateZero(t.getUTCHours());
+    var m = callibrateZero(t.getUTCMinutes());
+    var s = callibrateZero(t.getUTCSeconds());
+    // console.log(h);
+    // console.log(m);
+    f = h.toString()  + ':'+ m.toString() + ':'+ s.toString();
+
+    console.log(s);
+    return f;
+    
+  }
+
+
+
+
+
+
+
 
 function callibrateZero(t){
   

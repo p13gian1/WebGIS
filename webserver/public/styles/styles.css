@@ -92,7 +92,7 @@ p {
 
 h2 {
   color: white;
-  font-family: verdana;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 18px;
   background-color: rgba(0,0,0,0.2);
 }
@@ -105,7 +105,7 @@ h3 {
 h4 {
 
   color: white;
-  font-family: verdana;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 18px;
   background-color: rgba(0,0,0,0.2);
 }
@@ -131,7 +131,7 @@ h4 {
 
 .aip-info,.aip-info-header
 {
-  font-family: 'Times New Roman', Times, sans-serif;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 14px;
   display:none;
   padding: 5px;
@@ -184,7 +184,11 @@ h4 {
   bottom: 30px;
 }
 
-
+.ol-attribution.ol-unselectable.ol-control
+{
+  position:fixed;
+  bottom: 30px;
+}
 
 
 
@@ -210,6 +214,8 @@ h4 {
 {
   top:400px;
 }
+
+
 
 .ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed /* manipulate opacity of collapsed menu layers */
 {
@@ -243,7 +249,7 @@ h4 {
 
 .fpl-form
 {
-  font-family: 'Times New Roman', Times, sans-serif;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
@@ -325,25 +331,15 @@ textarea[type=text] {
 cursor: move;
 }
 
-long-map-center{
-  position:fixed;
-  left:900;
-
-}
-
-lat-map-center
-{
-  position:fixed;
-  left:1400;
-}
-
 
 .map-info-bar{
-  color: white;
-  z-index:2000;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  /*font-size: 12px;*/
   position: fixed;
+  color: white;
   left: 0px;
   bottom: 0px;
   width: 100vw;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(23, 6, 255, 0.3);
+  z-index:2000;
 }
