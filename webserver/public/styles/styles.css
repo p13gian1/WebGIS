@@ -40,7 +40,7 @@ js-map
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-  color: rgba(255,255, 255, 0.5);
+  color: rgba(255,255, 255, 1);
 }
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
@@ -211,7 +211,7 @@ h4 {
   top:400px;
 }
 
-.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed /* manipulate collapsed menu layers */
+.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed /* manipulate opacity of collapsed menu layers */
 {
   background-color: rgba(0,0,0,0.1);
   top: 10px;

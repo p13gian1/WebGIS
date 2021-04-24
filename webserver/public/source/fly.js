@@ -382,7 +382,9 @@ routeVector[aircraftId]=new ol.source.Vector({});
         
         log('(ARR-'+arr+'-LGKC'+"-LGKR"+getUTCtime()+"-DOF/"+getUTCdateICAO()+")");
         log('----------------');
-        aircraftLayer[id].getSource().clear();
+        // aircraftLayer[id].getSource().clear();
+        map.removeLayer(aircraftLayer[id]);
+        map.removeLayer(routeLayer[id]);
      
       console.log('end');
       console.log('id'+id);
