@@ -1,16 +1,7 @@
 
-function getUTCtime(){
-var s;
-var t = new Date();
-  var h = callibrateZero(t.getUTCHours());
-  var m = callibrateZero(t.getUTCMinutes());
-  // console.log(h);
-  // console.log(m);
-  s = h.toString()  + m.toString();
-  return s;
-}
 
-function getUTCFullTime(){
+
+function getUTCtime(format){
   var f;
   var t = new Date();
     var h = callibrateZero(t.getUTCHours());
@@ -18,9 +9,14 @@ function getUTCFullTime(){
     var s = callibrateZero(t.getUTCSeconds());
     // console.log(h);
     // console.log(m);
+    if (format==undefined){
+      f = h.toString()  + m.toString();
+    }
+    else
+    { 
     f = h.toString()  + ':'+ m.toString() + ':'+ s.toString();
-
-    console.log(s);
+    }
+    // console.log(s);
     return f;
     
   }
@@ -42,7 +38,7 @@ function callibrateZero(t){
 
 
 
-function getUTCdateICAO(){
+function getUTCdateICAO(format){
   var s;
   var t = new Date();
     var d = callibrateZero(t.getUTCDate());
@@ -50,13 +46,19 @@ function getUTCdateICAO(){
     var y = t.getUTCFullYear();
     
     y=y.toString().substring(2,4);  // truncate years to get last two digits for ICAO format
-    console.log( t.getUTCFullYear().toString().substring(2,4));
+    // console.log( t.getUTCFullYear().toString().substring(2,4));
     
     // console.log(e.getMonth());
     // console.log(m);
     
-    s = y.toString()  + (m).toString() + d.toString() ;   //months are zero indexed!!  so I added 1  to months
+    if (format==undefined){ 
+    s = y.toString()  + m.toString() + d.toString();  
+    }
+    else
+    {
+      s = y.toString() + '-'+m.toString() + '-'+ d.toString(); 
+    }
     return s; 
-
-
 }
+
+

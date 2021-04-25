@@ -76,6 +76,7 @@ js-map
 
 
 
+
 .navbar-brand {
 cursor: default;
 }
@@ -294,8 +295,6 @@ h4 {
 
 
 
-
-
 .fpl-form :nth-child(n) {
 /* background-color:rgba(0,0,0,0.0);*/
   color: yellow;
@@ -342,4 +341,12 @@ cursor: move;
   width: 100vw;
   background-color: rgba(23, 6, 255, 0.3);
   z-index:2000;
+}
+
+.custom-layer-switcher{
+  transform: scale(1.5);
+
+  top:15px;
+  right:15px;
+ 
 }

@@ -96,7 +96,8 @@ map.addControl(flightControls);
 
 // mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));
 flightControls.addControl( new ol.control.Button (
-  {	html: '<i class="maki2-airport"></i>',
+  {	
+    html: '<i class="maki2-airport"></i>',
     className: "animate-button",
     title: "Press to animate a flight",
     handleClick: function()
@@ -174,6 +175,19 @@ flightControls.addControl( new ol.control.Button (
 
 
 
+var customLayerSwitcher=new ol.control.Toggle (
+  {	
+    html:'<i class="fas fa-layer-group fa-spin fa-lg"></i>',
+    className: "custom-layer-switcher",
+    title: "Custom Layer Switcher",
+    active:true,
+    onToggle: function()
+      {	
+        
+      }
+  });
+
+  map.addControl(customLayerSwitcher);
 
 
 
@@ -188,16 +202,15 @@ flightControls.addControl( new ol.control.Button (
 
 
 
+// var ctrl = new ol.control.LayerSwitcher(
+// {}
+// );
+// ctrl.setHeader('Layers Opacity');
 
-var ctrl = new ol.control.LayerSwitcher(
-{}
-);
-ctrl.setHeader('Layers Opacity');
-
-map.addControl(ctrl);
-ctrl.on('toggle', function(e) {
-  //console.log('Collapse layerswitcher', e.collapsed);
-});
+// map.addControl(ctrl);
+// ctrl.on('toggle', function(e) {
+//   //console.log('Collapse layerswitcher', e.collapsed);
+// });
 
 var mousePositionControl = new ol.control.MousePosition({
   coordinateFormat: ol.coordinate.createStringXY(4),
@@ -208,19 +221,19 @@ var mousePositionControl = new ol.control.MousePosition({
 });
 map.addControl(mousePositionControl);
 
-fillFPLbutton= new ol.control.Toggle(
+fillFPLbutton= new ol.control.Button(
   {	html: '<a>F</a>',
     className: "fill-flp-button",
     title: "Fill a Flight Plan",
     //interaction: new ol.interaction.Select (),
-    active:false,
-     onToggle: function(active)
+  
+    handleClick: function()
      {
       // $(".map").css({"width": active?"70vw":""});
 
     
        //$(".fpl-form").css({"display": active?"block":"none"});
-       if (active){
+       
         $(".fpl-form").css("display","block");
         $(".fpl-form-margin").css("display","block");
         // for (var i=0;i<400;i=i+1)
@@ -229,11 +242,7 @@ fillFPLbutton= new ol.control.Toggle(
         //     $(".fpl-form").css("height",i);
         //   },700)
         // }
-       }
-       else {
-       $(".fpl-form").css("display","none");
-       $(".fpl-form-margin").css("display","none");
-      }
+       
 
      }
   });

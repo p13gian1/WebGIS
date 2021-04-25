@@ -6,7 +6,8 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
       <title>Web GIS Πτυχιακή Εργασία</title>
       <link rel = "icon" href = "./libs/images/icon.png" type = "image/x-icon"> 
-      
+      <script src="https://kit.fontawesome.com/a63517dea5.js" crossorigin="anonymous"></script>
+     <!-- <script src="https://use.fontawesome.com/8e3e64179d.js"></script> -->
       <!---Bootstrap css-->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,10 +99,10 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" onsubmit="return doSearch()">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit" >Search</button>
-      </form>
+     <!-- <form class="d-flex" onsubmit="return doSearch()">
+        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" >?</button>
+      </form> -->
     </div>
   </div>
 </nav>
@@ -129,6 +130,10 @@
   <div class="fpl-form-margin">
   <div class="fpl-form">
     <form class="fpl-inner" id='fpl' spellcheck="false"> <!--action=""-->
+      <label for="lname" class="open-icon" style="margin-left:190px;"><i class="far fa-folder-open fa-lg" style="color:white;"></i></label>
+      <label for="lname" class="save-icon" style="margin-left:5px;"><i class="fas fa-save fa-lg" style="color:white;"></i></label>      
+      <label for="lname" class="close-icon" style="margin-left:5px;"><i class="fas fa-close fa-lg" style="color:white;"></i></label>
+      <br>
       <label for="fname" style="margin-right:3px;"><b>(</b></label>
       <label for="fname"><b>FPL</b></label>
       <label for="fname" style="margin-left:3px;"><b>-</b></label>
@@ -138,6 +143,8 @@
       <input type="text" id="flightRules" name="flightRules" style="width:20px; margin:3px;" maxlength="1" size="1"> <!--Flight Rules-->
       <label for="lname"></label>
       <input type="text" id="typeOfFlight" name="typeOfFlight" style="width:20px; margin:3px;" maxlength="1" size="1"> <!--Type Of Flight-->
+     
+      
       <br>
       <label for="lname"><b>-</b></label>
       <input type="text" id="number" name="number" style="width:25px; margin:3px;" maxlength="2" size="2"> <!--Number-->

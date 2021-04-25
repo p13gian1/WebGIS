@@ -81,10 +81,10 @@ function showQuery(mouseLongitude,mouseLatitude,active){
 $(window).on('load',function() {
 
   function timer(){
-  console.log('test utc');
-  utcTime.innerText=('UTC: '+getUTCFullTime());
+  // console.log('test utc');
+  utcTime.innerText=('UTC: '+getUTCtime(true));
 
-  utcDate.innerText=('Date: '+ getUTCdateICAO());
+  utcDate.innerText=('Date: '+ getUTCdateICAO(true));
   }
 
   var timerForEver=setInterval(timer,1000);
@@ -92,7 +92,9 @@ $(window).on('load',function() {
   });
 
 
+  $('.close-icon').click(function() {                                           
+                                      $(".fpl-form").css("display","none");
+                                      $(".fpl-form-margin").css("display","none");
 
-
-
+                                    });
 

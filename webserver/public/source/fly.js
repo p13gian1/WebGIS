@@ -3,6 +3,9 @@
   var routeVisibility=false;
   var aircraftFont='maki2-airport';
 
+  
+  // var aircraftFont='fa-plane';  //font-awesome rotation needs to be fixed!  rotation:  
+
 //test arrays aircrafts, routes  
   var aircrafts=['SXBIM','SXAJT','DEGHJ','OAL054','AEE604','OAL055','SEH081','SEH082'];
   var routes=['./data/LGKJ-LGAV.gpx','./data/LGKR-LGAV.gpx','./data/LGTS-LGAV.gpx','./data/LGKC-LGKR.gpx','./data/route4.gpx','./data/route5.gpx','./data/route6.gpx','./data/route7.gpx']
