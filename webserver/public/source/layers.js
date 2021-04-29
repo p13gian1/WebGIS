@@ -1,5 +1,6 @@
 var styleJson1 = 'https://api.maptiler.com/maps/e31d675e-d790-422f-9bdb-8e53ed2c77a3/style.json?key=uvpLhVXDl2QlWUYsQzXs';
 var styleJson2 = 'https://api.maptiler.com/maps/52cf67a2-9470-46ef-98b0-215feb1fe7be/style.json?key=uvpLhVXDl2QlWUYsQzXs';
+var styleJson3 = 'https://api.maptiler.com/maps/fdeec51a-e2a4-41c7-b26d-4a5c43d2b87f/style.json?key=uvpLhVXDl2QlWUYsQzXs';
 const map = new ol.Map({
   controls: ol.control.defaults().extend([
     // new ol.control.FullScreen({

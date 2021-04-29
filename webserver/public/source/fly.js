@@ -153,7 +153,7 @@
                                    style: style
                                    
     });
-    aircraftLayer[aircraftId].setZIndex(10);
+    aircraftLayer[aircraftId].setZIndex(900);
     map.addLayer(aircraftLayer[aircraftId]); 
    
 
@@ -351,7 +351,7 @@ routeVector[aircraftId]=new ol.source.Vector({});
      console.log(line);
 
 
-    console.log(ol.proj.fromLonLat([28+aircraftId,30-aircraftId]) , ol.proj.fromLonLat([28,35]));
+    // console.log(ol.proj.fromLonLat([28+aircraftId,30-aircraftId]) , ol.proj.fromLonLat([28,35]));
 
 
 
@@ -444,3 +444,11 @@ routeVector[aircraftId]=new ol.source.Vector({});
 // return line;
 
 // }
+
+
+
+
+
+
+// getting current coordinates of aircraft, but it needs to be rendered first in order to calculate its coords  
+// map.getLayers().getArray()[5].getSource().getFeatures()[1].getGeometry().getFlatCoordinates()

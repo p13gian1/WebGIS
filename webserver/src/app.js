@@ -87,6 +87,42 @@ catch(err){
 }
 })
 
+
+app.get('/aerodrome',async (req, res) => {
+ 
+   try {
+      const template = 'SELECT * FROM AERODROMES WHERE NAME=$1';
+      const response = await pool.query(template, [req.query.q]);
+      if (response.rowCount== 0){
+         res.json({status: 'notfound', searchTerm: req.query.q});
+      }
+      else {
+         res.json({status: 'ok', results: response.rows[0]});
+      }
+      console.log(response);
+   }
+   catch(err){
+      console.error('Error running query'+err);
+   }
+   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  app.listen(3000, ()=> { 
     console.log('Web Gis application starting...');
     console.log('Nodejs server is up on port 3000.');

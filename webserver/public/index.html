@@ -130,9 +130,9 @@
   <div class="fpl-form-margin">
   <div class="fpl-form">
     <form class="fpl-inner" id='fpl' spellcheck="false"> <!--action=""-->
-      <label for="lname" class="open-icon" style="margin-left:190px;"><i class="far fa-folder-open fa-lg" style="color:white;"></i></label>
-      <label for="lname" class="save-icon" style="margin-left:5px;"><i class="fas fa-save fa-lg" style="color:white;"></i></label>      
-      <label for="lname" class="close-icon" style="margin-left:5px;"><i class="fas fa-close fa-lg" style="color:white;"></i></label>
+      <label for="lname" class="open-icon" style="margin-left:190px;"><i class="fas fa-folder-open fa-lg formButton"></i></label>
+      <label for="lname" class="save-icon" style="margin-left:5px;"><i class="fas fa-save fa-lg formButton"></i></label>      
+      <label for="lname" class="close-icon" style="margin-left:5px;"><i class="fas fa-close fa-lg formButton"></i></label>
       <br>
       <label for="fname" style="margin-right:3px;"><b>(</b></label>
       <label for="fname"><b>FPL</b></label>
@@ -185,8 +185,9 @@
 
 
     <br><br><br><br><br>
-    <input type="submit" value="Submit" style="background-color:rgba(0,0,0,0.1)">
-    </form>
+    <!-- <input type="submit" value="Submit" style="background-color:rgba(0,0,0,0.1)" onsubmit="formSubmit()"> -->
+    <input type="button" id="submitFPL" name="submitFPL" value='Submit FPL' style="background-color:rgba(0,0,0,0.1)">
+  </form>
   </div>
 </div>
 <div class="map-info-bar">

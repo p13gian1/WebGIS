@@ -9,4 +9,3 @@ document.getElementById('aftn-terminal').innerHTML=(logArray.join('\r<br>'));
 logMessage=()=>{    
 }
 
-

@@ -282,12 +282,30 @@ h4 {
 }
 
 
+.formButton:hover {
+  transform: scale(1.7);
+  transition: all .2s ease-in-out;
+
+}
+
+
+.fa-folder-open{
+  color:khaki !important;
+}
 
 
 
+.fa-save{
+  /* color:cyan !important; */
+  color:khaki !important;
+}
 
 
 
+.fa-close{
+  /* color:red !important; */
+  color:khaki !important;
+}
 
 
 
@@ -339,7 +357,7 @@ cursor: move;
   left: 0px;
   bottom: 0px;
   width: 100vw;
-  background-color: rgba(23, 6, 255, 0.3);
+  background-color: rgba(23, 6, 255, 0.5);
   z-index:2000;
 }
 

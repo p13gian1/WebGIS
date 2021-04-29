@@ -177,7 +177,7 @@ flightControls.addControl( new ol.control.Button (
 
 var customLayerSwitcher=new ol.control.Toggle (
   {	
-    html:'<i class="fas fa-layer-group fa-spin fa-lg"></i>',
+    html:'<i class="fas fa-layer-group fa-lg"></i>',
     className: "custom-layer-switcher",
     title: "Custom Layer Switcher",
     active:true,
