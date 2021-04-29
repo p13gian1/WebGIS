@@ -12,6 +12,8 @@
 - [x] Εμφάνιση route στον χάρτη και στο σχέδιο πτήσης αναλόγως του waypoint που
       εισάγεται <!-- και δυνατότητα γραφικής μεταβολής του με το mouse) -->
 
+![Ver 1.7 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-7.PNG)
+
 **********************
 #### Version 1.6
 #### 24-4-2021
