@@ -294,6 +294,13 @@ function increaseI()
 
 
 setTimeout(function (){
+  var s='';
+  for  (var i=0;i<routeArray.length;i++){
+   s=s+' '+routeArray[i];
+   fpl.route.value=s;
+  
+   }
+  
   updatePath();
 },1000)
 
