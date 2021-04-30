@@ -97,3 +97,46 @@ waypointsLayer.setZIndex(5);
   $('[data-toggle="tooltip"]').tooltip('hide');
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+var aerodromeCircleLayer=new ol.layer.Vector({
+  title: 'aerodromeCircleLayer',
+  source: new ol.source.Vector({}),
+  style: new ol.style.Style({
+      fill: new ol.style.Fill({ color: [255, 255, 255, 0.0]}),
+      stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 })      
+          }),
+  ZIndex:2,
+  // declutter: true
+});
+
+aerodromeCircleFeature=[];
+for (var i=0; i<6; i++){
+  aerodromeCircleFeature[i]=new ol.Feature({
+    geometry: new ol.geom.Circle( ol.proj.fromLonLat([19.9122,39.6019]),  9284*i )           //0.0834 in WS84 equal to 5 minutes or 5NM
+  });
+  aerodromeCircleLayer.getSource().addFeature(aerodromeCircleFeature[i]);
+  
+}
+
+
+aerodromeCircleLayer.getSource().getFeatures()[5].setStyle(new ol.style.Style({
+  fill: new ol.style.Fill({ color: [255, 255, 255, 0.06]}),
+  stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 })      
+}));
+
+
+aerodromeCircleLayer.setZIndex(2);
+
+map.addLayer(aerodromeCircleLayer);

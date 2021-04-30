@@ -157,8 +157,25 @@ $('#alternateAerodrome').change(function(){
     $('#alternateAerodrome').css('background-color','red');
   }
   else
-  {
-    $('#alternateAerodrome').css('background-color','rgba(0,0,0,0.1)');
+  { 
+    fetch('http://localhost:3000/aerodrome?q='+fpl.alternateAerodrome.value).then((response)=>{
+    response.json().then((data) => {
+      // console.log(data.results) 
+   
+          if (data.status=='notfound' && fpl.alternateAerodrome.value!='') {
+            $('#alternateAerodrome').css('background-color','red');
+         
+           
+          }
+          else
+          {
+            $('#alternateAerodrome').css('background-color','rgba(0,0,0,0.1)');
+            
+            // fplPathCoordinates.push(pointCoordinates);
+            
+          }
+    })
+  }); 
   }
 })
 
@@ -172,7 +189,25 @@ $('#secondAlternateAerodrome').change(function(){
   }
   else
   {
-    $('#secondAlternateAerodrome').css('background-color','rgba(0,0,0,0.1)');
+    
+    fetch('http://localhost:3000/aerodrome?q='+fpl.secondAlternateAerodrome.value).then((response)=>{
+    response.json().then((data) => {
+      // console.log(data.results) 
+   
+          if (data.status=='notfound' && fpl.secondAlternateAerodrome.value!='' ) {
+            $('#secondAlternateAerodrome').css('background-color','red');
+         
+           
+          }
+          else
+          {
+            $('#secondAlternateAerodrome').css('background-color','rgba(0,0,0,0.1)');
+            
+            // fplPathCoordinates.push(pointCoordinates);
+            
+          }
+    })
+  }); 
   }
 })
 

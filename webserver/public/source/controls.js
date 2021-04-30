@@ -155,7 +155,7 @@ flightControls.addControl( new ol.control.Button (
               mapCenterIsVisible=false;
             }
             
-            map.getControls().getArray()[21].setVisible(mapCenterIsVisible);
+            map.getControls().getArray()[22].setVisible(mapCenterIsVisible);
           }
         
           
@@ -163,6 +163,21 @@ flightControls.addControl( new ol.control.Button (
 
 
 
+          flightControls.addControl( new ol.control.Toggle (
+            {	html: '<a>Z</a>',
+              className: "cirlce-button",
+              title: "Press to view aerodrome's ATZ",
+              active:false,
+              onToggle: function(active)
+                {	
+                  
+                  aerodromeCircleLayer.setVisible(active);
+                  
+                }
+              
+                
+                }));
+      
 
 
 
@@ -175,21 +190,19 @@ flightControls.addControl( new ol.control.Button (
 
 
 
-var customLayerSwitcher=new ol.control.Toggle (
-  {	
-    html:'<i class="fas fa-layer-group fa-lg"></i>',
-    className: "custom-layer-switcher",
-    title: "Custom Layer Switcher",
-    active:true,
-    onToggle: function()
-      {	
+// var customLayerSwitcher=new ol.control.Toggle (
+//   {	
+//     html:'<i class="fas fa-layer-group fa-lg"></i>',
+//     className: "custom-layer-switcher",
+//     title: "Custom Layer Switcher",
+//     active:true,
+//     onToggle: function()
+//       {	
         
-      }
-  });
+//       }
+//   });
 
-  map.addControl(customLayerSwitcher);
-
-
+//   map.addControl(customLayerSwitcher);
 
 
 
@@ -202,15 +215,17 @@ var customLayerSwitcher=new ol.control.Toggle (
 
 
 
-// var ctrl = new ol.control.LayerSwitcher(
-// {}
-// );
-// ctrl.setHeader('Layers Opacity');
 
-// map.addControl(ctrl);
-// ctrl.on('toggle', function(e) {
-//   //console.log('Collapse layerswitcher', e.collapsed);
-// });
+
+var ctrl = new ol.control.LayerSwitcher(
+{}
+);
+ctrl.setHeader('Layers Opacity');
+
+map.addControl(ctrl);
+ctrl.on('toggle', function(e) {
+  //console.log('Collapse layerswitcher', e.collapsed);
+});
 
 var mousePositionControl = new ol.control.MousePosition({
   coordinateFormat: ol.coordinate.createStringXY(4),
