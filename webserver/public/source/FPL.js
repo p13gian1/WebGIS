@@ -56,7 +56,6 @@ $(function() {
 
 
 
-
 // $('.fpl-form').change(function(){
 // if (fpl.aircraftID.value=='SXAJT')
 // {
