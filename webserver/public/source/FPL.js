@@ -32,17 +32,30 @@ map.addLayer(fplLayer);
 
 
 $(function() {
-  $('.fpl-form :nth-child(n-1)').keyup(function() {    //convert all input elements to uppercase, no need to press caps lock
+  $('.fpl-form :nth-child(n)').keyup(function() {    //convert all input elements to uppercase, no need to press caps lock
     var currentCursorPosition;
-    if (this.value!=undefined && this.name!='submitFPL'){  //because some input texts might be empty we read only those which are not empty and not button 'Submit FPL'
+    if (this.value!=undefined && this.name!='submitFPL' && this.name!='time'){  //because some input texts might be empty we read only those which are not empty and not button 'Submit FPL'
       currentCursorPosition=this.selectionStart;
       this.value = this.value.toUpperCase();
       this.selectionStart=currentCursorPosition; //moves cursor back to the previous position
       this.selectionEnd=currentCursorPosition;
     }
-  });
-});
+  
+  // if (this.value!=undefined && this.name=='time'){  //prohibit non numerical characters for time field
+  //   currentCursorPosition=this.selectionStart;
+   
 
+  //   this.selectionStart=currentCursorPosition; //moves cursor back to the previous position
+  //   this.value=parseInt(this.value);
+  //   if (isNaN(this.value)==true && this.value.slice(0,1)!='0' && this.value.slice(0,2)!='00' && this.value.slice(0,3)!='000' ){ 
+  //     console.log('NAN!');
+  //     this.value='';
+  //   }
+  //   this.selectionEnd=currentCursorPosition;
+  // }
+    
+});
+});
 
 
 
@@ -115,6 +128,66 @@ $('#departureAerodrome').change(function(){
   // console.log('test dep'+fplPathCoordinates);
   
 })
+
+
+
+$('#time').change(function(){
+  
+  if (fpl.time.value.length>0 && fpl.time.value.length<4){
+    $('#time').css('background-color','red');
+    }
+    else
+    {
+      console.log("2 "+parseInt(this.value.slice(2,4)));
+     if (parseInt(this.value.slice(2,4))>59){
+       this.value='';
+       $('#time').css('background-color','red');
+     }
+     else {
+       console.log("1 "+parseInt(this.value.slice(0,2)));
+       if (parseInt(this.value.slice(0,2))>23)
+        this.value='';
+        $('#time').css('background-color','red');
+      }
+    }
+  
+  // console.log('test dep'+fplPathCoordinates);
+  
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $('#destinationAerodrome').change(function(){

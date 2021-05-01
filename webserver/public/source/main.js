@@ -3,8 +3,10 @@ var aircraftId=-1;
 var fullScreen=false;
 var prevStateFullScreen=false;
 
-
 init=(a,b,mapFlag)=>{
+
+  onWatchAerodromeLongitude=a;
+  onWatchAerodromeLatitude=b;
   map.updateSize(); 
 
   if (prevStateFullScreen==true)
@@ -30,7 +32,19 @@ flyTo(ol.proj.fromLonLat([a,b]), function () {});
   \
 })
 */
+
+//changing coordinates of on watch aerodrome circle layer
+var indexOfCircleLayer=getIndexofCircleLayer();
+map.getLayers().getArray()[indexOfCircleLayer].getSource().clear();
+map.getLayers().getArray()[indexOfCircleLayer].setSource(new ol.source.Vector({}));
+if (map.getLayers().getArray()[indexOfCircleLayer].getSource().getState()=='ready'){   
+
+  refreshCircleAerodrome();
 }
+
+}
+
+
 }
 
 flyTo=(location, done)=> {
@@ -68,7 +82,25 @@ flyTo=(location, done)=> {
   );
 }
 
+function getIndexofCircleLayer()
+{
+  
+  console.log('into function');
+  for (var i=0;i<map.getLayers().getArray().length;i++)
+ {
+   console.log(i);
+   if (map.getLayers().getArray()[i].get("class")=='aerodromeCircleLayer')
+ {
+   console.log('matched!'+i);
+   return i;
+ }
+ 
+ }
 
+
+
+
+}
 
 
 
