@@ -1,5 +1,7 @@
 var spriteIsPlane=false;
 var mapCenterIsVisible=false;
+var aerodromeCircleState=0; //initial state of aerodrome circle is unvisible;  0=unvisible, 1=5 n.m space, 2=10 n.m space, 3=30 n.m space
+
 
 var mainbarControls = new ol.control.Bar();
 mainbarControls.setPosition('top');
@@ -40,34 +42,36 @@ map.addControl(mainbarFlightRules);
 var nestedFlightRules= new ol.control.Bar ({ toggleOne: true, group:true });
 mainbarFlightRules.addControl (nestedFlightRules);
 
-var vfrMapButton = new ol.control.Toggle(
+var vfrMapButton = new ol.control.Button(
   {	html: '<a>V</a>',
     className: "VFR",
     title: "VFR map",
     //interaction: new ol.interaction.Select (),
     active:true,
-     onToggle: function(active)
+     handleClick: function()
      {
-     if (active){
-       spriteIsPlane=true;
-     } else
-     {
-       spriteIsPlane=false;
-     }
+      italianVFRLayer.setVisible(true);
+      airwaysLayer.setVisible(false);
+      waypointsLayer.setVisible(true);
+      
+
        //map.removeLayer(airwaysLayer);
       // $(".aip-info").css("left","800px");
      }
   });
   nestedFlightRules.addControl(vfrMapButton);
 
-  var ifrLowMapButton = new ol.control.Toggle(
+  var ifrLowMapButton = new ol.control.Button(
     {	html: '<a>IL</a>',
       className: "IFR Low",
       title: "IFR Low map",
       //interaction: new ol.interaction.Select (),
       active:true,
-       onToggle: function(active)
+       handleClick: function()
        {
+        italianVFRLayer.setVisible(false);
+        airwaysLayer.setVisible(true);
+        waypointsLayer.setVisible(true);
        // map.addLayer(airwaysLayer);
         // $("#info").text("Select is "+(active?"activated":"deactivated"));
        }
@@ -82,6 +86,12 @@ var vfrMapButton = new ol.control.Toggle(
         active:true,
          onToggle: function(active)
          {
+          if (active){
+            spriteIsPlane=true;
+          } else
+          {
+            spriteIsPlane=false;
+          }
          }
       });
       nestedFlightRules.addControl(ifrHighMapButton);
@@ -163,18 +173,31 @@ flightControls.addControl( new ol.control.Button (
 
 
 
-          flightControls.addControl( new ol.control.Toggle (
+          flightControls.addControl( new ol.control.Button (
             {	html: '<a>Z</a>',
               className: "cirlce-button",
               title: "Press to view aerodrome's ATZ",
               active:false,
-              onToggle: function(active)
+             handleClick: function()
                 {	
+
+
+
+
+                  if (aerodromeCircleState==3){
+                    aerodromeCircleState=0;
+                    aerodromeCircleLayer.setVisible(false);
+                  }
+                  else{
+                  aerodromeCircleState++;
+                  aerodromeCircleLayer.setVisible(true);
+                  refreshCircleAerodrome();
+                  }
+
+
                   
-                  aerodromeCircleLayer.setVisible(active);
-                  
+
                 }
-              
                 
                 }));
       
