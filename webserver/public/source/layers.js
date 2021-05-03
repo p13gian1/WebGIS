@@ -281,18 +281,21 @@ function refreshCircleAerodrome()
   if (aerodromeCircleLayer.getSource().getState()=='ready') {
 
   aerodromeCircleFeature=[];
-  var circles=[0,12,6,2];
-  for (var i=0; i<(circles[aerodromeCircleState]+1); i++){
-  console.log(i);
+  var spaceOfCircle=[0,1,2,6];
+  var numberOfCircles=(60/(5*spaceOfCircle[aerodromeCircleState]));
 
+  for (var i=0; i<((60/(5*spaceOfCircle[aerodromeCircleState]))+1); i++){
+  console.log('i: '+i);
+  console.log('aerodromeCircleState :'+aerodromeCircleState);
+  console.log('space: '+spaceOfCircle[aerodromeCircleState]*i);
     aerodromeCircleFeature[i]=new ol.Feature({
-      geometry: new ol.geom.Circle( ol.proj.fromLonLat([onWatchAerodromeLongitude,onWatchAerodromeLatitude]),  9284*i/2 )           //0.0834 in WS84 is equal to 5 minutes or 5NM
+      geometry: new ol.geom.Circle( ol.proj.fromLonLat([onWatchAerodromeLongitude,onWatchAerodromeLatitude]),  9284*spaceOfCircle[aerodromeCircleState]*i)           //0.0834 in WS84 is equal to 5 minutes or 5NM
     });
     aerodromeCircleLayer.getSource().addFeature(aerodromeCircleFeature[i]);
     
   }
-  console.log(circles[aerodromeCircleState]);
-  aerodromeCircleLayer.getSource().getFeatures()[circles[aerodromeCircleState]].setStyle(new ol.style.Style({
+ 
+  aerodromeCircleLayer.getSource().getFeatures()[numberOfCircles].setStyle(new ol.style.Style({
     fill: new ol.style.Fill({ color: [255, 255, 255, 0.06]}),
     stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 })      
   }));
