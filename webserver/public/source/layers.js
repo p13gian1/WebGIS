@@ -289,7 +289,7 @@ function refreshCircleAerodrome()
   console.log('aerodromeCircleState :'+aerodromeCircleState);
   console.log('space: '+spaceOfCircle[aerodromeCircleState]*i);
     aerodromeCircleFeature[i]=new ol.Feature({
-      geometry: new ol.geom.Circle( ol.proj.fromLonLat([onWatchAerodromeLongitude,onWatchAerodromeLatitude]),  9284*spaceOfCircle[aerodromeCircleState]*i)           //0.0834 in WS84 is equal to 5 minutes or 5NM
+      geometry: new ol.geom.Circle( ol.proj.fromLonLat([onWatchAerodromeLongitude,onWatchAerodromeLatitude]),  11939*spaceOfCircle[aerodromeCircleState]*i)           //0.0834 in WS84 is equal to 5 minutes or 5NM
     });
     aerodromeCircleLayer.getSource().addFeature(aerodromeCircleFeature[i]);
     
@@ -311,3 +311,7 @@ function refreshCircleAerodrome()
 italianVFRLayer.setVisible(false);
 airwaysLayer.setVisible(true);
 waypointsLayer.setVisible(true);
+
+console.log(ol.proj.fromLonLat([19.0000,39.0000]));
+console.log(ol.proj.fromLonLat([19.0833,39.0833]));
+
