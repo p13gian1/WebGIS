@@ -144,8 +144,8 @@
     format: new ol.format.GPX()
   });
 
-    console.log('into createAircraftLayer');
-    console.log('aircraftId',aircraftId);
+    // console.log('into createAircraftLayer');
+    // console.log('aircraftId',aircraftId);
     aircraftLayer[aircraftId]=new ol.layer.Vector({
                                    title: 'Aircrafts',
                                    source: source,
@@ -197,12 +197,12 @@ routeVector[aircraftId]=new ol.source.Vector({});
   source.once('change',function(e){
     if (source.getState() === 'ready') {
       path = source.getFeatures()[0];
-      console.log('path ready');
+      // console.log('path ready');
       // log("Plane's path ready");
     }
   
-  console.log('into animateFeature');
-  console.log('aircraftId',aircraftId);
+  // console.log('into animateFeature');
+  // console.log('aircraftId',aircraftId);
    
   if (path) {
      shadowFeature = new ol.Feature(new ol.geom.Point([0,0]));
@@ -348,7 +348,7 @@ routeVector[aircraftId]=new ol.source.Vector({});
      }
 
 
-     console.log(line);
+    //  console.log(line);
 
 
     // console.log(ol.proj.fromLonLat([28+aircraftId,30-aircraftId]) , ol.proj.fromLonLat([28,35]));
@@ -389,9 +389,9 @@ routeVector[aircraftId]=new ol.source.Vector({});
         map.removeLayer(aircraftLayer[id]);
         map.removeLayer(routeLayer[id]);
      
-      console.log('end');
-      console.log('id'+id);
-      console.log(e.feature);
+      // console.log('end');
+      // console.log('id'+id);
+      // console.log(e.feature);
      }
      });
 

@@ -28,8 +28,8 @@ menuClickAFISAerodrome=(a,b,c,mapFlag)=>{
 }
 
 function doSearch() {
-        console.log('test');
-        console.log(map1);
+      //   console.log('test');
+      //   console.log(map1);
         return false;  
   }
 

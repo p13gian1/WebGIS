@@ -21,7 +21,7 @@ const Pool = require ('pg').Pool;
 const config = {
    host: 'localhost',
    user: 'postgres',
-   database: 'airgisdb',
+   database: 'airGISdb',
    port: 5432
 };
 
@@ -34,7 +34,9 @@ app.get('/hello', (req, res) => {
 app.get('/aip',async (req, res) => {
   
 try {
-   const template = 'SELECT * FROM AERODROMES WHERE (LONG > $1 - 0.1) AND (LONG < $1 + 0.1)  AND (LAT > $2 - 0.1) AND (LAT < $2 + 0.1)';
+   const template = 'SELECT * FROM AERODROMES_LAYER WHERE ST_DWithin(COORDINATES, ST_MakePoint($1,$2)::geography, 1000)';
+  
+
    const response = await pool.query(template, [req.query.long, req.query.lat ]);
    if (response.rowCount== 0){
       res.json({status: 'notfound', searchTerm: req.query.long});
@@ -52,13 +54,13 @@ catch(err){
 app.get('/coordinates',async (req, res) => {
  
 try {
-   const template = 'SELECT * FROM (SELECT * FROM AERODROMES UNION SELECT * FROM WAYPOINTS UNION SELECT * FROM NAVAIDS) AS A WHERE NAME=$1';
+   const template = 'SELECT ST_AsGeoJSON(COORDINATES) FROM (SELECT * FROM AERODROMES_LAYER UNION SELECT * FROM WAYPOINTS_LAYER UNION SELECT * FROM NAVAIDS_LAYER) AS A WHERE LABEL=$1';
    const response = await pool.query(template, [req.query.q]);
    if (response.rowCount== 0){
       res.json({status: 'notfound', searchTerm: req.query.q});
    }
    else {
-      res.json({status: 'ok', results: response.rows[0]});
+      res.json({status: 'ok', results: response.rows[0].st_asgeojson});
    }
    console.log(response);
 }
@@ -91,13 +93,13 @@ catch(err){
 app.get('/aerodrome',async (req, res) => {
  
    try {
-      const template = 'SELECT * FROM AERODROMES WHERE NAME=$1';
+      const template = 'SELECT ST_AsGeoJSON(COORDINATES) FROM AERODROMES_LAYER WHERE LABEL=$1';
       const response = await pool.query(template, [req.query.q]);
       if (response.rowCount== 0){
          res.json({status: 'notfound', searchTerm: req.query.q});
       }
       else {
-         res.json({status: 'ok', results: response.rows[0]});
+         res.json({status: 'ok', results: response.rows[0].st_asgeojson});
       }
       console.log(response);
    }
@@ -107,14 +109,33 @@ app.get('/aerodrome',async (req, res) => {
    })
 
 
+   app.get('/airway',async (req, res) => {
+ 
+      try {
+         const template = ' SELECT A.NAME FROM AIRWAYS AS A, AIRWAYS AS B WHERE A.WAYPOINT=$1 AND B.WAYPOINT=$2 AND A.NAME=B.NAME';
+         const response = await pool.query(template, [req.query.q1, req.query.q2]);
+         if (response.rowCount== 0){
+            res.json({status: 'notfound', searchTerm: req.query.q});
+         }
+         else {
+            res.json({status: 'ok', results: response.rows[0]});
+         }
+         console.log(response);
+      }
+      catch(err){
+         console.error('Error running query'+err);
+      }
+      })
 
 
 
+// SELECT A.NAME
+  // FROM AIRWAYS AS A, AIRWAYS AS B 
+  // WHERE A.WAYPOINT='KRK' AND B.WAYPOINT='PARAX' AND A.NAME=B.NAME;
 
 
 
-
-
+  // SELECT ST_AsGeoJSON(COORDINATES) FROM AERODROMES_LAYER WHERE LABEL='LGKR';       GETTING COORDINATES AS GEOJSON INSTEAD OF HEX VALUE
 
 
 

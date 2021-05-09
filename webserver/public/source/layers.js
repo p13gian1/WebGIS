@@ -185,8 +185,8 @@ var italianVFRLayer=new ol.layer.Vector({
   class: 'italianVFRLayer',
   source: new ol.source.Vector({}),
   style: new ol.style.Style({
-      fill: new ol.style.Fill({ color: [0, 0, 255, 0.3]}),
-      stroke: new ol.style.Stroke({ color: [0, 0, 255, 1], width: 0.2 })      
+      fill: new ol.style.Fill({ color: [255, 0, 255, 0.2]}),
+      stroke: new ol.style.Stroke({ color: [255, 0, 255, 1], width: 2 })      
           }),
   visible:true,
   ZIndex:2,
@@ -202,11 +202,11 @@ for (var i=0; i<italianVFRCoordinates.length;i=i+2){
 italianVFRFeature=new ol.Feature({
   geometry: new ol.geom.Polygon([italianVFRCoordinates4326]),
         
-  stroke: new ol.style.Stroke({ color: 'rgba(0,0,255,1)', width: 0.2})
+  stroke: new ol.style.Stroke({ color: 'rgba(255,0,255,1)', width: 2})
 });
 italianVFRLayer.getSource().addFeature(italianVFRFeature);
 map.addLayer(italianVFRLayer);
-italianVFRLayer.setZIndex(12);
+italianVFRLayer.setZIndex(2);
 
 
 
@@ -249,7 +249,9 @@ var aerodromeCircleLayer=new ol.layer.Vector({
   source: new ol.source.Vector({}),
   style: new ol.style.Style({
       fill: new ol.style.Fill({ color: [255, 255, 255, 0.0]}),
-      stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 })      
+      stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 }) 
+      // fill: new ol.style.Fill({ color: [0, 0, 0, 0.0]}),
+      // stroke: new ol.style.Stroke({ color: [0, 0, 0, 1], width: 1 })    
           }),
   visible:false,
   ZIndex:2,
@@ -285,9 +287,9 @@ function refreshCircleAerodrome()
   var numberOfCircles=(60/(5*spaceOfCircle[aerodromeCircleState]));
 
   for (var i=0; i<((60/(5*spaceOfCircle[aerodromeCircleState]))+1); i++){
-  console.log('i: '+i);
-  console.log('aerodromeCircleState :'+aerodromeCircleState);
-  console.log('space: '+spaceOfCircle[aerodromeCircleState]*i);
+  // console.log('i: '+i);
+  // console.log('aerodromeCircleState :'+aerodromeCircleState);
+  // console.log('space: '+spaceOfCircle[aerodromeCircleState]*i);
     aerodromeCircleFeature[i]=new ol.Feature({
       geometry: new ol.geom.Circle( ol.proj.fromLonLat([onWatchAerodromeLongitude,onWatchAerodromeLatitude]),  11939*spaceOfCircle[aerodromeCircleState]*i)           //0.0834 in WS84 is equal to 5 minutes or 5NM
     });
@@ -297,7 +299,11 @@ function refreshCircleAerodrome()
  
   aerodromeCircleLayer.getSource().getFeatures()[numberOfCircles].setStyle(new ol.style.Style({
     fill: new ol.style.Fill({ color: [255, 255, 255, 0.06]}),
-    stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 })      
+    stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 })
+    // fill: new ol.style.Fill({ color: [0, 0, 0, 0.06]}),
+    // stroke: new ol.style.Stroke({ color: [0, 0, 0, 1], width: 1 })
+    
+
   }));
   
   
@@ -312,6 +318,5 @@ italianVFRLayer.setVisible(false);
 airwaysLayer.setVisible(true);
 waypointsLayer.setVisible(true);
 
-console.log(ol.proj.fromLonLat([19.0000,39.0000]));
-console.log(ol.proj.fromLonLat([19.0833,39.0833]));
+
 

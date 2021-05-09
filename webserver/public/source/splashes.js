@@ -1,13 +1,13 @@
 $("#js-map" ).contextmenu(function(e) {
  e.preventDefault();
  let coord=(document.getElementById("mouse-position").textContent);
- console.log(coord);
+//  console.log(coord);
  coord=coord.replace(',','');
  var coordArray = coord.split(" ");
  mouseLongitude=parseFloat(coordArray[0]);
  mouseLatitude=parseFloat(coordArray[1]);
- console.log(mouseLongitude);
- console.log(mouseLatitude);
+//  console.log(mouseLongitude);
+//  console.log(mouseLatitude);
    
   if (tongleContext==false){
     tongleContext=true;
@@ -22,15 +22,15 @@ $("#js-map" ).contextmenu(function(e) {
 });
 
 function showQuery(mouseLongitude,mouseLatitude,active){  
-    console.log('into showQuery');
+    // console.log('into showQuery');
 
     fetch('http://localhost:3000/aip?long='+mouseLongitude+'&lat='+mouseLatitude).then((response)=>{
       response.json().then((data) => {
-        console.log(data.results) 
+        // console.log(data.results) 
 
-        fetch('http://localhost:3000/info?q='+data.results.name).then((response)=>{
+        fetch('http://localhost:3000/info?q='+data.results.label).then((response)=>{
           response.json().then((data) => {
-            console.log(data.results)
+            // console.log(data.results)
             // $(".aip-info").html('test').wrap('<pre />');
                 
           $(".aip-info").html((active?tooltipHtml(data):""));
@@ -66,7 +66,7 @@ function showQuery(mouseLongitude,mouseLatitude,active){
 
   map.on('moveend',function(){
  
-    console.log(map.getView().getCenter());
+    // console.log(map.getView().getCenter());
     let coord=map.getView().getCenter();
   
     coord=ol.proj.transform([coord[0], coord[1]], 'EPSG:3857','EPSG:4326');

@@ -133,9 +133,9 @@ flightControls.addControl( new ol.control.Button (
           }
 
           lengthOfLayers=map.getLayers().getLength();
-          console.log(routeVisibility);
+          // console.log(routeVisibility);
           for (var i=0; i<lengthOfLayers; i=i+1){
-            console.log(i);
+            // console.log(i);
 
             if (map.getLayers().getArray()[i].get('title')=='Aircraft Route')
             {
@@ -323,11 +323,11 @@ map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},4000          )
   //checking if map is on fullscreen mode
   map.getControls().getArray()[3].getControls()[2].on('enterfullscreen',function(){
     fullScreen=true;
-    console.log(fullScreen);
+    // console.log(fullScreen);
   })
   map.getControls().getArray()[3].getControls()[2].on('leavefullscreen',function(){
     fullScreen=false;
-    console.log(fullScreen);
+    // console.log(fullScreen);
   })
   
 
@@ -391,13 +391,13 @@ new ol.style.Style({
 
 function getIndexOfBaseLayer(){
   
-console.log('into function');
+// console.log('into function');
  for (var i=0;i<map.getLayers().getArray().length;i++)
 {
-  console.log(i);
+  // console.log(i);
   if (map.getLayers().getArray()[i].get("mapbox-layers")=='water')
 {
-  console.log('matched!'+i);
+  // console.log('matched!'+i);
   return i;
 }
 

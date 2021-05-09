@@ -85,13 +85,13 @@ flyTo=(location, done)=> {
 function getIndexofCircleLayer()
 {
   
-  console.log('into function');
+  // console.log('into function');
   for (var i=0;i<map.getLayers().getArray().length;i++)
  {
-   console.log(i);
+  //  console.log(i);
    if (map.getLayers().getArray()[i].get("class")=='aerodromeCircleLayer')
  {
-   console.log('matched!'+i);
+  //  console.log('matched!'+i);
    return i;
  }
  
