@@ -130,7 +130,7 @@
   <div class="fpl-form-margin">
   <div class="fpl-form">
     <form class="fpl-inner" id='fpl' spellcheck="false"> <!--action=""-->
-      <label  class="open-icon" style="margin-left:190px;"><i class="fas fa-folder-open fa-lg formButton"></i></label>
+      <label  class="open-icon" style="margin-left:280px;"><i class="fas fa-folder-open fa-lg formButton"></i></label>
       <label  class="save-icon" style="margin-left:5px;"><i class="fas fa-save fa-lg formButton"></i></label>      
       <label  class="close-icon" style="margin-left:5px;"><i class="fas fa-close fa-lg formButton"></i></label>
       <br>
@@ -165,7 +165,7 @@
       <label ><b></b></label>
       <input type="text" id="level" name="level" style="width:55px; margin:3px;" maxlength="5" size="5"> <!--Level-->
       <label ><b>🠖</b></label>
-      <textarea type="text" id="route" name="route" wrap="soft" rows="3" cols="10" style="width:240px; height:100px; margin:3px; margin-bottom:0px; resize:none;" maxlength="256" size="256"></textarea> <!--Route-->    
+      <textarea type="text" id="route" name="route" wrap="soft" rows="3" cols="10" style="width:330px; height:70px; margin:3px; margin-bottom:0px; resize:none;" maxlength="256" size="256"></textarea> <!--Route-->    
       <br>
       <label ><b>-</b></label>
       <input type="text" id="destinationAerodrome" name="destinationAerodrome" style="width:45px; margin:3px;" maxlength="4" size="4"> <!--Destination Aerodrome-->
@@ -176,17 +176,50 @@
       <label ><b>🠖</b></label>
       <input type="text" id="secondAlternateAerodrome" name="secondAlternateAerodrome" style="width:45px; margin:3px;" maxlength="4" size="4"> <!--Second Alternate Aerodrome-->
       <br>
-      <textarea type="text" id="otherInformation" name="otherInformation" wrap="soft" rows="3" cols="10" style="width:240px; height:70px; margin:3px; margin-bottom:0px; resize:none;" maxlength="150" size="150"></textarea> <!--Other Information-->
+      <textarea type="text" id="otherInformation" name="otherInformation" wrap="soft" rows="3" cols="10" style="width:330px; height:40px; margin:3px; margin-bottom:0px; resize:none;" maxlength="150" size="150"></textarea> <!--Other Information-->
       <label ><b>)</b></label>
-
-
-
-
-
-
-    <br><br><br><br><br>
+      <br>
+      <label style="margin-right:3px;"><b>-</b></label><label style="margin-left:3px;"><b>E /</b></label>
+      <input type="text" id="endurance" name="endurance" style="width:45px; margin:3px;" maxlength="4" size="4"> <label ><b>🠖 P /</b></label>
+      <input type="text" id="personsOnBoard" name="personsOnBoard" style="width:30px; margin:3px;" maxlength="3" size="3"><label ><b>🠖 R /</b></label>
+      <input readonly type="text" class="supplementary" id="emergencyRadioUHF" name="emergencyRadioUHF" value="U" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="emergencyRadioVHF" name="emergencyRadioVHF" value="V" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="emergencyRadioELBA" name="emergencyRadioELBA" value="E" style="width:20px; margin:3px; color:red; text-align:center; margin-right:70px;" maxlength="1" size="1">
+      <label ><b>🠖</b></label>
+      <input readonly type="text" class="supplementary" id="dinghies" name="dinghies" value="S" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <label ><b>/</b></label>
+      <input readonly type="text" class="supplementary" id="polar" name="polar" value="P" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="desert" name="desert" value="D" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="maritime" name="maritime" value="M" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="jungle" name="jungle" value="J" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <label ><b>🠖</b></label>
+      <input readonly type="text" class="supplementary" id="jackets" name="jackets" value="J" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <label ><b>/</b></label>
+      <input readonly type="text" class="supplementary" id="light" name="light" value="L" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="floures" name="floures" value="F" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="UHF" name="UHF" value="U" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <input readonly type="text" class="supplementary" id="VHF" name="VHF" value="V" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <label ><b>🠖</b></label>
+      <input readonly type="text" class="supplementary" id="dinghiesSecond" name="dinghiesSecond" value="D" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <label ><b>/</b></label>
+      <input type="text" id="numberOfDinghies" name="numberOfDinghies" style="width:25px; margin:3px;" maxlength="2" size="2">
+      <label ><b>🠖</b></label>
+      <input type="text" id="capacity" name="capacity" style="width:30px; margin:3px;" maxlength="3" size="3">
+      <label ><b>🠖</b></label>
+      <input readonly type="text" class="supplementary" id="cover" name="cover" value="C" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <label ><b>🠖</b></label>
+      <input type="text" id="color" name="color" style="width:130px; margin:3px;" maxlength="30" size="30">
+      <label ><b>A/</b></label>
+      <input type="text" id="aircraftColorAndMarkings" name="aircraftColorAndMarkings" style="width:315px; margin:3px;" maxlength="47" size="47">
+      <label ><b>🠖</b></label>
+      <input readonly type="text" id="remarksLabel" name="remarksLabel" value="N" style="width:20px; margin:3px; color:red; text-align:center;" maxlength="1" size="1">
+      <label ><b>/</b></label>
+      <input type="text" id="remarks" name="remarks" style="width:277px; margin:3px;" maxlength="47" size="47">
+      <label ><b>C/</b></label>
+      <input type="text" id="pilotInCommand" name="pilotInCommand" style="width:315px; margin:3px;" maxlength="47" size="47">
+    <br>
     <!-- <input type="submit" value="Submit" style="background-color:rgba(0,0,0,0.1)" onsubmit="formSubmit()"> -->
-    <input type="button" id="submitFPL" name="submitFPL" value='Submit FPL' style="background-color:rgba(0,0,0,0.1)">
+    <input type="button" id="submitFPL" name="submitFPL" value='Submit FPL' style="background-color:rgba(0,0,0,0.1); margin-left:260px; margin-top:3px;">
   </form>
   </div>
 </div>

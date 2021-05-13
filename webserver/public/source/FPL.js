@@ -156,18 +156,70 @@ $('#time').change(function(){
        this.value='';
        $('#time').css('background-color','red');
      }
-     else {
+
+     else
+      {
       //  console.log("1 "+parseInt(this.value.slice(0,2)));
-       if (parseInt(this.value.slice(0,2))>23)
+       if (parseInt(this.value.slice(0,2))>23){ 
         this.value='';
         $('#time').css('background-color','red');
       }
+      else
+      {
+        $('#time').css('background-color','rgba(0,0,0,0.1)');
+      }
+
+      }
+
+
+
+      
+
+      
     }
   
   // console.log('test dep'+fplPathCoordinates);
   
 })
 
+var supplementaryObject={
+  emergencyRadioUHF: false,
+  emergencyRadioVHF: false,
+  emergencyRadioELBA: false,
+  dinghies : false, 
+  polar: false,
+  desert:false,
+  desert: false,
+  maritime: false,
+  jungle: false,
+  jackets: false,
+  light: false,
+  floures: false,
+  UHF: false,
+  VHF: false,
+  dinghiesSecond: false
+};
+
+
+$('.supplementary').click(function(e){
+    
+  if ($('#'+e.target.id).css('color')=='rgb(255, 0, 0)' && supplementaryObject[e.target.id]==false)
+  {
+    $('#'+e.target.id).css('color','yellow');
+    console.log('yellow');
+    supplementaryObject[e.target.id]=true;  
+    }
+  else if ($('#'+e.target.id).css('color')=='rgb(255, 255, 0)' && supplementaryObject[e.target.id]==true)
+  {
+    $('#'+e.target.id).css('color','red');
+    console.log('red');
+    supplementaryObject[e.target.id]=false;  
+    }
+
+
+  // console.log('test dep'+fplPathCoordinates);
+  
+})
 
 
 

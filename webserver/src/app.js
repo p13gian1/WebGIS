@@ -34,7 +34,7 @@ app.get('/hello', (req, res) => {
 app.get('/aip',async (req, res) => {
   
 try {
-   const template = 'SELECT * FROM AERODROMES_LAYER WHERE ST_DWithin(COORDINATES, ST_MakePoint($1,$2)::geography, 1000)';
+   const template = 'SELECT * FROM AERODROMES_LAYER WHERE ST_DWithin(COORDINATES, ST_MakePoint($1,$2)::geography, 3000)';
   
 
    const response = await pool.query(template, [req.query.long, req.query.lat ]);

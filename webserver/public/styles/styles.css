@@ -20,8 +20,8 @@ js-map
 
 
 .map {
- height: 93.9vh;
- width: 100vw;
+ height: 93vh;
+ width: 99.8vw;
  display: none;
 }
 
@@ -235,8 +235,8 @@ h4 {
   position: fixed;
   right: 55px;
   top:395px;
-  height:510px;
-  width: 280px;
+  height:525px;
+  width: 370px;
   border: 1px solid black;
  /* height: 400px;*/
   
@@ -256,8 +256,8 @@ h4 {
   position: fixed;
   right: 60px;
   top:400px;
-  height:500px;
-  width: 270px;
+  height:515px;
+  width: 360px;
   margin: 5px;
  /* height: 400px;*/
   
