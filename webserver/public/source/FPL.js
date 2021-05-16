@@ -197,7 +197,8 @@ var supplementaryObject={
   floures: false,
   UHF: false,
   VHF: false,
-  dinghiesSecond: false
+  dinghiesSecond: false,
+  cover: false
 };
 
 
@@ -220,9 +221,6 @@ $('.supplementary').click(function(e){
   // console.log('test dep'+fplPathCoordinates);
   
 })
-
-
-
 
 
 

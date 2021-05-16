@@ -9,19 +9,15 @@ $("#js-map" ).contextmenu(function(e) {
 //  console.log(mouseLongitude);
 //  console.log(mouseLatitude);
    
-  if (tongleContext==false){
-    tongleContext=true;
+ 
     $('.aip-info').css('display','block');
-  }
-  else
-  {
-    tongleContext=false;
-    $('.aip-info').css('display','none');
-  }
-  showQuery(mouseLongitude,mouseLatitude,tongleContext);
+    $('.aip-info-margin').css('display','block');
+
+  
+  showQuery(mouseLongitude,mouseLatitude);
 });
 
-function showQuery(mouseLongitude,mouseLatitude,active){  
+function showQuery(mouseLongitude,mouseLatitude){  
     // console.log('into showQuery');
 
     fetch('http://localhost:3000/aip?long='+mouseLongitude+'&lat='+mouseLatitude).then((response)=>{
@@ -33,7 +29,7 @@ function showQuery(mouseLongitude,mouseLatitude,active){
             // console.log(data.results)
             // $(".aip-info").html('test').wrap('<pre />');
                 
-          $(".aip-info").html((active?tooltipHtml(data):""));
+          $(".aip-info-text").html((tooltipHtml(data)));
           // $(".aip-info").text("Select is "+(active?"activated":"deactivated"));
           })
         });
@@ -42,7 +38,7 @@ function showQuery(mouseLongitude,mouseLatitude,active){
   }
   
   function tooltipHtml(data){   
-    return "<table>"+
+    return "<p></p>"+"<table>"+
       "<tr><td nowrap>Aerodrome             </td><td><h2>"+" "+data.results.name+" "+data.results.title+"</h2></td></tr>"+
       "<tr><td nowrap>Elevation             </td><td>"+data.results.elevation+"</td></tr>"+
       "<tr><td nowrap>Address               </td><td>"+data.results.address+"</td></tr>"+
@@ -92,9 +88,14 @@ $(window).on('load',function() {
   });
 
 
-  $('.close-icon').click(function() {                                           
+  $('.flp-close-icon').click(function() {                                           
                                       $(".fpl-form").css("display","none");
                                       $(".fpl-form-margin").css("display","none");
 
                                     });
 
+  $('.aip-close-icon').click(function() {                                           
+                                      $(".aip-info").css("display","none");
+                                      $(".aip-info-margin").css("display","none");
+
+                                    });

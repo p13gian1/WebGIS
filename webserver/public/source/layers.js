@@ -241,15 +241,25 @@ italianVFRLayer.setZIndex(2);
     trigger : 'hover'
   });
   $('[data-toggle="tooltip"]').tooltip('hide');
+
+
+
 */
+
+    var colorCircleAerodromeFill=[255, 255, 255, 0.06];
+    var colorCircleAerodromeStroke=[255, 255, 255, 1]; 
+                                                          
+
+
+
 
 var aerodromeCircleLayer=new ol.layer.Vector({
   title: 'aerodromeCircleLayer',
   class: 'aerodromeCircleLayer',
   source: new ol.source.Vector({}),
   style: new ol.style.Style({
-      fill: new ol.style.Fill({ color: [255, 255, 255, 0.0]}),
-      stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 }) 
+     
+      stroke: new ol.style.Stroke({ color:colorCircleAerodromeStroke, width: 1 }) 
       // fill: new ol.style.Fill({ color: [0, 0, 0, 0.0]}),
       // stroke: new ol.style.Stroke({ color: [0, 0, 0, 1], width: 1 })    
           }),
@@ -276,7 +286,9 @@ function refreshCircleAerodrome()
 
   aerodromeCircleLayer.getSource().clear();
   aerodromeCircleLayer.setSource(new ol.source.Vector({}));
-
+  aerodromeCircleLayer.setStyle(new ol.style.Style({
+    stroke: new ol.style.Stroke({ color: colorCircleAerodromeStroke, width: 1 })
+  }));
 
 
 
@@ -285,6 +297,9 @@ function refreshCircleAerodrome()
   aerodromeCircleFeature=[];
   var spaceOfCircle=[0,1,2,6];
   var numberOfCircles=(60/(5*spaceOfCircle[aerodromeCircleState]));
+
+
+  
 
   for (var i=0; i<((60/(5*spaceOfCircle[aerodromeCircleState]))+1); i++){
   // console.log('i: '+i);
@@ -298,14 +313,14 @@ function refreshCircleAerodrome()
   }
  
   aerodromeCircleLayer.getSource().getFeatures()[numberOfCircles].setStyle(new ol.style.Style({
-    fill: new ol.style.Fill({ color: [255, 255, 255, 0.06]}),
-    stroke: new ol.style.Stroke({ color: [255, 255, 255, 1], width: 1 })
+    fill: new ol.style.Fill({ color: colorCircleAerodromeFill}),
+    stroke: new ol.style.Stroke({ color: colorCircleAerodromeStroke, width: 1 })
     // fill: new ol.style.Fill({ color: [0, 0, 0, 0.06]}),
     // stroke: new ol.style.Stroke({ color: [0, 0, 0, 1], width: 1 })
     
 
   }));
-  
+ 
   
   aerodromeCircleLayer.setZIndex(2);
 }

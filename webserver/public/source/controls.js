@@ -299,8 +299,19 @@ var baseMapButton = new ol.control.Toggle(
     //$(".aip-info").text((active?"activated":""));
      if (active){
        styleJson=styleJson1;
+
+                   
+       colorCircleAerodromeFill=[255, 255, 255, 0.06];        // when baselayer is green
+       colorCircleAerodromeStroke=[255, 255, 255, 1]; 
+
+     
      } else {
     styleJson=styleJson2;
+    colorCircleAerodromeFill=[255, 0, 0, 0.06];              //when baselayer is white
+    colorCircleAerodromeStroke=[255, 0, 0, 1];  
+
+
+
   }
  //console.log("getBaseLayer"+getIndexOfBaseLayer());
  var indexOfBaseLayer=getIndexOfBaseLayer();
@@ -312,7 +323,13 @@ olms(map,styleJson);
 
 
 setTimeout(function () { indexOfBaseLayer=getIndexOfBaseLayer();
-map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);},4000          )
+map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);
+if (aerodromeCircleState!=0){ 
+  refreshCircleAerodrome();
+}
+
+
+},4000          )
 
    }
   });
