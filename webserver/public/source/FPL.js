@@ -818,7 +818,7 @@ function fplStyleFunction(name1,rotation1){
     text: new ol.style.Text({
      // offsetY: 10,
      rotation: rotation1,
-     font: 17+'px Verdana',
+     font: 14+'px Verdana',
      // fill: new ol.style.Fill({ color: 'rgba(255,255,255,1)'}),
      fill: new ol.style.Fill({ color: 'rgba(0,0,255,1)'}),
      backgroundFill: new ol.style.Fill({ color: 'rgba(255,132,0,1)'}),

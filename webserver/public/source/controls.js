@@ -50,7 +50,7 @@ var vfrMapButton = new ol.control.Button(
     active:true,
      handleClick: function()
      {
-      italianVFRLayer.setVisible(true);
+     VFRLayer.setVisible(true);
       airwaysLayer.setVisible(false);
       waypointsLayer.setVisible(true);
       
@@ -69,7 +69,7 @@ var vfrMapButton = new ol.control.Button(
       active:true,
        handleClick: function()
        {
-        italianVFRLayer.setVisible(false);
+        VFRLayer.setVisible(false);
         airwaysLayer.setVisible(true);
         waypointsLayer.setVisible(true);
        // map.addLayer(airwaysLayer);
