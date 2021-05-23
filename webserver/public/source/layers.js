@@ -111,6 +111,26 @@ VFRLayer.setZIndex(2);
 
 
 
+var MTMALayer=new ol.layer.Image({
+  title: 'MTMA_Layer',
+  class: 'MTMA_Layer',
+  source: new ol.source.ImageWMS({
+    url:'http://localhost:8080/geoserver/airGIS/wms',
+    params:{'LAYERS':'airGIS:mtma_layer'},
+    serverType:'geoserver'
+    }),
+    visible:false,
+    ZIndex:3,
+});
+
+
+
+
+
+map.addLayer(MTMALayer);
+MTMALayer.setZIndex(3);
+
+
 
 
 

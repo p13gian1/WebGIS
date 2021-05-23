@@ -96,12 +96,41 @@ var vfrMapButton = new ol.control.Button(
       });
       nestedFlightRules.addControl(ifrHighMapButton);
 
+      var MTMAMapButton = new ol.control.Toggle(
+        {	html: '<a>T</a>',
+          className: "MTMAs",
+          title: "MTMAs",
+          //interaction: new ol.interaction.Select (),
+          active:false,
+          onToggle: function(active)
+           {
+
+            if (active){
+              MTMALayer.setVisible(true);
+            } else
+            {
+              MTMALayer.setVisible(false);
+            }
+
+            // VFRLayer.setVisible(false);
+            // airwaysLayer.setVisible(true);
+            // waypointsLayer.setVisible(true);
+           // map.addLayer(airwaysLayer);
+            // $("#info").text("Select is "+(active?"activated":"deactivated"));
+           }
+        });
+        nestedFlightRules.addControl(MTMAMapButton);
+
+
+
+
+
 
 
 
 
 var flightControls = new ol.control.Bar();
-flightControls.setPosition('top-left');
+flightControls.setPosition('left');
 map.addControl(flightControls);
 
 // mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));
@@ -165,7 +194,7 @@ flightControls.addControl( new ol.control.Button (
               mapCenterIsVisible=false;
             }
             
-            map.getControls().getArray()[22].setVisible(mapCenterIsVisible);
+            map.getControls().getArray()[23].setVisible(mapCenterIsVisible);
           }
         
           
@@ -259,6 +288,15 @@ var mousePositionControl = new ol.control.MousePosition({
 });
 map.addControl(mousePositionControl);
 
+
+
+
+
+
+var nestedFlightPlan= new ol.control.Bar ({ toggleOne: false, group:true });
+
+
+
 fillFPLbutton= new ol.control.Button(
   {	html: '<a>F</a>',
     className: "fill-flp-button",
@@ -284,7 +322,48 @@ fillFPLbutton= new ol.control.Button(
 
      }
   });
-map.addControl(fillFPLbutton);
+
+
+  stripBasebutton= new ol.control.Button(
+    {	html: '<a>S</a>',
+      className: "strip-base-button",
+      title: "View Strip Base",
+      //interaction: new ol.interaction.Select (),
+    
+      handleClick: function()
+       {
+        // $(".map").css({"width": active?"70vw":""});
+  
+      
+         //$(".fpl-form").css({"display": active?"block":"none"});
+         
+          $(".strip-base-form").css("display","block");
+          $(".strip-base-form-margin").css("display","block");
+          // for (var i=0;i<400;i=i+1)
+          // {
+          //   setTimeout(function (){
+          //     $(".fpl-form").css("height",i);
+          //   },700)
+          // }
+         
+  
+       }
+    });
+
+
+
+
+
+
+
+
+    
+  
+
+nestedFlightPlan.addControl(fillFPLbutton);
+nestedFlightPlan.addControl(stripBasebutton);
+nestedFlightPlan.setPosition('top-left');
+map.addControl(nestedFlightPlan);
 
 
 

@@ -39,7 +39,7 @@ function showQuery(mouseLongitude,mouseLatitude){
   
   function tooltipHtml(data){   
     return "<p></p>"+"<table>"+
-      "<tr><td nowrap>Aerodrome             </td><td><h2>"+" "+data.results.name+" "+data.results.title+"</h2></td></tr>"+
+      "<tr><td nowrap>Aerodrome             </td><td><h6>"+" "+data.results.name+" "+data.results.title+"</h6></td></tr>"+
       "<tr><td nowrap>Elevation             </td><td>"+data.results.elevation+"</td></tr>"+
       "<tr><td nowrap>Address               </td><td>"+data.results.address+"</td></tr>"+
       "<tr><td nowrap>Telephone             </td><td>"+data.results.telephone+"</td></tr>"+
@@ -97,5 +97,11 @@ $(window).on('load',function() {
   $('.aip-close-icon').click(function() {                                           
                                       $(".aip-info").css("display","none");
                                       $(".aip-info-margin").css("display","none");
+
+                                    });
+
+  $('.strip-close-icon').click(function() {                                           
+                                      $(".strip-base-form").css("display","none");
+                                      $(".strip-base-form-margin").css("display","none");
 
                                     });

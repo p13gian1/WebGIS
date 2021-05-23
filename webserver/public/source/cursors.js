@@ -1,5 +1,5 @@
 // $(".aip-info").css("left","800px");
-var x1,y1,x2,y2,elemWidthAIP,elemWidthFLP;
+var x1,y1,x2,y2,x3,y3,elemWidthAIP,elemWidthFLP,elemWidthStripBase;
 var mouseIsPressed=false;
 
 $(document).mousedown(function(){
@@ -41,6 +41,7 @@ $(document).mouseup(function(){
 
 
    var flpHeaderIsPressed=false;
+   var stripBaseHeaderIsPressed=false;
 
    $(".move").mouseover(function(e){
 
@@ -51,13 +52,14 @@ $(document).mouseup(function(){
        
        
         flpHeaderIsPressed=true;
-        
+        stripBaseHeaderIsPressed=true;
     })
 
     $(".move").mouseup(function(e){
         console.log(2);
         
         flpHeaderIsPressed=false;
+        stripBaseHeaderIsPressed=false;
         
     })
 
@@ -78,16 +80,41 @@ $(document).mouseup(function(){
            
          $(".fpl-form-margin").css("left",(x2-parseFloat(elemWidthFLP)/2)-5+"px");
          $(".fpl-form-margin").css("top",(y2-25)+"px");
-
-
-
-         
-        } 
         
-        
-
-
+        }     
         })
+
+ 
+    $(".strip-base-form").mousemove(function(e){
+            if (mouseIsPressed && stripBaseHeaderIsPressed==true){
+            // $(this).css("cursor","move");
+            x3 = e.clientX; 
+            y3 = e.clientY;
+            // x2 =parseInt($(".fpl-form").css("left"));
+            elemWidthStripBase=$(".strip-base-form").css("width");          
+                
+             $(this).css("left",(x3-parseFloat(elemWidthStripBase)/2)+"px");
+             $(this).css("top",(y3-20)+"px");
+               
+             $(".strip-base-form-margin").css("left",(x3-parseFloat(elemWidthStripBase)/2)-5+"px");
+             $(".strip-base-form-margin").css("top",(y3-25)+"px");
+            
+            }     
+            })
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           
     // $(".fpl-form-margin").mousemove(function(e){

@@ -20,7 +20,7 @@ js-map
 
 
 .map {
- height: 93vh;
+ height: 91.8vh;
  width: 99.8vw;
  display: none;
 }
@@ -35,7 +35,7 @@ js-map
 /*custom colors for navbar*/
 
 .navbar-custom {
-  background-color: #0026ff;
+  background-color: rgba(23, 6, 255, 0.5);
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -130,8 +130,9 @@ h4 {
 
 
 
-.aip-info,.aip-info-header
-{
+.aip-info, .aip-info-header{
+
+
   font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display:none;
@@ -145,8 +146,8 @@ h4 {
   height: 515px;
   z-index:123;
   width:360px;
-  color: yellow;
-  background-color:rgba(0,0,0,0.5);
+  color: white;
+  background-color:rgba(23, 6, 255, 0.5);
  
 
   /* avoid selection text*/
@@ -155,7 +156,6 @@ h4 {
   -ms-user-select: none;      
   user-select: none;
 }
-
 
 .aip-info-margin
 {
@@ -172,10 +172,61 @@ h4 {
   height: 525px;
   z-index:122;
   width:370px;
-  color: yellow;
+  color:white;
   box-shadow: -3px 3px 15px black;
-  background-color:rgba(0,0,0,0.4);
+  background-color:rgba(23, 6, 255, 0.4);
  
+}
+
+
+.strip-base-form
+{
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 12px;
+  display: none;
+  position: fixed;
+  right: 460px;
+  top:400px;
+  height:515px;
+  width: 360px;
+  margin: 5px;
+ /* height: 400px;*/
+  color: yellow;
+  z-index:125;
+  background-color:rgba(23, 6, 255, 0.5);
+  border-radius: 10px;
+  
+ 
+  /*box-shadow: -3px 3px 15px black;*/
+
+
+/* avoid selection text */
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
+}
+
+.strip-base-form-margin
+{
+  margin: 5px;
+  display: none;
+  padding:5px;
+  outline: 1px solid black;
+  border: 5px solid rgba(0,0,0,0.1);
+  position: fixed;
+  right: 455px;
+  top:395px;
+  height:525px;
+  width: 370px;
+  
+  
+ /* height: 400px;*/
+  
+  z-index:124;
+  box-shadow: -3px 3px 15px black;
+  background-color:rgba(23, 6, 255, 0.4);
 }
 
 
@@ -206,7 +257,7 @@ h4 {
 .fill-flp-button
     {
       
-      left:1200px;
+      left:1600px;
       top: 0.5em;
     }
 
@@ -266,6 +317,37 @@ h4 {
   top: 10px;
 }
 
+
+.fpl-form
+{
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 12px;
+  display: none;
+  position: fixed;
+  right: 60px;
+  top:400px;
+  height:515px;
+  width: 360px;
+  margin: 5px;
+ /* height: 400px;*/
+  color: yellow;
+  z-index:121;
+  background-color:rgba(23, 6, 255, 0.5);
+  border-radius: 10px;
+  
+ 
+  /*box-shadow: -3px 3px 15px black;*/
+
+
+/* avoid selection text */
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
+
+}
+
 .fpl-form-margin
 {
   margin: 5px;
@@ -284,42 +366,13 @@ h4 {
   
   z-index:120;
   box-shadow: -3px 3px 15px black;
-  background-color:rgba(0,0,0,0.4);
+  background-color:rgba(23, 6, 255, 0.4);
   
 
   
  
 }
 
-.fpl-form
-{
-  font-family: "Trebuchet MS",Helvetica,sans-serif;
-  font-size: 12px;
-  display: none;
-  position: fixed;
-  right: 60px;
-  top:400px;
-  height:515px;
-  width: 360px;
-  margin: 5px;
- /* height: 400px;*/
-  color: yellow;
-  z-index:121;
-  background-color:rgba(0,0,0,0.5);
-  border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
-/* avoid selection text */
--webkit-user-select: none;  
-  -moz-user-select: none;    
-  -ms-user-select: none;      
-  user-select: none;
-
-
-}
 
 .fpl-inner{
   margin: 7px;
@@ -404,9 +457,10 @@ cursor: move;
   left: 0px;
   bottom: 0px;
   width: 100vw;
-  background-color: rgba(23, 6, 255, 0.5);
+  background-color: rgba(23, 6, 255, 0.5); /*#0026ff*/
   z-index:2000;
 }
+
 
 .custom-layer-switcher{
   transform: scale(1.5);
