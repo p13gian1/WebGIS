@@ -81,10 +81,33 @@ map.addLayer(waypointsLayer);
 // log("Waypoints Layer Loaded");
 
 
+var waypointsVFRLayer=new ol.layer.Image({
+  title: 'Waypoints_VFR',
+  source: new ol.source.ImageWMS({
+    url:'http://localhost:8080/geoserver/airGIS/wms',
+    params:{'LAYERS':'airGIS:waypoints_vfr_layer'},
+    serverType:'geoserver'
+    }),
+    visible:false
+});
+map.addLayer(waypointsVFRLayer);
+
+
+
+
+
 aerodromesLayer.setZIndex(9);
 airwaysLayer.setZIndex(7);
 navaidsLayer.setZIndex(8);
 waypointsLayer.setZIndex(5);
+waypointsVFRLayer.setZIndex(5);
+
+
+
+
+
+
+
 
 
 
@@ -97,7 +120,7 @@ var VFRLayer=new ol.layer.Image({
     params:{'LAYERS':'airGIS:vfr_layer'},
     serverType:'geoserver'
     }),
-    visible:true,
+    visible:false,
     ZIndex:2,
 });
 
@@ -130,12 +153,103 @@ var MTMALayer=new ol.layer.Image({
 map.addLayer(MTMALayer);
 MTMALayer.setZIndex(3);
 
+var CTRLayer=new ol.layer.Image({
+  title: 'CTR_Layer',
+  class: 'CTR_Layer',
+  source: new ol.source.ImageWMS({
+    url:'http://localhost:8080/geoserver/airGIS/wms',
+    params:{'LAYERS':'airGIS:ctr_layer'},
+    serverType:'geoserver'
+    }),
+    visible:false,
+    ZIndex:3,
+});
 
 
 
 
 
+map.addLayer(CTRLayer);
+CTRLayer.setZIndex(3);
 
+
+var LGCLayer=new ol.layer.Image({
+  title: 'LGC_Layer',
+  class: 'LGC_Layer',
+  source: new ol.source.ImageWMS({
+    url:'http://localhost:8080/geoserver/airGIS/wms',
+    params:{'LAYERS':'airGIS:lgc_layer'},
+    serverType:'geoserver'
+    }),
+    visible:false,
+    ZIndex:3,
+});
+
+
+
+
+
+map.addLayer(LGCLayer);
+LGCLayer.setZIndex(1);
+
+
+var LGDLayer=new ol.layer.Image({
+  title: 'LGD_Layer',
+  class: 'LGD_Layer',
+  source: new ol.source.ImageWMS({
+    url:'http://localhost:8080/geoserver/airGIS/wms',
+    params:{'LAYERS':'airGIS:lgd_layer'},
+    serverType:'geoserver'
+    }),
+    visible:false,
+    ZIndex:3,
+});
+
+
+
+
+
+map.addLayer(LGDLayer);
+LGDLayer.setZIndex(1);
+
+
+var LGMLayer=new ol.layer.Image({
+  title: 'LGM_Layer',
+  class: 'LGM_Layer',
+  source: new ol.source.ImageWMS({
+    url:'http://localhost:8080/geoserver/airGIS/wms',
+    params:{'LAYERS':'airGIS:lgm_layer'},
+    serverType:'geoserver'
+    }),
+    visible:false,
+    ZIndex:3,
+});
+
+
+
+
+
+map.addLayer(LGMLayer);
+LGMLayer.setZIndex(1);
+
+var LGRLayer=new ol.layer.Image({
+  title: 'LGR_Layer',
+  class: 'LGR_Layer',
+  source: new ol.source.ImageWMS({
+    url:'http://localhost:8080/geoserver/airGIS/wms',
+    params:{'LAYERS':'airGIS:lgr_layer'},
+    serverType:'geoserver'
+    }),
+    visible:false,
+    ZIndex:3,
+});
+
+
+
+
+
+map.addLayer(LGRLayer);
+LGRLayer.setZIndex(1);
 
 
 
@@ -252,6 +366,6 @@ function refreshCircleAerodrome()
 VFRLayer.setVisible(false);
 airwaysLayer.setVisible(true);
 waypointsLayer.setVisible(true);
-
+waypointsVFRLayer.setVisible(false);
 
 

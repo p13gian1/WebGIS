@@ -52,8 +52,8 @@ var vfrMapButton = new ol.control.Button(
      {
      VFRLayer.setVisible(true);
       airwaysLayer.setVisible(false);
-      waypointsLayer.setVisible(true);
-      
+      waypointsLayer.setVisible(false);
+      waypointsVFRLayer.setVisible(true);
 
        //map.removeLayer(airwaysLayer);
       // $(".aip-info").css("left","800px");
@@ -72,6 +72,7 @@ var vfrMapButton = new ol.control.Button(
         VFRLayer.setVisible(false);
         airwaysLayer.setVisible(true);
         waypointsLayer.setVisible(true);
+        waypointsVFRLayer.setVisible(false);
        // map.addLayer(airwaysLayer);
         // $("#info").text("Select is "+(active?"activated":"deactivated"));
        }
@@ -121,6 +122,136 @@ var vfrMapButton = new ol.control.Button(
         });
         nestedFlightRules.addControl(MTMAMapButton);
 
+        var CTRMapButton = new ol.control.Toggle(
+          {	html: '<a>C</a>',
+            className: "CTRs",
+            title: "CTRs",
+            //interaction: new ol.interaction.Select (),
+            active:false,
+            onToggle: function(active)
+             {
+  
+              if (active){
+                CTRLayer.setVisible(true);
+              } else
+              {
+                CTRLayer.setVisible(false);
+              }
+  
+              // VFRLayer.setVisible(false);
+              // airwaysLayer.setVisible(true);
+              // waypointsLayer.setVisible(true);
+             // map.addLayer(airwaysLayer);
+              // $("#info").text("Select is "+(active?"activated":"deactivated"));
+             }
+          });
+          nestedFlightRules.addControl(CTRMapButton);
+
+          var LGCMapButton = new ol.control.Toggle(
+            {	html: '<a>L</a>',
+              className: "LGCs",
+              title: "LGCs",
+              //interaction: new ol.interaction.Select (),
+              active:false,
+              onToggle: function(active)
+               {
+    
+                if (active){
+                  LGCLayer.setVisible(true);
+                } else
+                {
+                  LGCLayer.setVisible(false);
+                }
+    
+                // VFRLayer.setVisible(false);
+                // airwaysLayer.setVisible(true);
+                // waypointsLayer.setVisible(true);
+               // map.addLayer(airwaysLayer);
+                // $("#info").text("Select is "+(active?"activated":"deactivated"));
+               }
+            });
+            nestedFlightRules.addControl(LGCMapButton);
+            
+            var LGDMapButton = new ol.control.Toggle(
+              {	html: '<a>D</a>',
+                className: "LGDs",
+                title: "LGDs",
+                //interaction: new ol.interaction.Select (),
+                active:false,
+                onToggle: function(active)
+                 {
+      
+                  if (active){
+                    LGDLayer.setVisible(true);
+                  } else
+                  {
+                    LGDLayer.setVisible(false);
+                  }
+      
+                  // VFRLayer.setVisible(false);
+                  // airwaysLayer.setVisible(true);
+                  // waypointsLayer.setVisible(true);
+                 // map.addLayer(airwaysLayer);
+                  // $("#info").text("Select is "+(active?"activated":"deactivated"));
+                 }
+              });
+              nestedFlightRules.addControl(LGDMapButton);  
+            
+              var LGMMapButton = new ol.control.Toggle(
+                {	html: '<a>M</a>',
+                  className: "LGMs",
+                  title: "LGMs",
+                  //interaction: new ol.interaction.Select (),
+                  active:false,
+                  onToggle: function(active)
+                   {
+        
+                    if (active){
+                      LGMLayer.setVisible(true);
+                    } else
+                    {
+                      LGMLayer.setVisible(false);
+                    }
+        
+                    // VFRLayer.setVisible(false);
+                    // airwaysLayer.setVisible(true);
+                    // waypointsLayer.setVisible(true);
+                   // map.addLayer(airwaysLayer);
+                    // $("#info").text("Select is "+(active?"activated":"deactivated"));
+                   }
+                });
+                nestedFlightRules.addControl(LGMMapButton);  
+
+                var LGRMapButton = new ol.control.Toggle(
+                  {	html: '<a>R</a>',
+                    className: "LGRs",
+                    title: "LGRs",
+                    //interaction: new ol.interaction.Select (),
+                    active:false,
+                    onToggle: function(active)
+                     {
+          
+                      if (active){
+                        LGRLayer.setVisible(true);
+                      } else
+                      {
+                        LGRLayer.setVisible(false);
+                      }
+          
+                      // VFRLayer.setVisible(false);
+                      // airwaysLayer.setVisible(true);
+                      // waypointsLayer.setVisible(true);
+                     // map.addLayer(airwaysLayer);
+                      // $("#info").text("Select is "+(active?"activated":"deactivated"));
+                     }
+                  });
+                  nestedFlightRules.addControl(LGRMapButton);  
+  
+
+
+
+
+
 
 
 
@@ -148,7 +279,7 @@ flightControls.addControl( new ol.control.Button (
   }) );
 
   flightControls.addControl( new ol.control.Toggle (
-    {	html: '<a>R</a>',
+    {	html: '<a>r</a>',
       className: "route-button",
       title: "Press to view the route of a flight",
       active:false,
@@ -181,7 +312,7 @@ flightControls.addControl( new ol.control.Button (
 
 
     flightControls.addControl( new ol.control.Toggle (
-      {	html: '<a>C</a>',
+      {	html: '<a>+</a>',
         className: "map-center-button",
         title: "Press to view the center of the map",
         active:false,
@@ -194,7 +325,7 @@ flightControls.addControl( new ol.control.Button (
               mapCenterIsVisible=false;
             }
             
-            map.getControls().getArray()[23].setVisible(mapCenterIsVisible);
+            map.getControls().getArray()[28].setVisible(mapCenterIsVisible);
           }
         
           

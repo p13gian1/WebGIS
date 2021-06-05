@@ -35,13 +35,14 @@ flyTo(ol.proj.fromLonLat([a,b]), function () {});
 
 //changing coordinates of on watch aerodrome circle layer
 var indexOfCircleLayer=getIndexofCircleLayer();
+if (aerodromeCircleState!=0){
 map.getLayers().getArray()[indexOfCircleLayer].getSource().clear();
 map.getLayers().getArray()[indexOfCircleLayer].setSource(new ol.source.Vector({}));
 if (map.getLayers().getArray()[indexOfCircleLayer].getSource().getState()=='ready'){   
 
   refreshCircleAerodrome();
 }
-
+}
 }
 
 

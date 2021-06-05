@@ -54,7 +54,7 @@ catch(err){
 app.get('/coordinates',async (req, res) => {
  
 try {
-   const template = 'SELECT ST_AsGeoJSON(COORDINATES) FROM (SELECT * FROM AERODROMES_LAYER UNION SELECT * FROM WAYPOINTS_LAYER UNION SELECT * FROM NAVAIDS_LAYER) AS A WHERE LABEL=$1';
+   const template = 'SELECT ST_AsGeoJSON(COORDINATES) FROM (SELECT * FROM AERODROMES_LAYER UNION SELECT * FROM WAYPOINTS_VFR_LAYER UNION SELECT * FROM WAYPOINTS_LAYER UNION SELECT * FROM NAVAIDS_LAYER) AS A WHERE LABEL=$1';
    const response = await pool.query(template, [req.query.q]);
    if (response.rowCount== 0){
       res.json({status: 'notfound', searchTerm: req.query.q});
