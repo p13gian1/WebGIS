@@ -20,6 +20,8 @@
 - [x] Έγινε ενημέρωση στο app.js του nodejs server ώστε να γίνεται αναζήτηση και στον πίνακα WAYPOINT_VFR_LAYER για τα σημεία VFR που θα εισάγει ο
       χρήστης στο FPL.
 
+![Ver 1.10 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-11.PNG)
+
 **********************
 #### Version 1.10
 #### 23-5-2021
