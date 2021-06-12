@@ -105,3 +105,20 @@ $(window).on('load',function() {
                                       $(".strip-base-form-margin").css("display","none");
 
                                     });
+
+
+
+  $('.flp-open-icon').click(function() { 
+
+                                    $(".load-fpl-form").css("display","block");
+                                    $(".load-fpl-form-margin").css("display","block");
+                                    getMyFlightPlansContent();
+  });
+
+  
+  $('.load-close-icon').click(function() {
+  
+
+    $(".load-fpl-form").css("display","none");
+    $(".load-fpl-form-margin").css("display","none");
+});

@@ -138,7 +138,16 @@
      
     </div>
   </div>
-
+  <div class="load-fpl-form-margin">
+    <div class="load-fpl-form">
+      <label class="move" style="width:331px; margin-top: 7px; margin-left: 5px; color: yellow; text-align: center; font-size: 16px;">Saved Flight Plans</label>
+      <label  class="load-close-icon" style="margin-right:7px;"><i class="fas fa-close fa-lg formButton"></i></label>
+      <div class="load-fpl-text" id="load-fpl-content"></div>
+      <div class="load-fpl-preview" id="load-fpl-preview"></div>
+      <input type="button" id="loadFPL" name="loadFPL" value='Load FPL' style="background-color:rgba(0,0,0,0.1); color:yellow; margin-left:280px; margin-bottom:10px;">
+    </div>
+    
+  </div>
 
   <div class="fpl-form-margin">
   <div class="fpl-form">
@@ -196,31 +205,31 @@
       <label style="margin-right:3px;"><b>-</b></label><label style="margin-left:3px;"><b>E /</b></label>
       <input type="text" id="endurance" name="endurance" style="width:45px; margin:3px;" maxlength="4" size="4"> <label ><b>🠖 P /</b></label>
       <input type="text" id="personsOnBoard" name="personsOnBoard" style="width:30px; margin:3px;" maxlength="3" size="3"><label ><b>🠖 R /</b></label>
-      <label class="supplementary" id="emergencyRadioUHF" style="width:20px; margin:3px; color:red; text-align:center;">U</label>
-      <label class="supplementary" id="emergencyRadioVHF" style="width:20px; margin:3px; color:red; text-align:center;">V</label>
-      <label class="supplementary" id="emergencyRadioELBA" style="width:20px; margin:3px; color:red; text-align:center; margin-right:70px;">E</label>
+      <label class="supplementary" id="emergencyRadioUHF" value="false" style="width:20px; margin:3px; color:red; text-align:center;">U</label>
+      <label class="supplementary" id="emergencyRadioVHF" value="false" style="width:20px; margin:3px; color:red; text-align:center;">V</label>
+      <label class="supplementary" id="emergencyRadioELBA" value="false" style="width:20px; margin:3px; color:red; text-align:center; margin-right:70px;">E</label>
       <label ><b>🠖</b></label>
-      <label class="supplementary" id="dinghies" style="width:20px; margin:3px; color:red; text-align:center;">S</label>
+      <label class="supplementary" id="dinghies" value="false" style="width:20px; margin:3px; color:red; text-align:center;">S</label>
       <label ><b>/</b></label>
-      <label class="supplementary" id="polar" style="width:20px; margin:3px; color:red; text-align:center;">P</label>
-      <label class="supplementary" id="desert" style="width:20px; margin:3px; color:red; text-align:center;">D</label>
-      <label class="supplementary" id="maritime" style="width:20px; margin:3px; color:red; text-align:center;">M</label>
-      <label class="supplementary" id="jungle" style="width:20px; margin:3px; color:red; text-align:center;">J</label>
+      <label class="supplementary" id="polar" value="false" style="width:20px; margin:3px; color:red; text-align:center;">P</label>
+      <label class="supplementary" id="desert" value="false" style="width:20px; margin:3px; color:red; text-align:center;">D</label>
+      <label class="supplementary" id="maritime" value="false" style="width:20px; margin:3px; color:red; text-align:center;">M</label>
+      <label class="supplementary" id="jungle" value="false" style="width:20px; margin:3px; color:red; text-align:center;">J</label>
       <label ><b>🠖</b></label>
-      <label class="supplementary" id="jackets" style="width:20px; margin:3px; color:red; text-align:center;">J</label>
+      <label class="supplementary" id="jackets" value="false" style="width:20px; margin:3px; color:red; text-align:center;">J</label>
       <label ><b>/</b></label>
-      <label class="supplementary" id="light" style="width:20px; margin:3px; color:red; text-align:center;">L</label>
-      <label class="supplementary" id="floures" style="width:20px; margin:3px; color:red; text-align:center;">F</label>
-      <label class="supplementary" id="UHF" style="width:20px; margin:3px; color:red; text-align:center;">U</label>
-      <label class="supplementary" id="VHF" style="width:20px; margin:3px; color:red; text-align:center;">V</label>
+      <label class="supplementary" id="light" value="false" style="width:20px; margin:3px; color:red; text-align:center;">L</label>
+      <label class="supplementary" id="floures" value="false" style="width:20px; margin:3px; color:red; text-align:center;">F</label>
+      <label class="supplementary" id="UHF" value="false" style="width:20px; margin:3px; color:red; text-align:center;">U</label>
+      <label class="supplementary" id="VHF" value="false" style="width:20px; margin:3px; color:red; text-align:center;">V</label>
       <label ><b>🠖</b></label>
-      <label class="supplementary" id="dinghiesSecond" style="width:20px; margin:3px; color:red; text-align:center;">D</label>
+      <label class="supplementary" id="dinghiesSecond" value="false" style="width:20px; margin:3px; color:red; text-align:center;">D</label>
       <label ><b>/</b></label>
       <input type="text" id="numberOfDinghies" name="numberOfDinghies" style="width:25px; margin:3px;" maxlength="2" size="2">
       <label ><b>🠖</b></label>
       <input type="text" id="capacity" name="capacity" style="width:30px; margin:3px;" maxlength="3" size="3">
       <label ><b>🠖</b></label>
-      <label class="supplementary" id="cover" style="width:20px; margin:3px; color:red; text-align:center;">C</label>
+      <label class="supplementary" id="cover" value="false" style="width:20px; margin:3px; color:red; text-align:center;">C</label>
       <label ><b>🠖</b></label>
       <input type="text" id="color" name="color" style="width:130px; margin:3px;" maxlength="30" size="30">
       <label ><b>A /</b></label>
@@ -233,7 +242,9 @@
       <input type="text" id="pilotInCommand" name="pilotInCommand" style="width:315px; margin:3px;" maxlength="47" size="47">
     <br>
     <!-- <input type="submit" value="Submit" style="background-color:rgba(0,0,0,0.1)" onsubmit="formSubmit()"> -->
-    <input type="button" id="submitFPL" name="submitFPL" value='Submit FPL' style="background-color:rgba(0,0,0,0.1); margin-left:260px; margin-top:3px;">
+    <input type="button" id="clearFPL" name="clearFPL" value='Clear FPL' style="background-color:rgba(0,0,0,0.1); margin-left:10px; margin-right:180px; margin-top:8px;">
+    <input type="button" id="submitFPL" name="submitFPL" value='Submit FPL' style="background-color:rgba(0,0,0,0.1); margin-top:8px;">
+    
   </form>
   </div>
 </div>

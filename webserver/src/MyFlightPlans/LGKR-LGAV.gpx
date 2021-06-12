@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creator="SkyVector" version="1.1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <rte>
+    <name>LGKR-LGAV</name>
+    <rtept lat="39.601944" lon="19.912222">
+      <name>LGKR</name>
+      <overfly>false</overfly>
+    </rtept>
+    <rtept lat="39.443858" lon="20.072775">
+      <name>KRK</name>
+      <overfly>false</overfly>
+    </rtept>
+    <rtept lat="39.320000" lon="20.381944">
+      <name>LATSO</name>
+      <overfly>false</overfly>
+    </rtept>
+    <rtept lat="38.671944" lon="21.951111">
+      <name>VARDI</name>
+      <overfly>false</overfly>
+    </rtept>
+    <rtept lat="38.165556" lon="23.124444">
+      <name>GERMI</name>
+      <overfly>false</overfly>
+    </rtept>
+    <rtept lat="37.936700" lon="23.944500">
+      <name>LGAV</name>
+      <overfly>false</overfly>
+    </rtept>
+
+  </rte>
+</gpx>

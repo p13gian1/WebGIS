@@ -13,6 +13,7 @@ var otherInformationEdit=false;
 
 var fplAirway={name:'',rotation:0};
 var fplAirways;
+var numberOfSavedFPLs=0;
 
 
 
@@ -189,7 +190,6 @@ var supplementaryObject={
   dinghies : false, 
   polar: false,
   desert:false,
-  desert: false,
   maritime: false,
   jungle: false,
   jackets: false,
@@ -208,7 +208,8 @@ $('.supplementary').click(function(e){
   {
     $('#'+e.target.id).css('color','yellow');
     console.log('yellow');
-    supplementaryObject[e.target.id]=true;  
+    supplementaryObject[e.target.id]=true;
+
     }
   else if ($('#'+e.target.id).css('color')=='rgb(255, 255, 0)' && supplementaryObject[e.target.id]==true)
   {
@@ -838,26 +839,22 @@ function fplStyleFunction(name1,rotation1){
 
 map.on('moveend', function() {
 
-  console.log('change');
-  console.log(map.getView().getZoom() );
+  // console.log('change');
+  // console.log(map.getView().getZoom() );
 
-  if (map.getView().getZoom()<9){
+  // if (map.getView().getZoom()<9){
   
-    fplLayer.getSource().getFeatures().forEach( function(feat){
+  //   fplLayer.getSource().getFeatures().forEach( function(feat){
       
       
-      console.log( feat.getStyle()[0].getText().setText(''));
+  //     console.log( feat.getStyle()[0].getText().setText(''));
       
       
-      feat.getStyle()[0].getText().setText('')
-      fplLayer.changed();
-    } 
-   )
-  }
-
-
-
-
+  //     feat.getStyle()[0].getText().setText('')
+  //     fplLayer.changed();
+  //   } 
+  //  )
+  // }
   });
 
 map.on('change',function(){
@@ -890,45 +887,401 @@ map.on('change',function(){
 
 function formSubmit(){
   console.log('FPL submitted!');
+  console.log(fpl.departureAerodrome.value);
+
+if (fpl.number.value=="") {
+  fpl.number.value=1;
+}
+
+ var flightPlanArray=[   
+fpl.aircraftID.value,
+fpl.flightRules.value,
+fpl.typeOfFlight.value,
+fpl.number.value,
+fpl.typeOfAircraft.value,
+fpl.wakeTurbulenceCat.value,
+fpl.equipment.value,
+fpl.departureAerodrome.value,
+fpl.time.value,
+fpl.crusingSpeed.value,
+fpl.level.value,
+fpl.route.value,
+fpl.destinationAerodrome.value,
+fpl.totalEET.value,
+fpl.alternateAerodrome.value,
+fpl.secondAlternateAerodrome.value,
+fpl.otherInformation.value,
+fpl.endurance.value,
+fpl.personsOnBoard.value,
+supplementaryObject.emergencyRadioUHF,
+supplementaryObject.emergencyRadioVHF,
+supplementaryObject.emergencyRadioELBA,
+supplementaryObject.dinghies,
+supplementaryObject.polar,
+supplementaryObject.desert,
+supplementaryObject.maritime,
+supplementaryObject.jungle,
+supplementaryObject.jackets,
+supplementaryObject.light,
+supplementaryObject.floures,
+supplementaryObject.UHF,
+supplementaryObject.VHF,
+supplementaryObject.dinghiesSecond,
+fpl.numberOfDinghies.value,
+fpl.capacity.value,
+supplementaryObject.cover,
+fpl.color.value,
+fpl.aircraftColorAndMarkings.value,
+fpl.remarks.value,
+fpl.pilotInCommand.value
+];
+
+ console.log(flightPlanArray);
+
+
+
+ fetch('http://localhost:3000/FPL?q='+ flightPlanArray).then((response)=>{
+ // fetch('http://localhost:3000/FPL?q='+fpl.aircraftID.value).then((response)=>{
+    response.json().then((data) => {
+      console.log(data.results) 
+   
+         
+    })
+  });
+
   // return false; 
 }
 
 
-/*
-fpl={    
-callSign: String,
-flightRules: String,
-typeOfFlight: String,
-formation: int,
-typeOfAircraft: String,
-wakeTurbulenceCat: String,
-equipment: String,
-derartureAerodrome: String,
-timeOfDeparture: time,
-cruisingSpeed: int,
-level: String,
-route: String,
-destinationAerodrome: String,
-totalEET: int,
-altnAerodrome: String,
-secAltnAerodrome: String,
-remarks: {
-    dateOfFlight: time,
-    remarks: string
-},
-supplementary: {
-endurance: int,
-personsOnBoard: int,
-emergencyRadio: stringArray,
-dinghies: stringArray,
-jackets: stringArray,
-number: int,
-capacity: int,
-colour: string,
-aircraftColorAndMarkings: string,
-remark: string,
-pilotInCommand: string}
+
+getMyFlightPlansContent=()=> {
+  var content;
+  document.getElementById("load-fpl-content").innerHTML='';
+  fetch('http://localhost:3000/GetMyFlightPlansContent').then((response)=>{
+ // fetch('http://localhost:3000/FPL?q='+fpl.aircraftID.value).then((response)=>{
+    response.json().then((data) => {  
+    numberOfSavedFPLs=data.results.length;
+    content='';
+      for (var i=0; i<data.results.length;i++) {
+
+       document.getElementById("load-fpl-content").innerHTML +='<h6 style="margin-left:10px" id="savedFPL'+i+'">'+data.results[i]+'</h6>';
+      //  content=content+ data.results[i]+'<br>';
+       
+      }
+    
+         
+    })
+  
+  });
+//  setTimeout(function(){ document.getElementById("load-fpl-content").innerHTML =content},500);
+ 
 }
-*/
+
+
+$('.load-fpl-text').click(function(e){ if (e.target.id !='load-fpl-content'){
+    
+  if ($('#'+e.target.id).css('color')=='rgb(255, 255, 255)')
+  {
+   
+    for (var i=0; i<numberOfSavedFPLs;i++) {
+      $('#savedFPL'+i).css('background-color','rgba(23, 6, 255, 0)');
+      $('#savedFPL'+i).css('color','white');
+    }
+    $('#'+e.target.id).css('background-color','white');
+    $('#'+e.target.id).css('color','rgb(23, 6, 255)');
+    let filename=$('#'+e.target.id).text();
+    console.log(filename);
+
+    fetch('http://localhost:3000/ReadFPL?q='+filename).then((response)=>{
+ 
+    response.json().then((data) => {  
+      document.getElementById("load-fpl-preview").innerHTML=data.results;
+         
+    })
+  
+  });
+       
+    }
+  else if ($('#'+e.target.id).css('color')=='rgb(23, 6, 255)')
+  {
+    $('#'+e.target.id).css('background-color','rgba(23, 6, 255, 0)');
+    $('#'+e.target.id).css('color','white');
+       }
+
+  }
+  // console.log('test dep'+fplPathCoordinates);
+ 
+})
+
+
+
+$('#loadFPL').click(function(){
+  clearFPL();
+  parseFPL();
+ });
+
+ $('#clearFPL').click(function(){
+  setTimeout(function (){
+    clearFPL();
+  },1200)
+ 
+  });
+
+ 
+ clearFPL=()=>{
+  fpl.aircraftID.value='';
+  fpl.flightRules.value='';
+  fpl.typeOfFlight.value='';
+  fpl.number.value='';
+  fpl.typeOfAircraft.value='';
+  fpl.wakeTurbulenceCat.value='';
+  fpl.equipment.value='';
+  fpl.departureAerodrome.value='';
+  fpl.time.value='';
+  fpl.crusingSpeed.value='';
+  fpl.level.value='';
+  fpl.route.value='';
+  fpl.destinationAerodrome.value='';
+  fpl.totalEET.value='';
+  fpl.alternateAerodrome.value='';
+  fpl.secondAlternateAerodrome.value='';
+  fpl.otherInformation.value='';
+  fpl.endurance.value='';
+  fpl.personsOnBoard.value='';
+  supplementaryObject.emergencyRadioUHF=false;
+  supplementaryObject.emergencyRadioVHF=false;
+  supplementaryObject.emergencyRadioELBA=false;
+  supplementaryObject.dinghies=false;
+  supplementaryObject.polar=false;
+  supplementaryObject.desert=false;
+  supplementaryObject.maritime=false;
+  supplementaryObject.jungle=false;
+  supplementaryObject.jackets=false;
+  supplementaryObject.light=false;
+  supplementaryObject.floures=false;
+  supplementaryObject.UHF=false;
+  supplementaryObject.VHF=false;
+  supplementaryObject.dinghiesSecond=false;
+  fpl.numberOfDinghies.value='';
+  fpl.capacity.value='';
+  supplementaryObject.cover=false;
+  fpl.color.value='';
+  fpl.aircraftColorAndMarkings.value='';
+  fpl.remarks.value='';
+  fpl.pilotInCommand.value='';
+
+  $('#emergencyRadioUHF').css('color','red');
+  $('#emergencyRadioVHF').css('color','red');
+  $('#emergencyRadioELBA').css('color','red');
+  $('#dinghies').css('color','red');
+  $('#polar').css('color','red');
+  $('#desert').css('color','red');
+  $('#maritime').css('color','red');
+  $('#jungle').css('color','red');
+  $('#jackets').css('color','red');
+  $('#light').css('color','red');
+  $('#floures').css('color','red');
+  $('#UHF').css('color','red');
+  $('#VHF').css('color','red');
+  $('#dinghiesSecond').css('color','red');
+  $('#cover').css('color','red');
+ }
+
+
+
+
+
+
+
+
+
+parseFPL=()=>{
+  let fileFPL=document.getElementById("load-fpl-preview").innerHTML;
+  let fileFPLArray=fileFPL.split('-');
+  console.log(fileFPLArray);
+  let FPL=[];
+  FPL[0]=fileFPLArray[1];
+  FPL[1]=fileFPLArray[2];
+  FPL[1]=FPL[1].slice(0,1);
+  FPL[2]=fileFPLArray[2];
+  FPL[2]=FPL[2].slice(1,2);
+  FPL[3]=fileFPLArray[3];
+  FPL[3]=FPL[3].slice(0,2);
+  FPL[4]=fileFPLArray[3];
+  FPL[4]=FPL[4].slice(2,6);
+  FPL[5]=fileFPLArray[3];
+  FPL[5]=FPL[5].slice(7,8);
+  FPL[6]=fileFPLArray[4].replace('\n','');    //getting rid of line carriage character
+  FPL[7]=fileFPLArray[5];
+  FPL[7]=FPL[7].slice(0,4);
+  FPL[8]=fileFPLArray[5];
+  FPL[8]=FPL[8].slice(4,8);  
+  FPL[9]=fileFPLArray[6];
+  if (FPL[9].slice(5,8)=='VFR'){
+      FPL[9]=fileFPLArray[6];
+      FPL[9]=FPL[9].slice(0,5);
+      FPL[10]=fileFPLArray[6];
+      FPL[10]=FPL[10].slice(5,8);
+
+      FPL[11]=fileFPLArray[6];
+      FPL[11]=FPL[11].slice(9,fileFPLArray[6].length+1);
+
+  }
+  else
+  {
+      FPL[9]=fileFPLArray[6];
+      FPL[9]=FPL[9].slice(0,5);
+      FPL[10]=fileFPLArray[6];
+      FPL[10]=FPL[10].slice(5,10);
+      FPL[11]=fileFPLArray[6];
+      FPL[11]=FPL[11].slice(11,fileFPLArray[6].length+1);
+
+  }
+  FPL[12]=fileFPLArray[7];
+  FPL[12]=FPL[12].replace('\n','')
+  let tempAerodromesArray=FPL[12].split(' '); 
+  FPL[12]=tempAerodromesArray[0];
+  FPL[12]=FPL[12].slice(0,4);
+  FPL[13]=tempAerodromesArray[0];
+  FPL[13]=FPL[13].slice(4,8);
+  FPL[14]=tempAerodromesArray[1];
+  FPL[15]=tempAerodromesArray[2];
+  FPL[16]=fileFPLArray[8];
+
+ 
+  if (fileFPLArray[9]!=undefined){
+      let supplementaryTemp=fileFPLArray[9];
+
+      FPL[17]=supplementaryTemp.slice(2,6);
+      FPL[18]=supplementaryTemp.slice(9,12);
+      console.log(supplementaryTemp);
+  }
+
+
+
+
+
+
+
+
+
+
+ 
+  
+  
+
+
+
+
+
+fpl.aircraftID.value=FPL[0];
+fpl.flightRules.value=FPL[1];
+fpl.typeOfFlight.value=FPL[2];
+fpl.number.value=FPL[3];
+fpl.typeOfAircraft.value=FPL[4];
+fpl.wakeTurbulenceCat.value=FPL[5];
+fpl.equipment.value=FPL[6];
+fpl.departureAerodrome.value=FPL[7];
+fpl.time.value=FPL[8];
+fpl.crusingSpeed.value=FPL[9];
+fpl.level.value=FPL[10];
+fpl.route.value=FPL[11];
+fpl.destinationAerodrome.value=FPL[12];
+fpl.totalEET.value=FPL[13];
+if (FPL[14]!=undefined){ 
+  fpl.alternateAerodrome.value=FPL[14];
+}
+if (FPL[15]!=undefined){ 
+  fpl.secondAlternateAerodrome.value=FPL[15];
+}
+fpl.otherInformation.value=FPL[16];
+
+if (fileFPLArray[9]!=undefined){ 
+fpl.endurance.value=FPL[17];
+fpl.personsOnBoard.value=FPL[18];
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  console.log(FPL);
+
+
+  // var flightPlanArray=[   
+  //   fpl.aircraftID.value,
+  //   fpl.flightRules.value,
+  //   fpl.typeOfFlight.value,
+  //   fpl.number.value,
+  //   fpl.typeOfAircraft.value,
+  //   fpl.wakeTurbulenceCat.value,
+  //   fpl.equipment.value,
+  //   fpl.departureAerodrome.value,
+  //   fpl.time.value,
+  //   fpl.crusingSpeed.value,
+  //   fpl.level.value,
+  //   fpl.route.value,
+  //   fpl.destinationAerodrome.value,
+  //   fpl.totalEET.value,
+  //   fpl.alternateAerodrome.value,
+  //   fpl.secondAlternateAerodrome.value,
+  //   fpl.otherInformation.value,
+  //   fpl.endurance.value,
+  //   fpl.personsOnBoard.value,
+  //   supplementaryObject.emergencyRadioUHF,
+  //   supplementaryObject.emergencyRadioVHF,
+  //   supplementaryObject.emergencyRadioELBA,
+  //   supplementaryObject.dinghies,
+  //   supplementaryObject.polar,
+  //   supplementaryObject.desert,
+  //   supplementaryObject.maritime,
+  //   supplementaryObject.jungle,
+  //   supplementaryObject.jackets,
+  //   supplementaryObject.light,
+  //   supplementaryObject.floures,
+  //   supplementaryObject.UHF,
+  //   supplementaryObject.VHF,
+  //   supplementaryObject.dinghiesSecond,
+  //   fpl.numberOfDinghies.value,
+  //   fpl.capacity.value,
+  //   supplementaryObject.cover,
+  //   fpl.color.value,
+  //   fpl.aircraftColorAndMarkings.value,
+  //   fpl.remarks.value,
+  //   fpl.pilotInCommand.value
+  //   ];
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //MUST FIX WAYPOINT RIMAX DOES'NT BELONG TO AIRWAY L613!!

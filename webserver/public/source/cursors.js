@@ -1,5 +1,5 @@
 // $(".aip-info").css("left","800px");
-var x1,y1,x2,y2,x3,y3,elemWidthAIP,elemWidthFLP,elemWidthStripBase;
+var x1,y1,x2,y2,x3,y3,x4,y4,elemWidthAIP,elemWidthFLP,elemWidthStripBase,elemWidthLoadFPL;
 var mouseIsPressed=false;
 
 $(document).mousedown(function(){
@@ -42,6 +42,7 @@ $(document).mouseup(function(){
 
    var flpHeaderIsPressed=false;
    var stripBaseHeaderIsPressed=false;
+   var loadFPLHeaderIsPressed=true;
 
    $(".move").mouseover(function(e){
 
@@ -53,14 +54,15 @@ $(document).mouseup(function(){
        
         flpHeaderIsPressed=true;
         stripBaseHeaderIsPressed=true;
+        loadFPLHeaderIsPressed=true;
     })
 
     $(".move").mouseup(function(e){
-        console.log(2);
+        // console.log(2);
         
         flpHeaderIsPressed=false;
         stripBaseHeaderIsPressed=false;
-        
+        loadFPLHeaderIsPressed=false;
     })
 
 
@@ -102,7 +104,23 @@ $(document).mouseup(function(){
             }     
             })
     
-
+    $(".load-fpl-form").mousemove(function(e){
+                if (mouseIsPressed && loadFPLHeaderIsPressed==true){
+                // $(this).css("cursor","move");
+                x4 = e.clientX; 
+                y4 = e.clientY;
+                // x2 =parseInt($(".fpl-form").css("left"));
+                elemWidthLoadFPL=$(".load-fpl-form").css("width");          
+                    
+                 $(this).css("left",(x4-parseFloat(elemWidthLoadFPL)/2)+"px");
+                 $(this).css("top",(y4-20)+"px");
+                   
+                 $(".load-fpl-form-margin").css("left",(x4-parseFloat(elemWidthLoadFPL)/2)-5+"px");
+                 $(".load-fpl-form-margin").css("top",(y4-25)+"px");
+                
+                }     
+                })
+                
 
 
 

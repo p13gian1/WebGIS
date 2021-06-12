@@ -9,6 +9,7 @@ const bodyParser=require('body-parser');
 const express=require('express');
 const app=express();
 const publicDirectoryPath=path.join(__dirname, '../public');
+const fs = require('fs');
 
 app.use(express.static(publicDirectoryPath));
 app.use(bodyParser.json({type: "application/json"}));
@@ -16,6 +17,36 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var cors = require('cors');   // added to avoid cross origin check below!
 app.use(cors());              // https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
+
+
+
+//---------------------------------------------------
+
+
+
+
+//----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Pool = require ('pg').Pool;
 const config = {
@@ -127,7 +158,41 @@ app.get('/aerodrome',async (req, res) => {
       }
       })
 
+      app.get('/FPL',async (req, res) => {
+         console.log("req:"+req);
+         try {
+            const template = 'INSERT INTO FPL (AIRCRAFTID,FLIGHTRULES,TYPEOFFLIGHT,NUMBER,TYPEOFAIRCRAFT,WAKETURBULENCECAT,EQUIPMENT,DEPARTUREAERODROME,'+
+            'TIME,CRUISINGSPEED,LEVEL,ROUTE,DESTINATIONAERODROME,TOTALEET,ALTERNATEAERODROME,SECONDALTERNATEAERODROME,OTHERINFORMATION,ENDURANCE,'+
+            'PERSONSONBOARD,EMERGENCYRADIOUHF,EMERGENCYRADIOVHF,EMERGENCYRADIOELBA,DINGHIES,POLAR,DESERT,MARITIME,JUNGLE,JACKETS,LIGHT,FLOURES,'+
+            'UHF,VHF,DINGHIESSECOND,NUMBEROFDINGHIES,CAPACITY,COVER,COLOR,AIRCRAFTCOLORANDMARKINGS,REMARKS,PILOTINCOMMAND)'+         
+            'VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,'+
+            '$36,$37,$38,$39,$40)';
+            console.log("req.query.q: "+req.query.q);  
+         const queryArray=req.query.q.split(",");
+         console.log(queryArray[5]);
 
+           const query={
+              text: template,
+              values: queryArray
+           } 
+           
+            const response = await pool.query(query);
+            
+            res.json({status: 'ok', results: 'ok'});
+         
+            // const response = await pool.query(template, [req.query.long, req.query.lat ]);
+            // if (response.rowCount== 0){
+            //    res.json({status: 'notfound', searchTerm: req.query.long});
+            // }
+            // else {
+            //    res.json({status: 'ok', results: response.rows[0]});
+            // }
+            // console.log(response);
+         }
+         catch(err){
+            console.error('Error running query'+err);
+         }
+         })
 
 // SELECT A.NAME
   // FROM AIRWAYS AS A, AIRWAYS AS B 
@@ -137,8 +202,87 @@ app.get('/aerodrome',async (req, res) => {
 
   // SELECT ST_AsGeoJSON(COORDINATES) FROM AERODROMES_LAYER WHERE LABEL='LGKR';       GETTING COORDINATES AS GEOJSON INSTEAD OF HEX VALUE
 
+ 
 
 
+  app.get('/GetMyFlightPlansContent',(req,res) => {
+ 
+
+
+    
+//joining path of directory 
+const directoryPath = path.join(__dirname, 'MyFlightPlans');
+//passsing directoryPath and callback function
+const response=fs.readdir(directoryPath, function (err, files) {
+   //console.log(response);
+    //handling error
+   //  if (err) {
+   //      return console.log('Unable to scan directory: ' + err);
+   //  } 
+    //listing all files using forEach
+   //  files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        res.json({status: 'ok', results: files});
+        //console.log("MyFlightPlans/"+file); 
+   //  });
+
+});
+
+
+  });
+
+
+  app.get('/ReadFPL',(req,res) => {
+
+   console.log(req.query.q);
+  
+  
+   try {
+     
+     const data = fs.readFileSync('/wamp64/www/WebGIS/webserver/src/MyFlightPlans/'+req.query.q, 'utf8')
+     res.json({status: 'ok', results: data});
+   }
+   
+   catch (err) {
+     console.error(err)
+   }
+
+
+   
+   
+     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   //    const template = ' SELECT A.NAME FROM AIRWAYS AS A, AIRWAYS AS B WHERE A.WAYPOINT=$1 AND B.WAYPOINT=$2 AND A.NAME=B.NAME';
+   //    const response = await pool.query(template, [req.query.q1, req.query.q2]);
+   //    if (response.rowCount== 0){
+   //       res.json({status: 'notfound', searchTerm: req.query.q});
+   //    }
+   //    else {
+   //       res.json({status: 'ok', results: response.rows[0]});
+   //    }
+   //    console.log(response);
+   // }
+   // catch(err){
+   //    console.error('Error running query'+err);
+   // }
+   // })
 
 
 
