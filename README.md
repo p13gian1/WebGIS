@@ -19,6 +19,7 @@
 - [x] Με το κουμπί "Submit FPL" της φόρμας FPL o ελεγκτής στέλνει στην Β.Δ και αποθηκεύεται στην Β.Δ στον πίνακα FPL, το σχέδιο πτήσης που έχει
       η φόρμα FPL την παρούσα στιγμή.
 
+![Ver 1.12 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-12.PNG)
 
 
 
