@@ -75,12 +75,12 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
+       <!-- <li class="nav-item">
           <a class="nav-link" href="#">NOTAMs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">METARs</a>
-        </li>
+        </li>-->
         <li class="nav-item">
           <a class="nav-link" href="#">Options</a>
         </li>
@@ -95,9 +95,9 @@
             <li><a class="dropdown-item" id='Documentation' href="#" onclick="">Documentation</a></li>
             <li><a class="dropdown-item" id='About' href="#" onclick="">About</a></li>
           </ul>
-        <li class="nav-item">
+      <!--  <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        </li>-->
       </ul>
      <!-- <form class="d-flex" onsubmit="return doSearch()">
         <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
@@ -124,12 +124,47 @@
       <br><br><h3>Log File</h3><br><br>
   </div>
 <div id='js-map' class='map'>
+  <div class="selection-form-margin">
+    <div class="selection-form">
+    <input type="button" id="aip-info-button" name="aip-info-button" value='AIP Info' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-left:10px; margin-right:10px; margin-top:8px;">
+    <input type="button" id="metar-button" name="metar-button" value='METAR' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px; margin-right:10px;">
+    <input type="button" id="notam-button" name="notam-button" value='NOTAMs' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px;">
+  </div>
+    </div>
+
+    <div class="metar-form-margin">
+      <div class="metar-form">
+        <div class="metar-form-text"></div>
+      </div>
+      </div>
+  
+      <div class="notam-form-margin">
+        <div class="notam-form">
+          <label class="move" style="width:331px; margin-top: 7px; margin-left: 5px; color: rgba(23, 6, 255, 0.4)">-</label>
+          <label  class="notam-close-icon" style="margin-left:7px;"><i class="fas fa-close fa-lg formButton"></i></label>
+          <div class="notam-form-text"></div>
+        </div>
+        </div>
+
+
+
+
+
   <div class="aip-info-margin">
   <div class="aip-info">
     <label  class="aip-close-icon" style="margin-left:335px;"><i class="fas fa-close fa-lg formButton"></i></label>
     <div class="aip-info-text"></div>
   </div>
   </div>
+
+
+
+
+
+
+
+
+
 
   <div class="strip-base-form-margin">
     <div class="strip-base-form">
@@ -145,10 +180,18 @@
       <div class="load-fpl-text" id="load-fpl-content"></div>
       <div class="load-fpl-preview" id="load-fpl-preview"></div>
       <input type="button" id="loadFPL" name="loadFPL" value='Load FPL' style="background-color:rgba(0,0,0,0.1); color:yellow; margin-left:280px; margin-bottom:10px;">
-    </div>
-    
+    </div>    
   </div>
-
+  <div class="save-fpl-form-margin">
+    <div class="save-fpl-form">
+      <label class="move" style="width:331px; margin-top: 7px; margin-left: 5px; color: yellow; text-align: center; font-size: 16px;">Saved Flight Plans</label>
+      <label  class="save-close-icon" style="margin-right:7px;"><i class="fas fa-close fa-lg formButton"></i></label>
+      <div class="save-fpl-text" id="save-fpl-content"></div>
+      <input type="text" id="filenameFPL" name="filenameFPL" style="width:257px; margin-bottom:10px; margin-left:10px;" maxlength="47" size="47">
+     <!-- <div class="save-fpl-preview" id="save-fpl-preview"></div>-->
+      <input type="button" id="saveFPL" name="saveFPL" value='Save FPL' style="background-color:rgba(0,0,0,0.1); color:yellow; margin-left:10px; margin-bottom:10px;">
+    </div>    
+  </div>
   <div class="fpl-form-margin">
   <div class="fpl-form">
     <form class="fpl-inner" id='fpl' spellcheck="false"> <!--action=""-->

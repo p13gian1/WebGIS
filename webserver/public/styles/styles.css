@@ -178,6 +178,16 @@ h4 {
  
 }
 
+.aip-info-text 
+{border:1px solid white;
+margin: 7px;
+padding: 10px;
+background-color:rgba(23, 6, 255, 0.3);
+height:472px; 
+overflow:auto;
+}
+
+
 
 .strip-base-form
 {
@@ -228,6 +238,214 @@ h4 {
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
+
+
+
+.notam-form
+{
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 12px;
+  display: none;
+  position: fixed;
+  right: 460px;
+  top:400px;
+  height:515px;
+  width: 360px;
+  margin: 5px;
+ /* height: 400px;*/
+  color: yellow;
+  z-index:125;
+  background-color:rgba(23, 6, 255, 0.5);
+  border-radius: 10px;
+  
+ 
+  /*box-shadow: -3px 3px 15px black;*/
+
+
+/* avoid selection text */
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
+}
+
+.notam-form-margin
+{
+  margin: 5px;
+  display: none;
+  padding:5px;
+  outline: 1px solid black;
+  border: 5px solid rgba(0,0,0,0.1);
+  position: fixed;
+  right: 455px;
+  top:395px;
+  height:525px;
+  width: 370px;
+  
+  
+ /* height: 400px;*/
+  
+  z-index:124;
+  box-shadow: -3px 3px 15px black;
+  background-color:rgba(23, 6, 255, 0.4);
+}
+
+
+.notam-form-text 
+{border:1px solid white;
+margin: 7px;
+padding: 10px;
+background-color:rgba(23, 6, 255, 0.3);
+height:472px; 
+overflow:auto;
+}
+
+
+
+
+
+.selection-form
+{
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 12px;
+  display: none;
+  position: fixed;
+  left: 890px;
+  bottom:60px;
+  height:40px;
+  width: 212px;
+  margin: 5px;
+ /* height: 400px;*/
+  color: yellow;
+  z-index:125;
+  background-color:rgba(23, 6, 255, 0.5);
+  border-radius: 10px;
+  
+ 
+  /*box-shadow: -3px 3px 15px black;*/
+
+
+/* avoid selection text */
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
+}
+
+.selection-form-margin
+{
+  margin: 5px;
+  display: none;
+  padding:5px;
+  outline: 1px solid black;
+  border: 5px solid rgba(0,0,0,0.1);
+  position: fixed;
+  left: 885px;
+  bottom:55px;
+  height:50px;
+  width: 222px;
+  
+  
+ /* height: 400px;*/
+  
+  z-index:124;
+  box-shadow: -3px 3px 15px black;
+  background-color:rgba(23, 6, 255, 0.4);
+}
+
+
+.metar-form
+{
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 12px;
+  display: none;
+  position: fixed;
+  left: 820px;
+  bottom: 60px;
+  height:72px;
+  width: 300px;
+  margin: 5px;
+ /* height: 400px;*/
+  color: yellow;
+  z-index:125;
+  background-color:rgba(23, 6, 255, 0.5);
+  border-radius: 10px;
+  
+ 
+  /*box-shadow: -3px 3px 15px black;*/
+
+
+/* avoid selection text */
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
+}
+
+.metar-form-margin
+{
+  margin: 5px;
+  display: none;
+  padding:5px;
+  outline: 1px solid black;
+  border: 5px solid rgba(0,0,0,0.1);
+  position: fixed;
+  left: 815px;
+  bottom:55px;
+  height:82px;
+  width: 310px;
+  
+  
+ /* height: 400px;*/
+  
+  z-index:124;
+  box-shadow: -3px 3px 15px black;
+  background-color:rgba(23, 6, 255, 0.4);
+}
+
+
+.metar-form-text 
+{border:1px solid white;
+margin: 7px;
+padding: 10px;
+background-color:rgba(23, 6, 255, 0.3);
+height:58px; 
+overflow:auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .load-fpl-form
@@ -281,6 +499,55 @@ h4 {
 }
 
 
+.save-fpl-form
+{
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 12px;
+  display: none;
+  position: fixed;
+  right: 560px;
+  top:400px;
+  height:515px;
+  width: 360px;
+  margin: 5px;
+ /* height: 400px;*/
+  color: white;
+  z-index:125;
+  background-color:rgba(23, 6, 255, 0.5);
+  border-radius: 10px;
+  
+ 
+  /*box-shadow: -3px 3px 15px black;*/
+
+
+/* avoid selection text */
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
+}
+
+.save-fpl-form-margin
+{
+  margin: 5px;
+  display: none;
+  padding:5px;
+  outline: 1px solid black;
+  border: 5px solid rgba(0,0,0,0.1);
+  position: fixed;
+  right: 555px;
+  top:395px;
+  height:525px;
+  width: 370px;
+  
+  
+ /* height: 400px;*/
+  
+  z-index:124;
+  box-shadow: -3px 3px 15px black;
+  background-color:rgba(23, 6, 255, 0.4);
+}
 
 
 
@@ -565,6 +832,11 @@ cursor: default;
   padding: 10px;
   background-color:rgba(23, 6, 255, 0.3); 
   overflow:auto;
-  height: 244px;
- 
+  height: 244px; 
+}
+
+.save-fpl-text{
+  overflow:auto;
+  height: 430px;
+  margin-bottom:18px;
 }

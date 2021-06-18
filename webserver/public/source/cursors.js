@@ -1,5 +1,5 @@
 // $(".aip-info").css("left","800px");
-var x1,y1,x2,y2,x3,y3,x4,y4,elemWidthAIP,elemWidthFLP,elemWidthStripBase,elemWidthLoadFPL;
+var x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,elemWidthAIP,elemWidthFLP,elemWidthStripBase,elemWidthLoadFPL,elemWidthSaveFPL,elemWidthNotam;
 var mouseIsPressed=false;
 
 $(document).mousedown(function(){
@@ -43,6 +43,8 @@ $(document).mouseup(function(){
    var flpHeaderIsPressed=false;
    var stripBaseHeaderIsPressed=false;
    var loadFPLHeaderIsPressed=true;
+   var saveFPLHeaderIsPressed=true;
+   var notamHeaderIsPressed=true;
 
    $(".move").mouseover(function(e){
 
@@ -55,6 +57,8 @@ $(document).mouseup(function(){
         flpHeaderIsPressed=true;
         stripBaseHeaderIsPressed=true;
         loadFPLHeaderIsPressed=true;
+        saveFPLHeaderIsPressed=true;
+        notamHeaderIsPressed=true;
     })
 
     $(".move").mouseup(function(e){
@@ -63,6 +67,8 @@ $(document).mouseup(function(){
         flpHeaderIsPressed=false;
         stripBaseHeaderIsPressed=false;
         loadFPLHeaderIsPressed=false;
+        saveFPLHeaderIsPressed=false;
+        notamHeaderIsPressed=false;
     })
 
 
@@ -122,6 +128,41 @@ $(document).mouseup(function(){
                 })
                 
 
+       $(".save-fpl-form").mousemove(function(e){
+                if (mouseIsPressed && saveFPLHeaderIsPressed==true){
+                // $(this).css("cursor","move");
+                x5 = e.clientX; 
+                y5 = e.clientY;
+                // x2 =parseInt($(".fpl-form").css("left"));
+                elemWidthSaveFPL=$(".save-fpl-form").css("width");          
+                    
+                 $(this).css("left",(x5-parseFloat(elemWidthSaveFPL)/2)+"px");
+                 $(this).css("top",(y5-20)+"px");
+                   
+                 $(".save-fpl-form-margin").css("left",(x5-parseFloat(elemWidthSaveFPL)/2)-5+"px");
+                 $(".save-fpl-form-margin").css("top",(y5-25)+"px");
+                
+                }     
+                })
+                
+                $(".notam-form").mousemove(function(e){
+                    if (mouseIsPressed && notamHeaderIsPressed==true){
+                    // $(this).css("cursor","move");
+                    x6 = e.clientX; 
+                    y6 = e.clientY;
+                    // x2 =parseInt($(".fpl-form").css("left"));
+                    elemWidthNotam=$(".notam-form").css("width");          
+                        
+                     $(this).css("left",(x6-parseFloat(elemWidthNotam)/2)+"px");
+                     $(this).css("top",(y6-20)+"px");
+                       
+                     $(".notam-form-margin").css("left",(x6-parseFloat(elemWidthNotam)/2)-5+"px");
+                     $(".notam-form-margin").css("top",(y6-25)+"px");
+                    
+                    }     
+                    })
+                    
+    
 
 
 

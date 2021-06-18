@@ -367,5 +367,3 @@ VFRLayer.setVisible(false);
 airwaysLayer.setVisible(true);
 waypointsLayer.setVisible(true);
 waypointsVFRLayer.setVisible(false);
-
-

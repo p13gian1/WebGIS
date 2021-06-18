@@ -13,6 +13,7 @@ var otherInformationEdit=false;
 
 var fplAirway={name:'',rotation:0};
 var fplAirways;
+var fplToBeSaved;
 var numberOfSavedFPLs=0;
 
 
@@ -943,8 +944,20 @@ fpl.pilotInCommand.value
  fetch('http://localhost:3000/FPL?q='+ flightPlanArray).then((response)=>{
  // fetch('http://localhost:3000/FPL?q='+fpl.aircraftID.value).then((response)=>{
     response.json().then((data) => {
-      console.log(data.results) 
-   
+      console.log(data.results)
+      if (data.results=='ok'){
+
+        $('#submitFPL').css('color','green');
+        setTimeout(function(){$('#submitFPL').css('color','yellow'); },4000);
+        clearFPL();
+       
+
+        
+      }
+      else
+      {
+        $('#submitFPL').css('color','red');
+      }
          
     })
   });
@@ -965,10 +978,11 @@ getMyFlightPlansContent=()=> {
       for (var i=0; i<data.results.length;i++) {
 
        document.getElementById("load-fpl-content").innerHTML +='<h6 style="margin-left:10px" id="savedFPL'+i+'">'+data.results[i]+'</h6>';
+      //  document.getElementById("save-fpl-content").innerHTML +='<h6 style="margin-left:10px" id="savedFPL'+i+'">'+data.results[i]+'</h6>';
       //  content=content+ data.results[i]+'<br>';
        
       }
-    
+      document.getElementById("save-fpl-content").innerHTML = document.getElementById("load-fpl-content").innerHTML;
          
     })
   
@@ -1018,7 +1032,47 @@ $('.load-fpl-text').click(function(e){ if (e.target.id !='load-fpl-content'){
 $('#loadFPL').click(function(){
   clearFPL();
   parseFPL();
+  $(".load-fpl-form").css("display","none");
+  $(".load-fpl-form-margin").css("display","none");  
  });
+
+
+ $('#saveFPL').click(function(){
+ 
+  
+ let filename=document.getElementById('filenameFPL').value;
+  console.log(filename);
+ 
+  fetch('http://localhost:3000/WriteFPL?q1='+filename+'&q2='+fplToBeSaved).then((response)=>{
+ 
+  response.json().then((results) => {  
+   console.log(results.data);
+       
+  })
+
+ 
+ }); 
+
+ clearFPL();
+
+  $(".save-fpl-form").css("display","none");
+  $(".save-fpl-form-margin").css("display","none");
+
+ });
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
 
  $('#clearFPL').click(function(){
   setTimeout(function (){
@@ -1124,7 +1178,7 @@ parseFPL=()=>{
       FPL[10]=FPL[10].slice(5,8);
 
       FPL[11]=fileFPLArray[6];
-      FPL[11]=FPL[11].slice(9,fileFPLArray[6].length+1);
+      FPL[11]=FPL[11].slice(9,fileFPLArray[6].length-1);
 
   }
   else
@@ -1134,7 +1188,7 @@ parseFPL=()=>{
       FPL[10]=fileFPLArray[6];
       FPL[10]=FPL[10].slice(5,10);
       FPL[11]=fileFPLArray[6];
-      FPL[11]=FPL[11].slice(11,fileFPLArray[6].length+1);
+      FPL[11]=FPL[11].slice(11,fileFPLArray[6].length-1);
 
   }
   FPL[12]=fileFPLArray[7];
@@ -1146,15 +1200,167 @@ parseFPL=()=>{
   FPL[13]=FPL[13].slice(4,8);
   FPL[14]=tempAerodromesArray[1];
   FPL[15]=tempAerodromesArray[2];
-  FPL[16]=fileFPLArray[8];
-
+  FPL[16]=fileFPLArray[8].slice(0,fileFPLArray[8].length-2);
+ console.log(fileFPLArray[9]);
  
   if (fileFPLArray[9]!=undefined){
       let supplementaryTemp=fileFPLArray[9];
+      FPL[17]=supplementaryTemp.slice(2,6);           //Endurance
+      FPL[18]=supplementaryTemp.slice(9,12);          //Persons on Board
 
-      FPL[17]=supplementaryTemp.slice(2,6);
-      FPL[18]=supplementaryTemp.slice(9,12);
-      console.log(supplementaryTemp);
+
+      let positionR=supplementaryTemp.search('R/');    //finding position of R/
+
+
+      if (positionR!=-1) { 
+            FPL[19]=supplementaryTemp.slice(positionR+2,positionR+5);
+            let tempSearch=FPL[19].search('U');     
+            if (tempSearch!=-1)
+            {
+              supplementaryObject.emergencyRadioUHF=true;
+              $('#emergencyRadioUHF').css('color','yellow');
+            }
+
+            tempSearch=FPL[19].search('V');
+            if (tempSearch!=-1)
+            {
+              supplementaryObject.emergencyRadioVHF=true;
+              $('#emergencyRadioVHF').css('color','yellow');
+            }
+
+            tempSearch=FPL[19].search('E');
+            if (tempSearch!=-1)
+            {
+              supplementaryObject.emergencyRadioELBA=true;
+              $('#emergencyRadioELBA').css('color','yellow');
+            }
+      } 
+
+
+      let positionS=supplementaryTemp.search('S/');    //finding position of S/
+
+
+      if (positionS!=-1) { 
+          FPL[19]=supplementaryTemp.slice(positionS,positionS+6);
+          let tempSearch=FPL[19].search('S');     
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.dinghies=true;
+            $('#dinghies').css('color','yellow');
+          }
+
+          tempSearch=FPL[19].search('P');
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.polar=true;
+            $('#polar').css('color','yellow');
+          }
+
+          tempSearch=FPL[19].search('D');
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.desert=true;
+            $('#desert').css('color','yellow');
+          }
+          tempSearch=FPL[19].search('M');
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.maritime=true;
+            $('#maritime').css('color','yellow');
+          }
+
+          tempSearch=FPL[19].search('J');
+          if ((tempSearch!=-1) && (FPL[19][tempSearch-1]!=' ')) //we make sure that J doesn't belong to J/ segment
+          {                                                     //so we check there is no space before J
+            supplementaryObject.jungle=true;
+            $('#jungle').css('color','yellow');
+          }
+      } 
+
+      let positionJ=supplementaryTemp.search('J/');    //finding position of J/
+
+
+      if (positionJ!=-1) { 
+          FPL[19]=supplementaryTemp.slice(positionJ,positionJ+6);
+          let tempSearch=FPL[19].search('J');     
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.jackets=true;
+            $('#jackets').css('color','yellow');
+          }
+
+          tempSearch=FPL[19].search('L');
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.light=true;
+            $('#light').css('color','yellow');
+          }
+
+          tempSearch=FPL[19].search('F');
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.floures=true;
+            $('#floures').css('color','yellow');
+          }
+          tempSearch=FPL[19].search('U');
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.UHF=true;
+            $('#UHF').css('color','yellow');
+          }
+
+          tempSearch=FPL[19].search('V');
+          if (tempSearch!=-1)
+          {
+            supplementaryObject.VHF=true;
+            $('#VHF').css('color','yellow');
+          }
+      } 
+
+      let positionD=supplementaryTemp.search('D/');    //finding position of J/
+      if (positionD!=-1) {
+        supplementaryObject.dinghiesSecond=true;
+        $('#dinghiesSecond').css('color','yellow');
+
+        FPL[19]=supplementaryTemp.slice(positionD+2,positionD+4);
+        fpl.numberOfDinghies.value=FPL[19];
+        FPL[19]=supplementaryTemp.slice(positionD+5,positionD+8);
+        fpl.capacity.value=FPL[19];       
+      } 
+      
+      let segment=supplementaryTemp.split('\n');
+      console.log("segment:"+segment);
+      let positionC=segment[0].search('C/');
+      console.log("D "+positionD);
+      if (positionC!=-1) {
+        supplementaryObject.cover=true;
+        $('#cover').css('color','yellow');
+        fpl.color.value=segment[0].slice(positionC+2,segment[0].length+1);
+      }
+      
+      let positionA=supplementaryTemp.search('A/');
+      segment=supplementaryTemp.slice(positionA,supplementaryTemp.length+1);
+
+
+      let positionN=segment.search('N/');
+      positionC=segment.search('C/');
+      if (positionN!=-1){ 
+        fpl.remarks.value=segment.slice(positionN+2,positionC-1);
+    } else 
+
+    {
+      positionN=positionC;     // in case there is no N/ field then make positionN same as positionC marker
+    }
+      
+
+
+      // console.log('Α: '+0+' '+' N: '+positionN+' C: '+positionC);
+
+      fpl.aircraftColorAndMarkings.value=segment.slice(2,positionN-1);
+
+            
+      fpl.pilotInCommand.value=segment.slice(positionC+2,segment.length-1); 
+      
   }
 
 
@@ -1267,6 +1473,34 @@ fpl.personsOnBoard.value=FPL[18];
 
 
 }
+
+
+
+reverseParseFPL=()=>{
+
+  fplToBeSaved='(FPL-'+fpl.aircraftID.value+'-'+fpl.flightRules.value+fpl.typeOfFlight.value+'\n'+
+  '-'+fpl.number.value+fpl.typeOfAircraft.value+'/'+fpl.wakeTurbulenceCat.value+'-'+fpl.equipment.value+'\n'+
+  '-'+fpl.departureAerodrome.value+fpl.time.value+'\n'+
+  '-'+fpl.crusingSpeed.value+fpl.level.value+' '+fpl.route.value+'\n'+
+  '-'+fpl.destinationAerodrome.value+fpl.totalEET.value+' '+ fpl.alternateAerodrome.value+' '+fpl.secondAlternateAerodrome.value+'\n'+
+  '-'+fpl.otherInformation.value+')\n';
+  
+  console.log(fplToBeSaved);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

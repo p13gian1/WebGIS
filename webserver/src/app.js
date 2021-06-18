@@ -26,7 +26,8 @@ app.use(cors());              // https://stackoverflow.com/questions/43871637/no
 
 
 //----------------------------------------------------
-
+const airportDiscovery = require('@airport-discovery/metars-tafs');
+const notams = require('@airport-discovery/notams');
 
 
 
@@ -62,7 +63,7 @@ const pool = new Pool (config);
 app.get('/hello', (req, res) => {
       res.json('hello world!');      
 });
-app.get('/aip',async (req, res) => {
+app.get('/coordsToAerodrome',async (req, res) => {
   
 try {
    const template = 'SELECT * FROM AERODROMES_LAYER WHERE ST_DWithin(COORDINATES, ST_MakePoint($1,$2)::geography, 3000)';
@@ -211,7 +212,7 @@ app.get('/aerodrome',async (req, res) => {
 
     
 //joining path of directory 
-const directoryPath = path.join(__dirname, 'MyFlightPlans');
+const directoryPath = '/MyFlightPlans/';
 //passsing directoryPath and callback function
 const response=fs.readdir(directoryPath, function (err, files) {
    //console.log(response);
@@ -233,30 +234,78 @@ const response=fs.readdir(directoryPath, function (err, files) {
 
 
   app.get('/ReadFPL',(req,res) => {
-
-   console.log(req.query.q);
-  
-  
-   try {
-     
-     const data = fs.readFileSync('/wamp64/www/WebGIS/webserver/src/MyFlightPlans/'+req.query.q, 'utf8')
+   console.log(req.query.q); 
+   try {     
+     const data = fs.readFileSync('/MyFlightPlans/'+req.query.q, 'utf8')
      res.json({status: 'ok', results: data});
    }
-   
    catch (err) {
      console.error(err)
    }
+   });
 
 
+   app.get('/WriteFPL',(req,res) => {
+     
+      try {
+         console.log(req.query.q1+' '+req.query.q2);     
+         fs.writeFileSync('/MyFlightPlans/'+req.query.q1,req.query.q2);
+       
+        res.json({status: 'ok',data: 'ok'});
+
+      }
+      catch (err) {
+        console.error(err)
+      }
+      });
+
+
+
+
+
+
+      app.get('/metar',async (req, res) => {
+ 
+         try {
+            const metars = await airportDiscovery.metars(req.query.q);
+                      
+               res.json({status: 'ok', results: metars});
+            
+            console.log(metars);
+         }
+         catch(err){
+            console.error('Error running query'+err);
+         }
+         })
+
+
+         app.get('/notam',async (req, res) => {
+ 
+            try {
+               
+               const notamsResponse = await notams(req.query.q);
+                         
+                  res.json({status: 'ok', results: notamsResponse});
+               
+               console.log(notamsResponse);
+            }
+            catch(err){
+               console.error('Error running query'+err);
+            }
+            });
+
+
+
+
+
+
+      
    
-   
-     });
 
 
 
-
-
-
+      // const metars = await airportDiscovery.metars('LGKR');
+      // console.log(metars);
 
 
 
