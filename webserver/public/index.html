@@ -128,7 +128,9 @@
     <div class="selection-form">
     <input type="button" id="aip-info-button" name="aip-info-button" value='AIP Info' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-left:10px; margin-right:10px; margin-top:8px;">
     <input type="button" id="metar-button" name="metar-button" value='METAR' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px; margin-right:10px;">
-    <input type="button" id="notam-button" name="notam-button" value='NOTAMs' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px;">
+    <input type="button" id="notam-button" name="notam-button" value='NOTAMs' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px; margin-right:10px;">
+    <input type="button" id="sid-button" name="sid-button" value='SIDs' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px; margin-right:10px;">
+    <input type="button" id="star-button" name="star-button" value='STARs' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px; margin-right:10px;">
   </div>
     </div>
 
@@ -140,12 +142,29 @@
   
       <div class="notam-form-margin">
         <div class="notam-form">
-          <label class="move" style="width:331px; margin-top: 7px; margin-left: 5px; color: rgba(23, 6, 255, 0.4)">-</label>
+          <label class="move" style="width:325px; margin-top: 7px; margin-left: 5px; color: rgba(23, 6, 255, 0.4)">-</label>
           <label  class="notam-close-icon" style="margin-left:7px;"><i class="fas fa-close fa-lg formButton"></i></label>
           <div class="notam-form-text"></div>
         </div>
         </div>
 
+        <div class="image-form-margin">
+          <div class="image-form">
+            <label class="move" style="width:814px; margin-top: 7px; margin-left: 5px; color: rgba(23, 6, 255, 0.4)">-</label>
+            <label  class="image-close-icon" style="margin-right:5px;"><i class="fas fa-close fa-lg formButton"></i></label>
+            <div class="image-form-text">
+              <img id="image" src="" alt="SID-STAR image is loading...  please wait" style="width:900px;height:900px;">            
+
+            </div>
+            <input type="button" id="left-button" name="left-button" value='<' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px; margin-left:10px;">
+            <input type="button" id="right-button" name="right-button" value='>' style="color:yellow; background-color:rgba(0,0,0,0.1); margin-top:8px; margin-left:3px;">
+           
+            <label class="image-label" id="image-label" style="width:623px; text-align: center; color:yellow;"></label>
+          
+            <input id="image-zoom" type="range" min="3" max="10" step="0.5" value="0" style="margin-left:7px;">
+         
+          </div>
+          </div>
 
 
 

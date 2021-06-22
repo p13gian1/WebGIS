@@ -253,7 +253,7 @@ overflow:auto;
   width: 360px;
   margin: 5px;
  /* height: 400px;*/
-  color: yellow;
+  color: white;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
@@ -303,6 +303,69 @@ overflow:auto;
 
 
 
+.image-form
+{
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 12px;
+  display: none;
+  position: fixed;
+  right: 55px;
+  top:105px;
+  height:830px;
+  width: 850px;
+  margin: 5px;
+ /* height: 400px;*/
+  color: white;
+  z-index:125;
+  background-color:rgba(23, 6, 255, 0.5);
+  border-radius: 10px;
+  
+ 
+  /*box-shadow: -3px 3px 15px black;*/
+
+
+/* avoid selection text */
+-webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
+}
+
+.image-form-margin
+{
+  margin: 5px;
+  display: none;
+  padding:5px;
+  outline: 1px solid black;
+  border: 5px solid rgba(0,0,0,0.1);
+  position: fixed;
+  right: 50px;
+  top:100px;
+  height:840px;
+  width: 860px;
+  
+  
+ /* height: 400px;*/
+  
+  z-index:124;
+  box-shadow: -3px 3px 15px black;
+  background-color:rgba(23, 6, 255, 0.4);
+}
+
+
+.image-form-text 
+{border:1px solid white;
+margin: 7px;
+padding: 6px;
+background-color:rgba(23, 6, 255, 0.3);
+height:750px; 
+overflow:auto;
+}
+
+
+
+
 
 
 .selection-form
@@ -311,10 +374,10 @@ overflow:auto;
   font-size: 12px;
   display: none;
   position: fixed;
-  left: 890px;
+  left: 800px;
   bottom:60px;
   height:40px;
-  width: 212px;
+  width: 325px;
   margin: 5px;
  /* height: 400px;*/
   color: yellow;
@@ -342,10 +405,10 @@ overflow:auto;
   outline: 1px solid black;
   border: 5px solid rgba(0,0,0,0.1);
   position: fixed;
-  left: 885px;
+  left: 795px;
   bottom:55px;
   height:50px;
-  width: 222px;
+  width: 335px;
   
   
  /* height: 400px;*/
@@ -368,7 +431,7 @@ overflow:auto;
   width: 300px;
   margin: 5px;
  /* height: 400px;*/
-  color: yellow;
+  color: white;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
@@ -839,4 +902,16 @@ cursor: default;
   overflow:auto;
   height: 430px;
   margin-bottom:18px;
+}
+
+.image-label{
+  
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 18px;
+  font-weight:bold;
+}
+
+img {
+  color:coral;
+  font: 20px Impact;
 }

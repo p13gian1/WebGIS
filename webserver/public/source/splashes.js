@@ -1,7 +1,10 @@
 var aerodromeInfoMetarNotam;
-
-
-
+var SIDImages;
+var STARImages;
+var activeImage=1;
+var imageWidth=248;
+var imageHeight=175;
+ 
 
 
 
@@ -53,6 +56,8 @@ fetch('http://localhost:3000/coordsToAerodrome?long='+mouseLongitude+'&lat='+mou
   $('.aip-info-margin').css('display','none');
   $('.notam-form').css('display','none');
   $('.notam-form-margin').css('display','none');
+  $('.image-form').css('display','none');
+  $('.image-form-margin').css('display','none');
 
   $('.selection-form').css('display','block');
   $('.selection-form-margin').css('display','block');  
@@ -78,7 +83,7 @@ $("#aip-info-button" ).on('click',function() {
  
   $('.aip-info').css('display','block');
   $('.aip-info-margin').css('display','block');
-  showQuery(mouseLongitude,mouseLatitude);     
+  showQuery();     
  });
 
 
@@ -89,7 +94,7 @@ $("#aip-info-button" ).on('click',function() {
   $('.metar-form').css('display','block');
   $('.metar-form-margin').css('display','block');
   $('.metar-form-text').html('');
-  showMetar(mouseLongitude,mouseLatitude);     
+  showMetar();     
  });
 
  $("#notam-button" ).on('click',function() {
@@ -99,15 +104,177 @@ $("#aip-info-button" ).on('click',function() {
   $('.notam-form').css('display','block');
   $('.notam-form-margin').css('display','block');
   $('.notam-form-text').html('');
-  showNotam(mouseLongitude,mouseLatitude);     
+  showNotam();     
+ });
+
+ $("#sid-button" ).on('click',function() {
+  $('.selection-form').css('display','none');
+  $('.selection-form-margin').css('display','none');  
+  
+  // $('.image-form').css('display','block');
+  // $('.image-form-margin').css('display','block');
+  activeImage=1;
+   showSID();     
+ });
+
+ $("#star-button" ).on('click',function() {
+  $('.selection-form').css('display','none');
+  $('.selection-form-margin').css('display','none');  
+  
+  // $('.image-form').css('display','block');
+  // $('.image-form-margin').css('display','block');
+  activeImage=1;
+   showSTAR();     
  });
 
 
+ $(".image-form-text" ).on('click',function() {
+ 
+  console.log('test');       
+ });
+
+ $("#image-zoom").click(function() {
+ 
+ imageWidth=248*Number($("#image-zoom").val());
+ imageHeight=175*Number($("#image-zoom").val());
+  $('#image').css('width',imageWidth+'px');
+  $('#image').css('height',imageHeight+'px');
+});
+
+
+$("#left-button").click(function() {
+  if (activeImage>1){
+    activeImage--;
+  }
+  showImage(activeImage);
+  console.log(activeImage);
+ });
+ 
+
+
+ $("#right-button").click(function() {
+
+  if (activeImage<SIDImages && SIDImages!=undefined)
+  {
+    activeImage++;
+    showImage(activeImage);
+  }
+ else if (activeImage<STARImages) {
+   activeImage++;
+   showImage(activeImage);
+  }
+
+ console.log(activeImage);
+  
+ });
+
+function showImage(number)
+{
+  
+  let stringQeury;
+  if (STARImages==undefined) {
+    stringQuery='SID'
+  }
+  else
+  {
+    stringQuery='STAR'
+  }
+
+  fetch('http://localhost:3000/'+stringQuery+'?q1='+aerodromeInfoMetarNotam+'&q2='+number).then((response)=>{
+    response.json().then((data) => {
+      // console.log(data.results)
+      // $(".aip-info").html('test').wrap('<pre />');
+      console.log(data.results);
+      $("#image").attr("src","data:image/png;base64,"+data.results);
+      $("#image-label").empty();
+      $("#image-label").text(aerodromeInfoMetarNotam+' '+stringQuery+' '+number);    
+    })
+  });
+}
 
 
 
 
- function showMetar(mouseLongitude,mouseLatitude){  
+
+
+
+
+
+
+
+
+
+ function showSID(){  
+  // console.log('into showQuery'); 
+     
+
+                fetch('http://localhost:3000/GetSIDSTARContent?q='+aerodromeInfoMetarNotam).then((response)=>{
+                  response.json().then((data) => {
+                    // console.log(data.results)
+                    // $(".aip-info").html('test').wrap('<pre />');
+
+                    SIDImages=data.sid;
+                    STARImages=undefined;
+
+                        
+                    $('.image-form').css('display','block');
+                    $('.image-form-margin').css('display','block');
+                    imageWidth=248*Number($("#image-zoom").val());
+                    imageHeight=175*Number($("#image-zoom").val());
+                     $('#image').css('width',imageWidth+'px');
+                     $('#image').css('height',imageHeight+'px');
+
+                     $("#image").attr("src","");
+                     showImage(activeImage);
+
+                  // $(".aip-info").text("Select is "+(active?"activated":"deactivated"));
+                  })
+                });
+   
+}
+
+function showSTAR(){  
+  // console.log('into showQuery'); 
+     
+
+                fetch('http://localhost:3000/GetSIDSTARContent?q='+aerodromeInfoMetarNotam).then((response)=>{
+                  response.json().then((data) => {
+                    // console.log(data.results)
+                    // $(".aip-info").html('test').wrap('<pre />');
+
+                    STARImages=data.star;
+                    SIDImages=undefined;
+                        
+                    $('.image-form').css('display','block');
+                    $('.image-form-margin').css('display','block');
+                    imageWidth=248*Number($("#image-zoom").val());
+                    imageHeight=175*Number($("#image-zoom").val());
+                     $('#image').css('width',imageWidth+'px');
+                     $('#image').css('height',imageHeight+'px');
+                     
+                     $("#image").attr("src","");
+                     showImage(activeImage);
+                    
+                  // $(".aip-info").text("Select is "+(active?"activated":"deactivated"));
+                  })
+                });
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ function showMetar(){  
   // console.log('into showQuery');
 
  
@@ -126,7 +293,7 @@ $("#aip-info-button" ).on('click',function() {
 }
 
 
-function showNotam(mouseLongitude,mouseLatitude){  
+function showNotam(){  
   // console.log('into showQuery');
 
  
@@ -137,7 +304,8 @@ function showNotam(mouseLongitude,mouseLatitude){
                      console.log(data.results)
                     // $(".aip-info").html('test').wrap('<pre />');
                   for (var i=0;i<data.results.notamList.length;i++){
-                    $(".notam-form-text").html( $(".notam-form-text").html()+data.results.notamList[i].icaoMessage+'<br><br>');
+                    let notamSplit=data.results.notamList[i].icaoMessage.replace('\n','<br>');
+                    $(".notam-form-text").html( $(".notam-form-text").html()+notamSplit+'<br><br>');
                     console.log(data.results.notamList[i].icaoMessage)
                   }
                         
@@ -168,10 +336,8 @@ function showNotam(mouseLongitude,mouseLatitude){
 
 
 
-function showQuery(mouseLongitude,mouseLatitude){  
-    // console.log('into showQuery');
-
-   
+function showQuery(){  
+    // console.log('into showQuery');  
        
         
 
@@ -307,5 +473,11 @@ $('.save-close-icon').click(function() {
 $('.notam-close-icon').click(function() {                                           
   $(".notam-form").css("display","none");
   $(".notam-form-margin").css("display","none");
+
+});
+
+$('.image-close-icon').click(function() {                                           
+  $(".image-form").css("display","none");
+  $(".image-form-margin").css("display","none");
 
 });

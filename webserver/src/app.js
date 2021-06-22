@@ -28,7 +28,7 @@ app.use(cors());              // https://stackoverflow.com/questions/43871637/no
 //----------------------------------------------------
 const airportDiscovery = require('@airport-discovery/metars-tafs');
 const notams = require('@airport-discovery/notams');
-
+const imageToBase64 = require('image-to-base64');
 
 
 
@@ -228,8 +228,6 @@ const response=fs.readdir(directoryPath, function (err, files) {
    //  });
 
 });
-
-
   });
 
 
@@ -294,9 +292,88 @@ const response=fs.readdir(directoryPath, function (err, files) {
             }
             });
 
+            app.get('/STAR',(req,res) => {
+               console.log(req.query.q1);
+               console.log(req.query.q2);  
+               
+                  imageToBase64('/wamp64/www/WebGIS/webserver/src/images/'+req.query.q1+'/STAR/'+req.query.q2+'.png') // Path to the image
+    .then(
+        (response) => {
+            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+            res.json({status: 'ok', results: response});
+        }
+    )
+    .catch(
+        (error) => {
+            console.log(error); // Logs an error if there was one
+        }
+    )                    
+               });
+
+               
+
+            app.get('/SID',(req,res) => {
+               console.log(req.query.q1);
+               console.log(req.query.q2);  
+               
+                  imageToBase64('/wamp64/www/WebGIS/webserver/src/images/'+req.query.q1+'/SID/'+req.query.q2+'.png') // Path to the image
+    .then(
+        (response) => {
+            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+            res.json({status: 'ok', results: response});
+        }
+    )
+    .catch(
+        (error) => {
+            console.log(error); // Logs an error if there was one
+        }
+    )
 
 
 
+                 
+              
+               
+               });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+               app.get('/GetSIDSTARContent',(req,res) => {
+    
+                  //joining path of directory 
+                  const directoryPath1 = '/wamp64/www/WebGIS/webserver/src/images/'+req.query.q+'/SID/';
+                  var SID;
+                  var STAR;
+               
+                  //passsing directoryPath and callback function
+                  const response1=fs.readdir(directoryPath1, function (err, SID) {
+                     console.log(directoryPath1);
+                
+
+                     const directoryPath2 = '/wamp64/www/WebGIS/webserver/src/images/'+req.query.q+'/STAR/';
+
+                     const response2=fs.readdir(directoryPath2, function (err, STAR) {
+                        console.log(directoryPath2);
+                        res.json({status: 'ok', sid: SID.length, star: STAR.length});
+                        });
+                  
+                     });                
+
+                    });
 
 
       

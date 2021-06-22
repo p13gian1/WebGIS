@@ -1,5 +1,5 @@
 // $(".aip-info").css("left","800px");
-var x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,elemWidthAIP,elemWidthFLP,elemWidthStripBase,elemWidthLoadFPL,elemWidthSaveFPL,elemWidthNotam;
+var x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,elemWidthAIP,elemWidthFLP,elemWidthStripBase,elemWidthLoadFPL,elemWidthSaveFPL,elemWidthNotam,elemWidthImage;
 var mouseIsPressed=false;
 
 $(document).mousedown(function(){
@@ -42,9 +42,10 @@ $(document).mouseup(function(){
 
    var flpHeaderIsPressed=false;
    var stripBaseHeaderIsPressed=false;
-   var loadFPLHeaderIsPressed=true;
-   var saveFPLHeaderIsPressed=true;
-   var notamHeaderIsPressed=true;
+   var loadFPLHeaderIsPressed=false;
+   var saveFPLHeaderIsPressed=false;
+   var notamHeaderIsPressed=false;
+   var imageHeaderIsPressed=false;
 
    $(".move").mouseover(function(e){
 
@@ -59,6 +60,7 @@ $(document).mouseup(function(){
         loadFPLHeaderIsPressed=true;
         saveFPLHeaderIsPressed=true;
         notamHeaderIsPressed=true;
+        imageHeaderIsPressed=true;
     })
 
     $(".move").mouseup(function(e){
@@ -69,6 +71,7 @@ $(document).mouseup(function(){
         loadFPLHeaderIsPressed=false;
         saveFPLHeaderIsPressed=false;
         notamHeaderIsPressed=false;
+        imageHeaderIsPressed=false;
     })
 
 
@@ -163,7 +166,23 @@ $(document).mouseup(function(){
                     })
                     
     
-
+                    $(".image-form").mousemove(function(e){
+                        if (mouseIsPressed && imageHeaderIsPressed==true){
+                        // $(this).css("cursor","move");
+                        x7 = e.clientX; 
+                        y7 = e.clientY;
+                        // x2 =parseInt($(".fpl-form").css("left"));
+                        elemWidthImage=$(".image-form").css("width");          
+                            
+                         $(this).css("left",(x7-parseFloat(elemWidthImage)/2)+"px");
+                         $(this).css("top",(y7-20)+"px");
+                           
+                         $(".image-form-margin").css("left",(x7-parseFloat(elemWidthImage)/2)-5+"px");
+                         $(".image-form-margin").css("top",(y7-25)+"px");
+                        
+                        }     
+                        })
+                        
 
 
 
