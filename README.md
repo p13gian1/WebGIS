@@ -4,7 +4,17 @@
 ### ΓΙΑΝΝΙΟΣ ΑΝΤΩΝΙΟΣ
 ### Π2013153
 
+
 **********************
+#### Version 1.14
+#### 27-6-2021
+
+- [x] Προστέθηκαν στην φόρμα Selection δυο επιπλέον κουμπιά SID και STAR, με τα οποία ο ελεγκτής μπορεί να δει τις διαδικασίες άφιξης Standard Arrival (ST.AR) και
+      αναχώρησης Standard Instrument Departure (S.I.D) από κάθε αεροδρόμιο της χώρας. Η απεικόνιση γίνεται σε εικόνα που φορτώνεται σε νέα φόρμα η οποία διαθέτει κουμπιά περιήγησης αριστερά και δεξιά, καθώς και zoom slider για μεγένθυνση της εικόνας. Η εικόνα φορτώνεται μέσω του nodejs από directory που βρίσκεται στην server side της εφαρμογής. Οι εικόνες έγιναν μετατροπή από PDF σε PNG και για την αποστολή λήψη μέσω του nodejs μετατρέπονται από PNG σε String Base64 και αντίστροφα.
+
+![Ver 1.14 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-14a.PNG) 
+![Ver 1.14 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-14b.PNG)    
+
 #### Version 1.13
 #### 18-6-2021
 
@@ -18,6 +28,7 @@
 ![Ver 1.13 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-13a.PNG)
 ![Ver 1.13 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-13b.PNG)
 ![Ver 1.13 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-13c.PNG)
+
 
 **********************
 #### Version 1.12
