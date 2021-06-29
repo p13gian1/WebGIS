@@ -426,8 +426,8 @@ $(window).on('load',function() {
                                     });
 
   $('.strip-close-icon').click(function() {                                           
-                                      $(".strip-base-form").css("display","none");
-                                      $(".strip-base-form-margin").css("display","none");
+                                      $(".strip-bay-form").css("display","none");
+                                      $(".strip-bay-form-margin").css("display","none");
 
                                     });
 

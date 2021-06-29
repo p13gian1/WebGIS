@@ -189,7 +189,7 @@ overflow:auto;
 
 
 
-.strip-base-form
+.strip-bay-form
 {
     font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
@@ -218,7 +218,7 @@ overflow:auto;
 
 }
 
-.strip-base-form-margin
+.strip-bay-form-margin
 {
   margin: 5px;
   display: none;

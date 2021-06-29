@@ -1,5 +1,5 @@
 // $(".aip-info").css("left","800px");
-var x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,elemWidthAIP,elemWidthFLP,elemWidthStripBase,elemWidthLoadFPL,elemWidthSaveFPL,elemWidthNotam,elemWidthImage;
+var x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,elemWidthAIP,elemWidthFLP,elemWidthStripBay,elemWidthLoadFPL,elemWidthSaveFPL,elemWidthNotam,elemWidthImage;
 var mouseIsPressed=false;
 
 $(document).mousedown(function(){
@@ -41,7 +41,7 @@ $(document).mouseup(function(){
 
 
    var flpHeaderIsPressed=false;
-   var stripBaseHeaderIsPressed=false;
+   var stripBayHeaderIsPressed=false;
    var loadFPLHeaderIsPressed=false;
    var saveFPLHeaderIsPressed=false;
    var notamHeaderIsPressed=false;
@@ -56,7 +56,7 @@ $(document).mouseup(function(){
        
        
         flpHeaderIsPressed=true;
-        stripBaseHeaderIsPressed=true;
+        stripBayHeaderIsPressed=true;
         loadFPLHeaderIsPressed=true;
         saveFPLHeaderIsPressed=true;
         notamHeaderIsPressed=true;
@@ -67,7 +67,7 @@ $(document).mouseup(function(){
         // console.log(2);
         
         flpHeaderIsPressed=false;
-        stripBaseHeaderIsPressed=false;
+        stripBayHeaderIsPressed=false;
         loadFPLHeaderIsPressed=false;
         saveFPLHeaderIsPressed=false;
         notamHeaderIsPressed=false;
@@ -96,19 +96,19 @@ $(document).mouseup(function(){
         })
 
  
-    $(".strip-base-form").mousemove(function(e){
-            if (mouseIsPressed && stripBaseHeaderIsPressed==true){
+    $(".strip-bay-form").mousemove(function(e){
+            if (mouseIsPressed && stripBayHeaderIsPressed==true){
             // $(this).css("cursor","move");
             x3 = e.clientX; 
             y3 = e.clientY;
             // x2 =parseInt($(".fpl-form").css("left"));
-            elemWidthStripBase=$(".strip-base-form").css("width");          
+            elemWidthStripBay=$(".strip-bay-form").css("width");          
                 
-             $(this).css("left",(x3-parseFloat(elemWidthStripBase)/2)+"px");
+             $(this).css("left",(x3-parseFloat(elemWidthStripBay)/2)+"px");
              $(this).css("top",(y3-20)+"px");
                
-             $(".strip-base-form-margin").css("left",(x3-parseFloat(elemWidthStripBase)/2)-5+"px");
-             $(".strip-base-form-margin").css("top",(y3-25)+"px");
+             $(".strip-bay-form-margin").css("left",(x3-parseFloat(elemWidthStripBay)/2)-5+"px");
+             $(".strip-bay-form-margin").css("top",(y3-25)+"px");
             
             }     
             })

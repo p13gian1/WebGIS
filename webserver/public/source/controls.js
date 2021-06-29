@@ -455,10 +455,10 @@ fillFPLbutton= new ol.control.Button(
   });
 
 
-  stripBasebutton= new ol.control.Button(
+  stripBaybutton= new ol.control.Button(
     {	html: '<a>S</a>',
-      className: "strip-base-button",
-      title: "View Strip Base",
+      className: "strip-bay-button",
+      title: "View Strip Bay",
       //interaction: new ol.interaction.Select (),
     
       handleClick: function()
@@ -468,8 +468,8 @@ fillFPLbutton= new ol.control.Button(
       
          //$(".fpl-form").css({"display": active?"block":"none"});
          
-          $(".strip-base-form").css("display","block");
-          $(".strip-base-form-margin").css("display","block");
+          $(".strip-bay-form").css("display","block");
+          $(".strip-bay-form-margin").css("display","block");
           // for (var i=0;i<400;i=i+1)
           // {
           //   setTimeout(function (){
@@ -492,7 +492,7 @@ fillFPLbutton= new ol.control.Button(
   
 
 nestedFlightPlan.addControl(fillFPLbutton);
-nestedFlightPlan.addControl(stripBasebutton);
+nestedFlightPlan.addControl(stripBaybutton);
 nestedFlightPlan.setPosition('top-left');
 map.addControl(nestedFlightPlan);
 
