@@ -23,6 +23,9 @@
       Έτσι αφού έγινε και αυτή η ενσωμάτωση, διαγράφτηκε η παλιά array "routes" που είχε έτοιμα gpx αρχεία με standard διαδρομές για testing.
 - [x] Διορθώθηκαν κάποια μικρά bugs τα οποία αφορούσαν την επεξεργασία των τμημάτων του σχεδίου πτήσης.   
 
+![Ver 1.15 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-15.PNG)
+
+
 **********************
 #### Version 1.14
 #### 27-6-2021
@@ -33,9 +36,9 @@
       χρόνου και χώρου στο github. Ενδεικτικά έχουν φορτωθεί στο github οι εικόνες STAR και SID, μόνο από 3 αεροδρόμια, LGKR (Κέρκυρα), LGKC (Κύθηρα), LGPZ (Άκτιο).
       Στην local έκδοση της εφαρμογής όμως, έχουν περαστεί όλα τα αεροδρόμια της χώρας πλήρως. 
 
-
 ![Ver 1.14 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-14a.PNG) 
 ![Ver 1.14 Screenshot](https://github.com/p13gian1/WebGIS/blob/master/screenshots/ver_1-14b.PNG)    
+
 
 #### Version 1.13
 #### 18-6-2021
