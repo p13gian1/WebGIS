@@ -195,6 +195,86 @@ app.get('/aerodrome',async (req, res) => {
          }
          })
 
+         app.get('/Flights',async (req, res) => {
+            console.log("req:"+req);
+            try {
+               const template = 'INSERT INTO FLIGHTS (AIRCRAFTID,FLIGHTRULES,TYPEOFFLIGHT,TYPEOFAIRCRAFT,WAKETURBULENCECAT,DEPARTUREAERODROME,'+
+               'TIME,CRUISINGSPEED,LEVEL,ROUTE,DESTINATIONAERODROME,DEPORARR,ACTIVE)'+         
+               'VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)';
+               console.log("req.query.q: "+req.query.q);  
+            const queryArray=req.query.q.split(",");
+            console.log(queryArray[5]);
+   
+              const query={
+                 text: template,
+                 values: queryArray
+              } 
+              
+               const response = await pool.query(query);
+               
+               res.json({status: 'ok', results: 'ok'});
+            
+               // const response = await pool.query(template, [req.query.long, req.query.lat ]);
+               // if (response.rowCount== 0){
+               //    res.json({status: 'notfound', searchTerm: req.query.long});
+               // }
+               // else {
+               //    res.json({status: 'ok', results: response.rows[0]});
+               // }
+               // console.log(response);
+            }
+            catch(err){
+               console.error('Error running query'+err);
+            }
+            })
+            
+            app.get('/getRoute',async (req, res) => {
+               console.log("req:"+req);
+               try {
+                  const template = 'SELECT A.ROUTE FROM FLIGHTS AS A WHERE A.AIRCRAFTID=$1 AND A.DEPARTUREAERODROME=$2 AND A.TIME=$3 AND A.DESTINATIONAERODROME=$4';
+                  console.log("req.query.q: "+req.query.q);  
+               const queryArray=req.query.q.split(",");
+               console.log(queryArray[0]);
+      
+                 const query={
+                    text: template,
+                    values: queryArray
+                 } 
+                 
+                  const response = await pool.query(query);
+                  
+                  res.json({status: 'ok', results: response.rows[0]});
+               
+                  // const response = await pool.query(template, [req.query.long, req.query.lat ]);
+                  // if (response.rowCount== 0){
+                  //    res.json({status: 'notfound', searchTerm: req.query.long});
+                  // }
+                  // else {
+                  //    res.json({status: 'ok', results: response.rows[0]});
+                  // }
+                  // console.log(response);
+               }
+               catch(err){
+                  console.error('Error running query'+err);
+               }
+               })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // SELECT A.NAME
   // FROM AIRWAYS AS A, AIRWAYS AS B 
   // WHERE A.WAYPOINT='KRK' AND B.WAYPOINT='PARAX' AND A.NAME=B.NAME;
@@ -257,7 +337,25 @@ const response=fs.readdir(directoryPath, function (err, files) {
       }
       });
 
+      
+   app.get('/WriteGPXFile',(req,res) => {
 
+   
+      
+      try {
+         console.log(req.query.q1+' '+req.query.q2);    
+         fs.writeFileSync('./data/GPXFiles/'+req.query.q1,req.query.q2);
+         
+       
+        res.json({status: 'ok',data: 'ok'});
+
+      }
+      catch (err) {
+        console.error(err)
+      }
+      });
+
+      
 
 
 

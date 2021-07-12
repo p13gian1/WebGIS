@@ -265,18 +265,18 @@ flightControls.setPosition('left');
 map.addControl(flightControls);
 
 // mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));
-flightControls.addControl( new ol.control.Button (
-  {	
-    html: '<i class="maki2-airport"></i>',
-    className: "animate-button",
-    title: "Press to animate a flight",
-    handleClick: function()
-      {	
-        aircraftId=aircraftId+1;
-        createAircraftLayer();
-        animateFeature();
-      }
-  }) );
+// flightControls.addControl( new ol.control.Button (
+//   {	
+//     html: '<i class="maki2-airport"></i>',
+//     className: "animate-button",
+//     title: "Press to animate a flight",
+//     handleClick: function()
+//       {	
+//         aircraftId=aircraftId+1;
+//         createAircraftLayer();
+//         animateFeature();
+//       }
+//   }) );
 
   flightControls.addControl( new ol.control.Toggle (
     {	html: '<a>r</a>',

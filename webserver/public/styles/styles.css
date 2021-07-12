@@ -198,7 +198,7 @@ overflow:auto;
   right: 460px;
   top:400px;
   height:515px;
-  width: 360px;
+  width: 470px;
   margin: 5px;
  /* height: 400px;*/
   color: yellow;
@@ -229,7 +229,7 @@ overflow:auto;
   right: 455px;
   top:395px;
   height:525px;
-  width: 370px;
+  width: 480px;
   
   
  /* height: 400px;*/
@@ -239,11 +239,273 @@ overflow:auto;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
+.strip-bay-form-text
+{border:1px solid white;
+color:white;
+margin: 7px;
+padding: 10px;
+background-color:rgba(23, 6, 255, 0.3);
+height:472px; 
+overflow:auto;
+}
+
+.strip-1
+{
+margin-top:3px;
+margin-bottom:3px;
+width:415px;
+font-size: 16px;
+color: white;  
+text-align: center;
+background-color: gray;
+/* margin-bottom:3px; */
+}
+
+.strip-2a::-moz-selection { /*avoid selection on input squawk*/
+
+  background: green;
+}
+
+.strip-2a::selection {
+
+  background: green;
+}
+
+
+
+
+
+
+.strip-2a
+{ 
+  
+  font-size: 12px;
+  text-align:left;
+ 
+  /* border-right:1px solid white; */
+  width:54px;
+  height:25px;
+
+  vertical-align: middle;
+  /* avoid selection text */
+-webkit-user-select: none;  
+-moz-user-select: none;    
+-ms-user-select: none;      
+user-select: none;
+
+
+}
+.strip-2b
+{ 
+  padding-top:4px;
+  padding-right:2px;
+  font-size: 12px;
+  text-align:right;
+  background-color: green;
+  border-right:1px solid white; 
+  width:40px;
+  height:25px;
+
+  vertical-align: middle;
+
+}
+
+.strip-10a
+{ 
+  
+  font-size: 12px;
+  text-align:left;
+  background-color: green;
+  
+  width:49px;
+  height:25px;
+  /* margin-top:-2px; */
+  vertical-align: middle;
+  padding-left:2px;
+  padding-top: 5px;
+
+  
+  
+
+}
+
+
+.strip-10b
+{ 
+  
+  font-size: 12px;
+  text-align:right;
+  background-color: green;
+  border-right:1px solid white;
+  width:45px;
+  height:25px;
+  /* margin-top:-2px; */
+  vertical-align: middle;
+  padding-right:2px;
+  padding-top: 5px;
+
+  
+  
+
+}
+
+
+
+
+
+
+
+.strip-9
+{ 
+  font-weight:bold;
+  font-size: 16px;
+  text-align:left;
+  padding-left:2px;
+  background-color: green;
+  border-right:1px solid white;
+  width:94px;
+  height:25px;
+  vertical-align: middle;
+
+  
+}
+
+
+.strip-3
+{
+  /* margin-top: 0px; */
+  font-size: 16px;
+  text-align:right;
+  background-color: green;
+  border-right:1px solid white;
+  width:80px;
+  height:25px;
+  vertical-align: middle;
+
+}
+
+
+.strip-4, .strip-5, .strip-6, .strip-7
+{
+  font-size: 16px;
+  text-align:right;
+  background-color: green;
+  border-right:1px solid white;
+  width:40px;
+  height:25px;
+  vertical-align: middle;
+
+}
+.strip-11,.strip-13
+{
+  font-size: 14px;
+  text-align:right;
+  background-color: green;
+  border-top:1px solid white;
+  /* border-right:1px solid white; */
+  width:40px;
+  height:25px;
+  vertical-align: middle;
+  font-weight:bold;
+
+}
+
+.strip-13
+{
+  border-right:1px solid white; 
+}
+
+
+
+.strip-12
+{
+  font-size: 12px;
+  text-align:right;
+  background-color: green;
+  border-top:1px solid white;
+  /* border-right:1px solid white; */
+  width:80px;
+  height:25px;
+  vertical-align: middle;
+
+}
+
+.strip-8
+{
+  /* margin-top: 0px; */
+  font-size: 16px;
+  text-align:right;
+  background-color: green;
+  
+  width:60px;
+  height:25px;
+  vertical-align: middle;
+
+}
+.strip-gray
+{
+  /* margin-top: 0px; */
+  font-size: 16px;
+  text-align:right;
+  background-color:gray;
+  border-left:4px solid green;
+  width:20px;
+  height:25px;
+  vertical-align: middle;
+  margin-left: 1px;
+}
+
+
+
+.strip-bay-form-text input[type=text] {
+  /* margin-top:5px; */
+  background-color:green;
+  border-radius: 0px;
+  /* border: none; */
+  border:none;
+  /* border-right:1px solid white; */
+  color: white;
+ }
+ 
+ .strip-bay-form-text input[type=text]:focus {
+  /* margin-top:5px; */
+  background-color:green;
+  border: none;
+  
+  /* border-right:1px solid white; */
+   color: white;
+ }
+ 
+ 
+ .strip-bay-form-text textarea[type=text] {
+  /* margin-top:5px; */
+  background-color:green;
+  border: none;
+  
+  /* border-right:1px solid white; */
+   color: white;
+  }
+  
+  .strip-bay-form-text textarea[type=text]:focus {
+    /* margin-top:5px; */
+    background-color:green;
+    border: none;
+   
+    /* border-right:1px solid white; */
+    color: white;
+  }
+
+
+
+
+
+
+
 
 
 .notam-form
 {
-    font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
@@ -825,21 +1087,21 @@ overflow:auto;
 }
 
 
-input[type=text] {
+.fpl-form input[type=text] {
  background-color:rgba(0,0,0,0.2);
 }
 
-input[type=text]:focus {
+.fpl-form input[type=text]:focus {
  background-color:rgba(0,0,0,0.1);
   color: white;
 }
 
 
-textarea[type=text] {
+.fpl-form textarea[type=text] {
   background-color:rgba(0,0,0,0.2);
  }
  
- textarea[type=text]:focus {
+ .fpl-form textarea[type=text]:focus {
   background-color:rgba(0,0,0,0.1);
    color: white;
  }

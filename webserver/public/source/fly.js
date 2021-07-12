@@ -2,13 +2,13 @@
   var aircraftRouteSource=[];
   var routeVisibility=false;
   var aircraftFont='maki2-airport';
-
-  
+  var aircrafts=[];
+  var routes=[];
   // var aircraftFont='fa-plane';  //font-awesome rotation needs to be fixed!  rotation:  
 
 //test arrays aircrafts, routes  
-  var aircrafts=['SXBIM','SXAJT','DEGHJ','OAL054','AEE604','OAL055','SEH081','SEH082'];
-  var routes=['./data/LGKJ-LGAV.gpx','./data/LGKR-LGAV.gpx','./data/LGTS-LGAV.gpx','./data/LGKC-LGKR.gpx','./data/route4.gpx','./data/route5.gpx','./data/route6.gpx','./data/route7.gpx']
+  // var aircrafts=['SXBIM','SXAJT','DEGHJ','OAL054','AEE604','OAL055','SEH081','SEH082'];
+  // var routes=['./data/GPXFiles/IMEJO-LGKR0700-LGKR.gpx','./data/LGKR-LGAV.gpx','./data/LGTS-LGAV.gpx','./data/LGKC-LGKR.gpx','./data/route4.gpx','./data/route5.gpx','./data/route6.gpx','./data/route7.gpx']
 
   var style = [
       new ol.style.Style({
@@ -137,9 +137,9 @@
 
 
  createAircraftLayer=() =>{
-
+ console.log('loading gpx');
   source = new ol.source.Vector({
-    //url: '../data/192553.gpx',
+    // url: '/GPXFiles/SXBAL-LGKR1200-LGSA.gpx',
     url: routes[aircraftId],
     format: new ol.format.GPX()
   });
@@ -156,7 +156,7 @@
     aircraftLayer[aircraftId].setZIndex(900);
     map.addLayer(aircraftLayer[aircraftId]); 
    
-
+ 
 
 //-----------------------------------------
 routeVector[aircraftId]=new ol.source.Vector({});
@@ -452,3 +452,11 @@ routeVector[aircraftId]=new ol.source.Vector({});
 
 // getting current coordinates of aircraft, but it needs to be rendered first in order to calculate its coords  
 // map.getLayers().getArray()[5].getSource().getFeatures()[1].getGeometry().getFlatCoordinates()
+
+
+function activateFlight(aircraftIDValue,filenameTemp){
+  aircrafts.push(aircraftIDValue); //pushing name of aircraft in aircrafts array
+  routes.push('../src/data/GPXFiles/'+filenameTemp);
+
+}
+

@@ -68,17 +68,6 @@ $(function() {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
 // $('.fpl-form').change(function(){
 // if (fpl.aircraftID.value=='SXAJT')
 // {
@@ -225,36 +214,6 @@ $('.supplementary').click(function(e){
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $('#destinationAerodrome').change(function(){
 
   if (fpl.destinationAerodrome.value.length>0 && fpl.destinationAerodrome.value.length<4){
@@ -389,7 +348,7 @@ for (var t=0; t<routeSegments.length; t++)
       }
 }
 
-// console.log(routeArray);
+console.log('route Array'+routeArray);
 fplRouteCoordinates=[];
 // fplRouteCoordinates=tempArray;
 
@@ -457,12 +416,12 @@ function increaseI()
 
 setTimeout(function (){
   var s='';
-  for  (var i=0;i<routeArray.length;i++){
-   s=s+' '+routeArray[i];
-   fpl.route.value=s;
+  for  (var i=0;i<routeArray.length-1;i++){
+   s+=routeArray[i]+' ';
   
    }
-  
+   s+=routeArray[routeArray.length-1];
+   fpl.route.value=s;  
   updatePath();
 },1000)
 
@@ -479,47 +438,6 @@ $('#otherInformation').click(function(){
       otherInformationEdit=true;
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // var testString='KRK IXONI PIKAD KOR';
@@ -676,71 +594,6 @@ fplAirways=[{}];
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //draw fpl path
   setTimeout(function (){
     // console.log('after'+fplPathCoordinates);
@@ -860,31 +713,8 @@ map.on('moveend', function() {
 
 map.on('change',function(){
   
-  
-
-
-
+ 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function formSubmit(){
   console.log('FPL submitted!');
@@ -937,8 +767,25 @@ fpl.remarks.value,
 fpl.pilotInCommand.value
 ];
 
- console.log(flightPlanArray);
+ console.log("FlightPlanArray:"+flightPlanArray);
 
+var flightArray=[
+fpl.aircraftID.value,
+fpl.flightRules.value,
+fpl.typeOfFlight.value,
+fpl.typeOfAircraft.value,
+fpl.wakeTurbulenceCat.value,
+fpl.departureAerodrome.value,
+fpl.time.value,
+fpl.crusingSpeed.value,
+fpl.level.value,
+fpl.route.value,
+fpl.destinationAerodrome.value,
+'DEP',
+false
+];
+
+console.log("FlightArray:"+flightArray);
 
 
  fetch('http://localhost:3000/FPL?q='+ flightPlanArray).then((response)=>{
@@ -950,8 +797,24 @@ fpl.pilotInCommand.value
         $('#submitFPL').css('color','green');
         setTimeout(function(){$('#submitFPL').css('color','yellow'); },4000);
         clearFPL();
-       
 
+        fetch('http://localhost:3000/Flights?q='+ flightArray).then((response)=>{
+         
+             response.json().then((data) => {
+               console.log("ROUTE IS:"+fpl.route.value);
+               console.log(data.results)
+                           
+                  
+             })
+           });
+
+           flightsCounter++;
+           addFlightToStripBay(flightArray);
+           
+        $(".fpl-form").css("display","none");
+        $(".fpl-form-margin").css("display","none");
+        $(".strip-bay-form").css("display","block");
+        $(".strip-bay-form-margin").css("display","block");
         
       }
       else
@@ -1063,17 +926,6 @@ $('#loadFPL').click(function(){
 
  
 
- 
-
-
-
-
-
-
-
-
-
-
  $('#clearFPL').click(function(){
   setTimeout(function (){
     clearFPL();
@@ -1178,7 +1030,7 @@ parseFPL=()=>{
       FPL[10]=FPL[10].slice(5,8);
 
       FPL[11]=fileFPLArray[6];
-      FPL[11]=FPL[11].slice(9,fileFPLArray[6].length-1);
+      FPL[11]=FPL[11].slice(9,fileFPLArray[6].length);
 
   }
   else
@@ -1188,7 +1040,7 @@ parseFPL=()=>{
       FPL[10]=fileFPLArray[6];
       FPL[10]=FPL[10].slice(5,10);
       FPL[11]=fileFPLArray[6];
-      FPL[11]=FPL[11].slice(11,fileFPLArray[6].length-1);
+      FPL[11]=FPL[11].slice(11,fileFPLArray[6].length);
 
   }
   FPL[12]=fileFPLArray[7];
@@ -1317,7 +1169,7 @@ parseFPL=()=>{
           }
       } 
 
-      let positionD=supplementaryTemp.search('D/');    //finding position of J/
+      let positionD=supplementaryTemp.search('D/');    //finding position of D/
       if (positionD!=-1) {
         supplementaryObject.dinghiesSecond=true;
         $('#dinghiesSecond').css('color','yellow');
@@ -1330,8 +1182,9 @@ parseFPL=()=>{
       
       let segment=supplementaryTemp.split('\n');
       console.log("segment:"+segment);
-      let positionC=segment[0].search('C/');
+      let positionC=segment[0].search('C ');
       console.log("D "+positionD);
+      console.log("C "+positionC);
       if (positionC!=-1) {
         supplementaryObject.cover=true;
         $('#cover').css('color','yellow');
@@ -1364,22 +1217,6 @@ parseFPL=()=>{
   }
 
 
-
-
-
-
-
-
-
-
- 
-  
-  
-
-
-
-
-
 fpl.aircraftID.value=FPL[0];
 fpl.flightRules.value=FPL[1];
 fpl.typeOfFlight.value=FPL[2];
@@ -1407,22 +1244,6 @@ fpl.endurance.value=FPL[17];
 fpl.personsOnBoard.value=FPL[18];
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   console.log(FPL);
@@ -1483,37 +1304,87 @@ reverseParseFPL=()=>{
   '-'+fpl.departureAerodrome.value+fpl.time.value+'\n'+
   '-'+fpl.crusingSpeed.value+fpl.level.value+' '+fpl.route.value+'\n'+
   '-'+fpl.destinationAerodrome.value+fpl.totalEET.value+' '+ fpl.alternateAerodrome.value+' '+fpl.secondAlternateAerodrome.value+'\n'+
-  '-'+fpl.otherInformation.value+')\n';
+  '-'+fpl.otherInformation.value+')\n'+
+  '-E/'+fpl.endurance.value+' P/'+fpl.personsOnBoard.value;
+  if (supplementaryObject.emergencyRadioUHF==true || supplementaryObject.emergencyRadioVHF==true || supplementaryObject.emergencyRadioELBA==true ){
+    fplToBeSaved+=' R/';
+  }
+  if (supplementaryObject.emergencyRadioUHF==true) 
+  {
+    fplToBeSaved+='U';
+  }
+  if (supplementaryObject.emergencyRadioVHF==true) 
+  {
+    fplToBeSaved+='V';
+  }
+  if (supplementaryObject.emergencyRadioELBA==true) 
+  {
+    fplToBeSaved+='E';
+  }
+  if (supplementaryObject.dinghies==true) 
+  {
+    fplToBeSaved+=' S/';
+  }
+  if (supplementaryObject.polar==true) 
+  {
+    fplToBeSaved+='P';
+  }
+  if (supplementaryObject.desert==true) 
+  {
+    fplToBeSaved+='D';
+  }
+  if (supplementaryObject.maritime==true) 
+  {
+    fplToBeSaved+='M';
+  }
+  if (supplementaryObject.jungle==true) 
+  {
+    fplToBeSaved+='J';
+  }
+  if (supplementaryObject.jackets==true) 
+  {
+    fplToBeSaved+=' J/';
+  }
+  if (supplementaryObject.light==true) 
+  {
+    fplToBeSaved+='L';
+  }
+  if (supplementaryObject.floures==true) 
+  {
+    fplToBeSaved+='F';
+  }
+  if (supplementaryObject.UHF==true) 
+  {
+    fplToBeSaved+='U';
+  }
+  if (supplementaryObject.VHF==true) 
+  {
+    fplToBeSaved+='V';
+  }
+
+  if (supplementaryObject.VHF==true) 
+  {
+    fplToBeSaved+='V';
+  }
+  if (supplementaryObject.dinghiesSecond==true) 
+  {
+    fplToBeSaved+='/D';
+    fplToBeSaved+=fpl.numberOfDinghies.value+' '+fpl.capacity.value+' C '+fpl.color.value;
+  }
+  fplToBeSaved+='\n';
+
+  fplToBeSaved+='A/'+fpl.aircraftColorAndMarkings.value;
+  if (aircraftColorAndMarkings.value!='') 
+  {
+    fplToBeSaved+=' N/'+fpl.remarks.value;
+  }
+  fplToBeSaved+='\n';
+  fplToBeSaved+='C/'+fpl.pilotInCommand.value+')\n';
+
   
   console.log(fplToBeSaved);
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
