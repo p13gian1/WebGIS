@@ -380,6 +380,7 @@ routeVector[aircraftId]=new ol.source.Vector({});
      callSignLabelAnimationFeature.once('animationend', function(e)
      {	 
       if (e.feature) { 
+
       var id=e.feature.getId();
         var arr=e.feature.getStyle().getText().getText();
         
@@ -388,6 +389,27 @@ routeVector[aircraftId]=new ol.source.Vector({});
         // aircraftLayer[id].getSource().clear();
         map.removeLayer(aircraftLayer[id]);
         map.removeLayer(routeLayer[id]);
+
+        var tempArrayEndOfFlight=[];
+        tempArrayEndOfFlight[0]=aircrafts[id];
+        let tempString=routes[id].replace('../src/data/GPXFiles/'+aircrafts[id]+'-','');
+        console.log( tempString);
+        tempArrayEndOfFlight[1]=tempString.slice(0,4);
+        console.log( tempString);
+        tempArrayEndOfFlight[2]=tempString.slice(4,8);
+        console.log( tempString);
+        tempArrayEndOfFlight[3]=tempString.slice(9,13);
+        console.log( tempString);
+        console.log( tempArrayEndOfFlight);
+        fetch('http://localhost:3000/EndOfFlight?q='+tempArrayEndOfFlight).then((response)=>{
+         console.log('deleting the record from flights table');             
+        });
+         fetch('http://localhost:3000/DeleteGPXFile?q='+routes[id]).then((response)=>{
+         console.log('deleting the GPX file of the flight');             
+        });  
+
+
+
      
       // console.log('end');
       // console.log('id'+id);

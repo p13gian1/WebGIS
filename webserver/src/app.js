@@ -260,9 +260,56 @@ app.get('/aerodrome',async (req, res) => {
                })
 
 
+               
+            app.get('/Reset',async (req, res) => {
+         
+               try {
+                  const template = ' DELETE FROM FLIGHTS';
+                  const response = await pool.query(template, req.query.q);
+                  
+                     res.json({status: 'ok', results: 'ok'});
+                  
+                     console.log(response);
+               }
+               catch(err){
+                  console.error('Error running query'+err);
+               }
+               })
 
+               app.get('/EndOfFlight',async (req, res) => {
+         
+                  try {
+                     const template = 'DELETE FROM FLIGHTS AS A WHERE A.AIRCRAFTID=$1 AND A.DEPARTUREAERODROME=$2 AND A.TIME=$3 AND A.DESTINATIONAERODROME=$4';
+                     const queryArray=req.query.q.split(",");
+                     console.log(queryArray[0]);
+            
+                       const query={
+                          text: template,
+                          values: queryArray
+                       } 
+                       
+                        const response = await pool.query(query);
+                        res.json({status: 'ok', results: 'ok'});
+                  }
+                  catch(err){
+                     console.error('Error running query'+err);
+                  }
+                  })
+   
+   
+                  app.get('/DeleteGPXFile',(req,res) => {
 
+   
+                                             
+                     try {
+                        fs.unlinkSync(req.query.q)
+                      
+                     } catch(err) {
+                        console.error(err)
+                     }
 
+                     });
+               
 
 
 

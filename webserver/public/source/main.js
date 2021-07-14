@@ -3,6 +3,13 @@ var aircraftId=-1;
 var fullScreen=false;
 var prevStateFullScreen=false;
 
+console.log('out');
+fetch('http://localhost:3000/Reset?q= ').then((response)=>{
+   console.log('reset');                 
+           
+});    
+
+
 init=(a,b,mapFlag)=>{
 
   onWatchAerodromeLongitude=a;
