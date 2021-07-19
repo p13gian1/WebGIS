@@ -97,6 +97,14 @@ $('#submitFPL').click(function(){
 
 $('#departureAerodrome').change(function(){
   
+  // updateDepartureAerodromeField();
+  updateFields();
+})
+
+
+
+function updateDepartureAerodromeField()
+{
   if (fpl.departureAerodrome.value.length>0 && fpl.departureAerodrome.value.length<4){
     $('#departureAerodrome').css('background-color','red');
     fplDepartureAerodromeCoordinates=[];
@@ -131,7 +139,21 @@ $('#departureAerodrome').change(function(){
   }
   // console.log('test dep'+fplPathCoordinates);
   
-})
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -215,7 +237,13 @@ $('.supplementary').click(function(e){
 
 
 $('#destinationAerodrome').change(function(){
+  // updateDestinationAerodromeField();
+  updateFields();
+})
 
+
+function updateDestinationAerodromeField()
+{
   if (fpl.destinationAerodrome.value.length>0 && fpl.destinationAerodrome.value.length<4){
     $('#destinationAerodrome').css('background-color','red');
     fplDestinationAerodromeCoordinates=[];
@@ -252,8 +280,27 @@ $('#destinationAerodrome').change(function(){
     }); 
   }
   // console.log('test dest'+fplPathCoordinates);
-  
-})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $('#alternateAerodrome').change(function(){
@@ -321,7 +368,13 @@ $('#secondAlternateAerodrome').change(function(){
 
 $('#route').change(function(){
  
-  
+//  updateRouteField();
+updateFields();
+
+})
+
+function updateRouteField(){
+   
 routeArray=[];
 var routeSegments=[];
 var tempSegment=[];
@@ -406,14 +459,6 @@ function increaseI()
   // console.log('after');
 }
 
-
-
-
-
-
-
-
-
 setTimeout(function (){
   var s='';
   for  (var i=0;i<routeArray.length-1;i++){
@@ -426,8 +471,11 @@ setTimeout(function (){
 },1000)
 
 //⏵⏴
+}
 
-})
+
+
+
 
 $('#otherInformation').click(function(){
   // console.log('into otherInformation');
@@ -617,11 +665,11 @@ fplAirways=[{}];
     for (var i=0; i<fplAirways.length;i++)
     {
      
+     
       fplAirways[i].firstPoint=fplPathCoordinates[i];
-      // console.log('i '+i+' '+fplAirways[i].firstPoint+' ='+fplPathCoordinates[i]);
       fplAirways[i].secondPoint=fplPathCoordinates[i+1];
       let rotation=0;
- 
+      // console.log('i '+i+' '+fplAirways[i].firstPoint+' ='+fplPathCoordinates[i]);
 
        
       let rot=(fplAirways[i].secondPoint[1]-fplAirways[i].firstPoint[1])/(fplAirways[i].secondPoint[0]-fplAirways[i].firstPoint[0]);
@@ -644,6 +692,7 @@ fplAirways=[{}];
     
     fplSource.addFeature(fplFeature);
     fplFeature.setStyle(fplStyleFunction(fplAirway.name,fplAirway.rotation));
+    fplFeature.setId(fplAirway.name);
     
     
     fplLayer.setZIndex(1);
@@ -693,22 +742,29 @@ function fplStyleFunction(name1,rotation1){
 
 map.on('moveend', function() {
 
-  // console.log('change');
-  // console.log(map.getView().getZoom() );
+  console.log('change');
+  console.log(map.getView().getZoom() );
 
-  // if (map.getView().getZoom()<9){
+  if (map.getView().getZoom()<9){
   
-  //   fplLayer.getSource().getFeatures().forEach( function(feat){
-      
-      
-  //     console.log( feat.getStyle()[0].getText().setText(''));
-      
-      
-  //     feat.getStyle()[0].getText().setText('')
-  //     fplLayer.changed();
-  //   } 
-  //  )
-  // }
+    fplLayer.getSource().getFeatures().forEach( function(e){    
+      console.log(e.getStyle()[0].getText().setText(''));     
+      e.getStyle()[0].getText().setText('');
+      fplLayer.changed();
+      })
+  }
+  else
+  {
+    fplLayer.getSource().getFeatures().forEach( function(e){    
+      // console.log( feat.getStyle()[0].getText().setText(''));     
+      let tempName=e.getId();
+      e.getStyle()[0].getText().setText(tempName);
+      fplLayer.changed();
+      })
+
+  }
+
+
   });
 
 map.on('change',function(){
@@ -717,12 +773,15 @@ map.on('change',function(){
 })
 
 function formSubmit(){
+
+  fplSource.clear();
   console.log('FPL submitted!');
   console.log(fpl.departureAerodrome.value);
 
 if (fpl.number.value=="") {
   fpl.number.value=1;
 }
+
 
  var flightPlanArray=[   
 fpl.aircraftID.value,
@@ -890,11 +949,22 @@ $('.load-fpl-text').click(function(e){ if (e.target.id !='load-fpl-content'){
  
 })
 
-
+function updateFields(){
+  if (fpl.departureAerodrome.value!=''){ 
+  setTimeout(function (){updateDepartureAerodromeField();},1000);
+}
+  if (fpl.route.value!=''){
+  setTimeout(function (){updateRouteField();},1000);
+  }
+  if (fpl.destinationAerodrome.value!=''){ 
+  setTimeout(function (){updateDestinationAerodromeField();},1000);
+  }
+}
 
 $('#loadFPL').click(function(){
   clearFPL();
   parseFPL();
+  updateFields();  
   $(".load-fpl-form").css("display","none");
   $(".load-fpl-form-margin").css("display","none");  
  });
@@ -929,11 +999,22 @@ $('#loadFPL').click(function(){
  $('#clearFPL').click(function(){
   setTimeout(function (){
     clearFPL();
+    clearPath();
   },1200)
- 
+  fplSource.clear();
   });
 
- 
+ clearPath=()=>{
+  fplDepartureAerodromeCoordinates=[];
+  fplDepartureAerodromeValidName='';
+  fplDestinationAerodromeCoordinates=[];
+  fplDestinationAerodromeValidName='';
+  fplPathCoordinates=[];
+  fplPathValidNames=[];
+  fplRouteCoordinates=[];
+  routeArray=[];
+ }
+
  clearFPL=()=>{
   fpl.aircraftID.value='';
   fpl.flightRules.value='';
@@ -1291,8 +1372,7 @@ fpl.personsOnBoard.value=FPL[18];
   //   fpl.remarks.value,
   //   fpl.pilotInCommand.value
   //   ];
-
-
+ 
 }
 
 

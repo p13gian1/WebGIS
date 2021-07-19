@@ -89,9 +89,55 @@ var vfrMapButton = new ol.control.Button(
          {
           if (active){
             spriteIsPlane=true;
+            
+
+          
+          // console.log('into function');
+        //   for (var i=0;i<map.getLayers().getArray().length;i++)
+        //   {
+        //     // console.log(i);
+        //     if (map.getLayers().getArray()[i].get("title")=='Aircrafts')
+        //   {
+        //     // console.log('matched!'+i);
+            
+        //    let aircraftAnimationFeatureTemp= aircraftAnimationFeature = new ol.featureAnimation.Path({
+        //     path: map.getLayers().getArray()[i].getSource(),
+        //     rotate: true,
+        //     easing: 'linear',
+        //     speed: speedValueSlider
+        //    });
+
+        //     map.getLayers().getArray()[i].getSource().getFeatures()[1].setStyle(style[1])
+        //     console.log('test test');
+        //     map.getLayers().getArray()[i].animateFeature (map.getLayers().getArray()[i].getSource().getFeatures()[1], aircraftAnimationFeatureTemp );
+        //     map.getLayers().getArray()[i].getSource().getFeatures()[1].changed();
+        //     map.getLayers().getArray()[i].changed();
+
+        //   }
+  
+        //  }
+
+
+
+
           } else
           {
             spriteIsPlane=false;
+          //   for (var i=0;i<map.getLayers().getArray().length;i++)
+          //   {
+          //     // console.log(i);
+          //     if (map.getLayers().getArray()[i].get("title")=='Aircrafts')
+          //   {
+          //     // console.log('matched!'+i);
+             
+              
+          //     map.getLayers().getArray()[i].getSource().getFeatures()[1].setStyle(style[3]);
+          //     map.getLayers().getArray()[i].getSource().getFeatures()[1].changed();
+          //     map.getLayers().getArray()[i].changed();
+          //   }
+    
+          //  }
+  
           }
          }
       });

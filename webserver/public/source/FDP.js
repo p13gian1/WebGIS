@@ -98,7 +98,7 @@ function addFlightToStripBay(flightArray)
                     
                     aircraftId=aircraftId+1;
                     createAircraftLayer();
-                    animateFeature();
+                    animateTheFeature();
              },2000);                     
                 })                
                 });     

@@ -191,7 +191,7 @@ routeVector[aircraftId]=new ol.source.Vector({});
 
   }
  
- animateFeature=() =>{
+ animateTheFeature=() =>{
   //aircraftLayer[aircraftId].changed();
     
   source.once('change',function(e){
@@ -217,6 +217,7 @@ routeVector[aircraftId]=new ol.source.Vector({});
       });
 
      aircraftFeature = new ol.Feature(new ol.geom.Point([0,0]));
+    //  aircraftFeature.setId('test');
      if (spriteIsPlane)
      {
        aircraftFeature.setStyle(style[1]);
@@ -482,3 +483,6 @@ function activateFlight(aircraftIDValue,filenameTemp){
 
 }
 
+//remarks
+// map.getLayers().getArray()[15].getSource().getFeatures()[1].getGeometry().flatCoordinates()
+// get coordinates of aircraft feature
