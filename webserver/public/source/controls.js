@@ -1,178 +1,128 @@
-var spriteIsPlane=false;
-var mapCenterIsVisible=false;
-var aerodromeCircleState=0; //initial state of aerodrome circle is unvisible;  0=unvisible, 1=5 n.m space, 2=10 n.m space, 3=30 n.m space
 
 
-var mainbarControls = new ol.control.Bar();
-mainbarControls.setPosition('top');
-map.addControl(mainbarControls);
+// ******************************************************************************
+// *                            GIANNIOS ANTONIOS                               *
+// *                                 P2013153                                   *
+// *                            IONION UNIVERSITY                               *
+// *                                24/08/2021                                  *
+// *                                  webGIS                                    *
+// *                                controls.js                                 *     
+// *                          written in Javascript                             *
+// *               it contains all the main buttons of the application          *
+// *                each button calls a function when it is pressed             *
+// ******************************************************************************
 
-// mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));
-mainbarControls.addControl (new ol.control.Button ({
-html: '<a>H</a>',
-title: 'Home',
-handleClick: ()=> { 
-  // document.getElementById("js-map").requestFullscreen();
-  if (fullScreen==true) {
-   document.exitFullscreen();
-   prevStateFullScreen=true;
-}
-   reLoad();
-}
-}));
 
-mainbarControls.addControl (new ol.control.Button ({
-html: '<a>A</a>',
-title: 'AFTN Terminal',
-handleClick: function() { 
-  if (fullScreen==true) {
-     document.exitFullscreen();
-     prevStateFullScreen=true;
+// declaring global variables
+var spriteIsPlane=false;                    // it is used to represent the plane spite as a green dot when it's false, as a plane when it's true
+var mapCenterIsVisible=false;               // it is used to represent a cross at the center of the screen when it's true
+var aerodromeCircleState=0;                 // it is used as an index for the aerodrome circle tool around an aerodrome
+                                            // initial state of aerodrome circle is unvisible;  0=unvisible, 1=5 n.m space, 2=10 n.m space, 3=30 n.m space
+var mainbarControls = new ol.control.Bar(); // making the first control bar
+mainbarControls.setPosition('top');         // putting it at the top side of the screen
+map.addControl(mainbarControls);            // adding the first control bar to the map
+
+
+mainbarControls.addControl (new ol.control.Button ({ //button 'H' which loads home page 
+  html: '<a>H</a>',
+  title: 'Home',
+  handleClick: ()=> { 
+                      if (fullScreen==true) {         //if application is in fullscreen mode then exit fullscreen
+                                              document.exitFullscreen();
+                                              prevStateFullScreen=true;     //this variable goes true in order to store that application was in fullscreen mode so when it returns to back to map it will change to fullscreen mode again
+                      }
+                      reLoad();                       //calling reload function to reload application
   }
-     menuClickAFTN();
-}
 }));
-mainbarControls.addControl (new ol.control.FullScreen());
 
-/* mainbar FlightRules */
-var mainbarFlightRules = new ol.control.Bar();
-mainbarFlightRules.setPosition('top-right');
-map.addControl(mainbarFlightRules);
-
-var nestedFlightRules= new ol.control.Bar ({ toggleOne: true, group:true });
-mainbarFlightRules.addControl (nestedFlightRules);
-
-var vfrMapButton = new ol.control.Button(
-  {	html: '<a>V</a>',
-    className: "VFR",
-    title: "VFR map",
-    //interaction: new ol.interaction.Select (),
-    active:true,
-     handleClick: function()
-     {
-     VFRLayer.setVisible(true);
-      airwaysLayer.setVisible(false);
-      waypointsLayer.setVisible(false);
-      waypointsVFRLayer.setVisible(true);
-
-       //map.removeLayer(airwaysLayer);
-      // $(".aip-info").css("left","800px");
-     }
-  });
-  nestedFlightRules.addControl(vfrMapButton);
-
-  var ifrLowMapButton = new ol.control.Button(
-    {	html: '<a>IL</a>',
-      className: "IFR Low",
-      title: "IFR Low map",
-      //interaction: new ol.interaction.Select (),
-      active:true,
-       handleClick: function()
-       {
-        VFRLayer.setVisible(false);
-        airwaysLayer.setVisible(true);
-        waypointsLayer.setVisible(true);
-        waypointsVFRLayer.setVisible(false);
-       // map.addLayer(airwaysLayer);
-        // $("#info").text("Select is "+(active?"activated":"deactivated"));
-       }
-    });
-    nestedFlightRules.addControl(ifrLowMapButton);
-
-    var ifrHighMapButton = new ol.control.Toggle(
-      {	html: '<a>IH</a>',
-        className: "IFR High",
-        title: "IFR High map",
-        //interaction: new ol.interaction.Select (),
-        active:true,
-         onToggle: function(active)
-         {
-          if (active){
-            spriteIsPlane=true;
-            
-
-          
-          // console.log('into function');
-        //   for (var i=0;i<map.getLayers().getArray().length;i++)
-        //   {
-        //     // console.log(i);
-        //     if (map.getLayers().getArray()[i].get("title")=='Aircrafts')
-        //   {
-        //     // console.log('matched!'+i);
-            
-        //    let aircraftAnimationFeatureTemp= aircraftAnimationFeature = new ol.featureAnimation.Path({
-        //     path: map.getLayers().getArray()[i].getSource(),
-        //     rotate: true,
-        //     easing: 'linear',
-        //     speed: speedValueSlider
-        //    });
-
-        //     map.getLayers().getArray()[i].getSource().getFeatures()[1].setStyle(style[1])
-        //     console.log('test test');
-        //     map.getLayers().getArray()[i].animateFeature (map.getLayers().getArray()[i].getSource().getFeatures()[1], aircraftAnimationFeatureTemp );
-        //     map.getLayers().getArray()[i].getSource().getFeatures()[1].changed();
-        //     map.getLayers().getArray()[i].changed();
-
-        //   }
-  
-        //  }
+mainbarControls.addControl (new ol.control.Button ({ //button 'A' which loads AFTN page
+  html: '<a>A</a>',
+  title: 'AFTN Terminal',
+  handleClick: function() { 
+                            if (fullScreen==true) {       //if application is in fullscreen mode then exit fullscreen
+                                                    document.exitFullscreen();
+                                                    prevStateFullScreen=true;   //this variable goes true in order to store that application was in fullscreen mode so when it returns to back to map it will change to fullscreen mode again
+                            }
+                            menuClickAFTN();              //calling menuClickAFTN function to load AFTN page
+  }
+}));
 
 
+mainbarControls.addControl (new ol.control.FullScreen()); //button for fullscreen mode
 
+var mainbarFlightRules = new ol.control.Bar(); //making the second control bar 
+mainbarFlightRules.setPosition('top-right');   //putting it as the top right side of the screen
+map.addControl(mainbarFlightRules);            //adding second control bar to the map
 
-          } else
-          {
-            spriteIsPlane=false;
-          //   for (var i=0;i<map.getLayers().getArray().length;i++)
-          //   {
-          //     // console.log(i);
-          //     if (map.getLayers().getArray()[i].get("title")=='Aircrafts')
-          //   {
-          //     // console.log('matched!'+i);
-             
-              
-          //     map.getLayers().getArray()[i].getSource().getFeatures()[1].setStyle(style[3]);
-          //     map.getLayers().getArray()[i].getSource().getFeatures()[1].changed();
-          //     map.getLayers().getArray()[i].changed();
-          //   }
-    
-          //  }
-  
-          }
-         }
-      });
-      nestedFlightRules.addControl(ifrHighMapButton);
+var nestedFlightRules= new ol.control.Bar ({ 
+                                              toggleOne: true,
+                                              group:true
+                       }); //making nested control bar which is in toggle mode
+mainbarFlightRules.addControl (nestedFlightRules); //adding this nested control bar to second control bar
 
-      var MTMAMapButton = new ol.control.Toggle(
-        {	html: '<a>T</a>',
-          className: "MTMAs",
-          title: "MTMAs",
-          //interaction: new ol.interaction.Select (),
-          active:false,
-          onToggle: function(active)
-           {
+var vfrMapButton = new ol.control.Button({	 //button V for VFR layer
+                                            html: '<a>V</a>',
+                                            className: "VFR",
+                                            title: "VFR map",
+                                            active:true,                            
+                                            handleClick: function(){
+                                                                      VFRLayer.setVisible(true);          //when button is clicked, make VFR layer visible
+                                                                      airwaysLayer.setVisible(false);     //hide airways layer
+                                                                      waypointsLayer.setVisible(false);   //hide waypoints layer
+                                                                      waypointsVFRLayer.setVisible(true); //make waypoints VFR layer visible 
+                                            }
+});
+nestedFlightRules.addControl(vfrMapButton); //add this button to nested control bar
 
-            if (active){
-              MTMALayer.setVisible(true);
-            } else
-            {
-              MTMALayer.setVisible(false);
-            }
+var ifrLowMapButton = new ol.control.Button({ //IL button for IFR Low layer
+                                              html: '<a>IL</a>',
+                                              className: "IFR Low",
+                                              title: "IFR Low map", 
+                                              active:true,  
+                                              handleClick: function(){
+                                                                        VFRLayer.setVisible(false);           //when button is clicked, hide VFR layer
+                                                                        airwaysLayer.setVisible(true);        //show airways layer
+                                                                        waypointsLayer.setVisible(true);      //show waypoints layer
+                                                                        waypointsVFRLayer.setVisible(false);  //hide waypoints VFR layer
+                                              }
+});
+nestedFlightRules.addControl(ifrLowMapButton);  //add this button to nested control bar
 
-            // VFRLayer.setVisible(false);
-            // airwaysLayer.setVisible(true);
-            // waypointsLayer.setVisible(true);
-           // map.addLayer(airwaysLayer);
-            // $("#info").text("Select is "+(active?"activated":"deactivated"));
-           }
-        });
-        nestedFlightRules.addControl(MTMAMapButton);
+var ifrHighMapButton = new ol.control.Toggle({
+                                              html: '<a>IH</a>',
+                                              className: "IFR High",
+                                              title: "IFR High map",
+                                              active:true,
+                                              onToggle: function(active) {
+                                                                            if (active){
+                                                                              spriteIsPlane=true;
+                                                                            } else {
+                                                                              spriteIsPlane=false;          
+                                                                            }
+                                              }
+});
+nestedFlightRules.addControl(ifrHighMapButton);
 
-        var CTRMapButton = new ol.control.Toggle(
+var MTMAMapButton = new ol.control.Toggle({
+                                            html: '<a>T</a>',
+                                            className: "MTMAs",
+                                            title: "MTMAs",          
+                                            active:false,
+                                            onToggle: function(active) {
+                                              if (active){
+                                                MTMALayer.setVisible(true);
+                                              } else {
+                                                MTMALayer.setVisible(false);
+                                              }       
+                                            }
+});
+nestedFlightRules.addControl(MTMAMapButton);
+
+var CTRMapButton = new ol.control.Toggle(
           {	html: '<a>C</a>',
             className: "CTRs",
             title: "CTRs",
-            //interaction: new ol.interaction.Select (),
+            
             active:false,
             onToggle: function(active)
              {
@@ -182,22 +132,16 @@ var vfrMapButton = new ol.control.Button(
               } else
               {
                 CTRLayer.setVisible(false);
-              }
-  
-              // VFRLayer.setVisible(false);
-              // airwaysLayer.setVisible(true);
-              // waypointsLayer.setVisible(true);
-             // map.addLayer(airwaysLayer);
-              // $("#info").text("Select is "+(active?"activated":"deactivated"));
+              }              
              }
           });
-          nestedFlightRules.addControl(CTRMapButton);
+nestedFlightRules.addControl(CTRMapButton);
 
-          var LGCMapButton = new ol.control.Toggle(
+var LGCMapButton = new ol.control.Toggle(
             {	html: '<a>L</a>',
               className: "LGCs",
               title: "LGCs",
-              //interaction: new ol.interaction.Select (),
+             
               active:false,
               onToggle: function(active)
                {
@@ -209,20 +153,16 @@ var vfrMapButton = new ol.control.Button(
                   LGCLayer.setVisible(false);
                 }
     
-                // VFRLayer.setVisible(false);
-                // airwaysLayer.setVisible(true);
-                // waypointsLayer.setVisible(true);
-               // map.addLayer(airwaysLayer);
-                // $("#info").text("Select is "+(active?"activated":"deactivated"));
+                
                }
             });
-            nestedFlightRules.addControl(LGCMapButton);
+nestedFlightRules.addControl(LGCMapButton);
             
-            var LGDMapButton = new ol.control.Toggle(
+var LGDMapButton = new ol.control.Toggle(
               {	html: '<a>D</a>',
                 className: "LGDs",
                 title: "LGDs",
-                //interaction: new ol.interaction.Select (),
+              
                 active:false,
                 onToggle: function(active)
                  {
@@ -234,20 +174,15 @@ var vfrMapButton = new ol.control.Button(
                     LGDLayer.setVisible(false);
                   }
       
-                  // VFRLayer.setVisible(false);
-                  // airwaysLayer.setVisible(true);
-                  // waypointsLayer.setVisible(true);
-                 // map.addLayer(airwaysLayer);
-                  // $("#info").text("Select is "+(active?"activated":"deactivated"));
+                  
                  }
               });
-              nestedFlightRules.addControl(LGDMapButton);  
+nestedFlightRules.addControl(LGDMapButton);  
             
-              var LGMMapButton = new ol.control.Toggle(
+var LGMMapButton = new ol.control.Toggle(
                 {	html: '<a>M</a>',
                   className: "LGMs",
                   title: "LGMs",
-                  //interaction: new ol.interaction.Select (),
                   active:false,
                   onToggle: function(active)
                    {
@@ -259,20 +194,16 @@ var vfrMapButton = new ol.control.Button(
                       LGMLayer.setVisible(false);
                     }
         
-                    // VFRLayer.setVisible(false);
-                    // airwaysLayer.setVisible(true);
-                    // waypointsLayer.setVisible(true);
-                   // map.addLayer(airwaysLayer);
-                    // $("#info").text("Select is "+(active?"activated":"deactivated"));
+                    
                    }
                 });
-                nestedFlightRules.addControl(LGMMapButton);  
+nestedFlightRules.addControl(LGMMapButton);  
 
-                var LGRMapButton = new ol.control.Toggle(
+var LGRMapButton = new ol.control.Toggle(
                   {	html: '<a>R</a>',
                     className: "LGRs",
                     title: "LGRs",
-                    //interaction: new ol.interaction.Select (),
+                   
                     active:false,
                     onToggle: function(active)
                      {
@@ -284,47 +215,16 @@ var vfrMapButton = new ol.control.Button(
                         LGRLayer.setVisible(false);
                       }
           
-                      // VFRLayer.setVisible(false);
-                      // airwaysLayer.setVisible(true);
-                      // waypointsLayer.setVisible(true);
-                     // map.addLayer(airwaysLayer);
-                      // $("#info").text("Select is "+(active?"activated":"deactivated"));
+                     
                      }
                   });
-                  nestedFlightRules.addControl(LGRMapButton);  
+nestedFlightRules.addControl(LGRMapButton);  
   
-
-
-
-
-
-
-
-
-
-
-
-
-
 var flightControls = new ol.control.Bar();
 flightControls.setPosition('left');
 map.addControl(flightControls);
 
-// mainbarControls.addControl (new ol.control.ZoomToExtent({  extent: [ 265971,6243397 , 273148,6250665 ] }));
-// flightControls.addControl( new ol.control.Button (
-//   {	
-//     html: '<i class="maki2-airport"></i>',
-//     className: "animate-button",
-//     title: "Press to animate a flight",
-//     handleClick: function()
-//       {	
-//         aircraftId=aircraftId+1;
-//         createAircraftLayer();
-//         animateFeature();
-//       }
-//   }) );
-
-  flightControls.addControl( new ol.control.Toggle (
+flightControls.addControl( new ol.control.Toggle (
     {	html: '<a>r</a>',
       className: "route-button",
       title: "Press to view the route of a flight",
@@ -339,9 +239,9 @@ map.addControl(flightControls);
           }
 
           lengthOfLayers=map.getLayers().getLength();
-          // console.log(routeVisibility);
+          
           for (var i=0; i<lengthOfLayers; i=i+1){
-            // console.log(i);
+          
 
             if (map.getLayers().getArray()[i].get('title')=='Aircraft Route')
             {
@@ -353,11 +253,7 @@ map.addControl(flightControls);
         }
     }) );
 
-
-    
-
-
-    flightControls.addControl( new ol.control.Toggle (
+flightControls.addControl( new ol.control.Toggle (
       {	html: '<a>+</a>',
         className: "map-center-button",
         title: "Press to view the center of the map",
@@ -371,24 +267,19 @@ map.addControl(flightControls);
               mapCenterIsVisible=false;
             }
             
-            map.getControls().getArray()[28].setVisible(mapCenterIsVisible);
+            map.getControls().getArray()[27].setVisible(mapCenterIsVisible);
           }
-        
-          
+                 
           }));
 
 
-
-          flightControls.addControl( new ol.control.Button (
+flightControls.addControl( new ol.control.Button (
             {	html: '<a>Z</a>',
               className: "cirlce-button",
               title: "Press to view aerodrome's ATZ",
               active:false,
              handleClick: function()
                 {	
-
-
-
 
                   if (aerodromeCircleState==3){
                     aerodromeCircleState=0;
@@ -399,52 +290,12 @@ map.addControl(flightControls);
                   aerodromeCircleLayer.setVisible(true);
                   refreshCircleAerodrome();
                   }
-
-
-                  
+  
 
                 }
                 
                 }));
       
-
-
-
-
-
-
-
-
-
-
-
-
-// var customLayerSwitcher=new ol.control.Toggle (
-//   {	
-//     html:'<i class="fas fa-layer-group fa-lg"></i>',
-//     className: "custom-layer-switcher",
-//     title: "Custom Layer Switcher",
-//     active:true,
-//     onToggle: function()
-//       {	
-        
-//       }
-//   });
-
-//   map.addControl(customLayerSwitcher);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var ctrl = new ol.control.LayerSwitcher(
 {}
@@ -452,9 +303,7 @@ var ctrl = new ol.control.LayerSwitcher(
 ctrl.setHeader('Layers Opacity');
 
 map.addControl(ctrl);
-ctrl.on('toggle', function(e) {
-  //console.log('Collapse layerswitcher', e.collapsed);
-});
+
 
 var mousePositionControl = new ol.control.MousePosition({
   coordinateFormat: ol.coordinate.createStringXY(4),
@@ -466,151 +315,100 @@ var mousePositionControl = new ol.control.MousePosition({
 map.addControl(mousePositionControl);
 
 
-
-
-
-
 var nestedFlightPlan= new ol.control.Bar ({ toggleOne: false, group:true });
-
-
 
 fillFPLbutton= new ol.control.Button(
   {	html: '<a>F</a>',
     className: "fill-flp-button",
-    title: "Fill a Flight Plan",
-    //interaction: new ol.interaction.Select (),
-  
+    title: "Fill a Flight Plan", 
     handleClick: function()
      {
-      // $(".map").css({"width": active?"70vw":""});
-
-    
-       //$(".fpl-form").css({"display": active?"block":"none"});
-       
         $(".fpl-form").css("display","block");
         $(".fpl-form-margin").css("display","block");
-        // for (var i=0;i<400;i=i+1)
-        // {
-        //   setTimeout(function (){
-        //     $(".fpl-form").css("height",i);
-        //   },700)
-        // }
-       
-
      }
   });
 
 
-  stripBaybutton= new ol.control.Button(
+stripBaybutton= new ol.control.Button(
     {	html: '<a>S</a>',
       className: "strip-bay-button",
       title: "View Strip Bay",
-      //interaction: new ol.interaction.Select (),
+     
     
       handleClick: function()
        {
-        // $(".map").css({"width": active?"70vw":""});
-  
-      
-         //$(".fpl-form").css({"display": active?"block":"none"});
+        
          
           $(".strip-bay-form").css("display","block");
           $(".strip-bay-form-margin").css("display","block");
-          // for (var i=0;i<400;i=i+1)
-          // {
-          //   setTimeout(function (){
-          //     $(".fpl-form").css("height",i);
-          //   },700)
-          // }
+          
          
   
        }
     });
 
 
-
-
-
-
-
-
-    
-  
-
 nestedFlightPlan.addControl(fillFPLbutton);
 nestedFlightPlan.addControl(stripBaybutton);
 nestedFlightPlan.setPosition('top-left');
 map.addControl(nestedFlightPlan);
 
-
-
 var baseMapButton = new ol.control.Toggle(
   {	html: '<a>B</a>',
     className: "base-map-button",
     title: "Press to change base map colours",
-    //interaction: new ol.interaction.Select (),
+   
     active:true,
-     onToggle: function(active)
-     {
-    //$(".aip-info").text((active?"activated":""));
-     if (active){
-       styleJson=styleJson1;
+     onToggle: function(active){
+                                if (active){
+                                  styleJson=styleJson1;                   
+                                  colorCircleAerodromeFill=[255, 255, 255, 0.06];        // when baselayer is green
+                                  colorCircleAerodromeStroke=[255, 255, 255, 1];      
+                                }  else {
+                                          styleJson=styleJson2;
+                                          colorCircleAerodromeFill=[255, 0, 0, 0.06];              //when baselayer is white
+                                          colorCircleAerodromeStroke=[255, 0, 0, 1];
+                                    }   
+ 
+                                var indexOfBaseLayer=getIndexOfBaseLayer();
+                                map.getLayers().getArray().splice(indexOfBaseLayer,1);
 
-                   
-       colorCircleAerodromeFill=[255, 255, 255, 0.06];        // when baselayer is green
-       colorCircleAerodromeStroke=[255, 255, 255, 1]; 
+                                map.render();
+                                olms(map,styleJson);
 
-     
-     } else {
-    styleJson=styleJson2;
-    colorCircleAerodromeFill=[255, 0, 0, 0.06];              //when baselayer is white
-    colorCircleAerodromeStroke=[255, 0, 0, 1];  
+                                setTimeout(function () {
+                                                          indexOfBaseLayer=getIndexOfBaseLayer();
+                                                          map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);
+                                                          if (aerodromeCircleState!=0){ 
+                                                            refreshCircleAerodrome();
+                                                          }
 
+                                            },4000)
 
-
-  }
- //console.log("getBaseLayer"+getIndexOfBaseLayer());
- var indexOfBaseLayer=getIndexOfBaseLayer();
- map.getLayers().getArray().splice(indexOfBaseLayer,1);
-// map.getLayers().getArray().splice(4,1);
-map.render();
-// map.getLayers().getArray()[4].setMap(null);
-olms(map,styleJson);
-
-
-setTimeout(function () { indexOfBaseLayer=getIndexOfBaseLayer();
-map.getLayers().getArray()[indexOfBaseLayer].setZIndex(-1);
-if (aerodromeCircleState!=0){ 
-  refreshCircleAerodrome();
-}
-
-
-},4000          )
-
-   }
-  });
-  map.addControl(baseMapButton);
+                                }
+    });
+map.addControl(baseMapButton);
 
 
 
   //checking if map is on fullscreen mode
-  map.getControls().getArray()[3].getControls()[2].on('enterfullscreen',function(){
+map.getControls().getArray()[3].getControls()[2].on('enterfullscreen',function(){
     fullScreen=true;
-    // console.log(fullScreen);
+   
   })
-  map.getControls().getArray()[3].getControls()[2].on('leavefullscreen',function(){
+map.getControls().getArray()[3].getControls()[2].on('leavefullscreen',function(){
     fullScreen=false;
-    // console.log(fullScreen);
+    
   })
   
 
-
-var scaleLineButton=new ol.control.ScaleLine({                                                  units: 'nautical'
+var scaleLineButton=new ol.control.ScaleLine({  
+      units: 'nautical'
                               
-  // ,bar: true
+ 
   });
 
-  map.addControl(scaleLineButton);
+map.addControl(scaleLineButton);
 
 
 var targetControl =  new ol.control.Target ({	style: [new ol.style.Style({
@@ -646,37 +444,19 @@ new ol.style.Style({
   composite: '',
   zIndex: 25000 });
 
-
-
-  map.addControl(targetControl);
+map.addControl(targetControl);
   
-
-
-
-
-
-
-
-
-
-
 
 
 function getIndexOfBaseLayer(){
   
-// console.log('into function');
- for (var i=0;i<map.getLayers().getArray().length;i++)
-{
-  // console.log(i);
-  if (map.getLayers().getArray()[i].get("mapbox-layers")=='water')
-{
-  // console.log('matched!'+i);
-  return i;
-}
+  for (var i=0;i<map.getLayers().getArray().length;i++){
+    
+        if (map.getLayers().getArray()[i].get("mapbox-layers")=='water')
+      {
+        
+        return i;
+      }
 
-}
+    }
 } 
-
-
-
-

@@ -9,15 +9,9 @@ body {
   padding: 0;
 }
 
-js-map
-{
+js-map {
   display: none;
 }
-
-
-
-
-
 
 .map {
  height: 91.8vh;
@@ -25,71 +19,47 @@ js-map
  display: none;
 }
 
-.aftn
-{
+.aftn {
   display: none;
   color: greenyellow;
 }
 
-
 /*custom colors for navbar*/
-
 .navbar-custom {
   background-color: rgba(23, 6, 255, 0.5);
 }
+
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
   color: rgba(255,255, 255, 1);
 }
+
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
   color: rgba(255,255, 255, 0.5);
 }
+
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
   color: rgba(255,255, 255, 0.9);
 }
 
-
 /*custom navbar height*/
 .navbar {
   max-height: 60px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .navbar-brand {
-cursor: default;
+  cursor: default;
 }
-
 
 p {
   
   background-color: rgba(0, 0, 0, 0.5);
   cursor: default;
-
 }
-
-
 
 h2 {
   color: white;
@@ -98,20 +68,20 @@ h2 {
   background-color: rgba(0,0,0,0.2);
 }
 
+
 h3 {
   color: white;
   text-align: center;
 }
 
 h4 {
-
   color: white;
   font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 18px;
   background-color: rgba(0,0,0,0.2);
 }
 
-.place{
+.place {
   color: white;
   z-index:100;
   position: fixed;
@@ -120,7 +90,7 @@ h4 {
 
 }
 
-.speed-label{
+.speed-label {
   color: white;
   z-index:100;
   position: fixed;
@@ -128,18 +98,12 @@ h4 {
   bottom: 20px; 
 }
 
-
-
-.aip-info, .aip-info-header{
-
-
+.aip-info, .aip-info-header {
   font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display:none;
   padding: 5px;
- border-radius: 10px;
-  
-
+  border-radius: 10px;
   position: fixed;
   top:90px;
   left: 50px;
@@ -148,8 +112,6 @@ h4 {
   width:360px;
   color: white;
   background-color:rgba(23, 6, 255, 0.5);
- 
-
   /* avoid selection text*/
   -webkit-user-select: none;  
   -moz-user-select: none;    
@@ -157,69 +119,54 @@ h4 {
   user-select: none;
 }
 
-.aip-info-margin
-{
+.aip-info-margin {
   margin: 5px;
   display:none;
   padding: 5px;
   outline: 1px solid black;
   border: 5px solid rgba(0,0,0,0.1);
-  
-
   position: fixed;
   top:80px;
   left: 40px;
   height: 525px;
   z-index:122;
-  width:370px;
+  width: 370px;
   color:white;
   box-shadow: -3px 3px 15px black;
-  background-color:rgba(23, 6, 255, 0.4);
- 
+  background-color:rgba(23, 6, 255, 0.4); 
 }
 
-.aip-info-text 
-{border:1px solid white;
-margin: 7px;
-padding: 10px;
-background-color:rgba(23, 6, 255, 0.3);
-height:472px; 
-overflow:auto;
+.aip-info-text { 
+  border:1px solid white;
+  margin: 7px;
+  padding: 10px;
+  background-color:rgba(23, 6, 255, 0.3);
+  height:472px; 
+  overflow:auto;
 }
 
-
-
-.strip-bay-form
-{
-    font-family: "Trebuchet MS",Helvetica,sans-serif;
+.strip-bay-form {
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
   right: 460px;
-  top:400px;
+  top: 400px;
   height:515px;
   width: 470px;
   margin: 5px;
- /* height: 400px;*/
   color: yellow;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
-/* avoid selection text */
--webkit-user-select: none;  
+  /* avoid selection text */
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
 }
 
-.strip-bay-form-margin
-{
+.strip-bay-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -229,74 +176,55 @@ overflow:auto;
   right: 455px;
   top:395px;
   height:525px;
-  width: 480px;
-  
-  
- /* height: 400px;*/
-  
+  width: 480px;  
+ /* height: 400px;*/  
   z-index:124;
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
-.strip-bay-form-text
-{border:1px solid white;
-color:white;
-margin: 7px;
-padding: 10px;
-background-color:rgba(23, 6, 255, 0.3);
-height:472px; 
-overflow:auto;
+.strip-bay-form-text {
+  border:1px solid white;
+  color:white;
+  margin: 7px;
+  padding: 10px;
+  background-color:rgba(23, 6, 255, 0.3);
+  height:472px; 
+  overflow:auto;
 }
 
-.strip-1
-{
-margin-top:3px;
-margin-bottom:3px;
-width:415px;
-font-size: 16px;
-color: white;  
-text-align: center;
-background-color: gray;
-/* margin-bottom:3px; */
+.strip-1 {
+  margin-top:3px;
+  margin-bottom:3px;
+  width:415px;
+  font-size: 16px;
+  color: white;  
+  text-align: center;
+  background-color: gray;
 }
 
 .strip-2a::-moz-selection { /*avoid selection on input squawk*/
-
   background: green;
 }
 
 .strip-2a::selection {
-
   background: green;
 }
 
-
-
-
-
-
-.strip-2a
-{ 
-  
+.strip-2a { 
   font-size: 12px;
-  text-align:left;
- 
-  /* border-right:1px solid white; */
-  width:54px;
+  text-align:left; 
+   width:54px;
   height:25px;
-
   vertical-align: middle;
   /* avoid selection text */
--webkit-user-select: none;  
--moz-user-select: none;    
--ms-user-select: none;      
-user-select: none;
-
-
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }
-.strip-2b
-{ 
+
+.strip-2b { 
   padding-top:4px;
   padding-right:2px;
   font-size: 12px;
@@ -305,58 +233,33 @@ user-select: none;
   border-right:1px solid white; 
   width:40px;
   height:25px;
-
   vertical-align: middle;
-
 }
 
-.strip-10a
-{ 
-  
+.strip-10a { 
   font-size: 12px;
   text-align:left;
-  background-color: green;
-  
+  background-color: green;  
   width:49px;
   height:25px;
-  /* margin-top:-2px; */
   vertical-align: middle;
   padding-left:2px;
   padding-top: 5px;
-
-  
-  
-
 }
 
-
-.strip-10b
-{ 
-  
+.strip-10b { 
   font-size: 12px;
   text-align:right;
   background-color: green;
   border-right:1px solid white;
   width:45px;
   height:25px;
-  /* margin-top:-2px; */
   vertical-align: middle;
   padding-right:2px;
   padding-top: 5px;
-
-  
-  
-
 }
 
-
-
-
-
-
-
-.strip-9
-{ 
+.strip-9 { 
   font-weight:bold;
   font-size: 16px;
   text-align:left;
@@ -365,15 +268,10 @@ user-select: none;
   border-right:1px solid white;
   width:94px;
   height:25px;
-  vertical-align: middle;
-
-  
+  vertical-align: middle;  
 }
 
-
-.strip-3
-{
-  /* margin-top: 0px; */
+.strip-3 {
   font-size: 16px;
   text-align:right;
   background-color: green;
@@ -381,70 +279,51 @@ user-select: none;
   width:80px;
   height:25px;
   vertical-align: middle;
-
 }
 
-
-.strip-4, .strip-5, .strip-6, .strip-7
-{
+.strip-4, .strip-5, .strip-6, .strip-7 {
   font-size: 16px;
   text-align:right;
   background-color: green;
   border-right:1px solid white;
   width:40px;
   height:25px;
-  vertical-align: middle;
-
+  vertical-align: middle; 
 }
-.strip-11,.strip-13
-{
+.strip-11,.strip-13 {
   font-size: 14px;
   text-align:right;
   background-color: green;
   border-top:1px solid white;
-  /* border-right:1px solid white; */
   width:40px;
   height:25px;
   vertical-align: middle;
   font-weight:bold;
-
 }
 
-.strip-13
-{
+.strip-13 {
   border-right:1px solid white; 
 }
 
-
-
-.strip-12
-{
+.strip-12 {
   font-size: 12px;
   text-align:right;
   background-color: green;
   border-top:1px solid white;
-  /* border-right:1px solid white; */
   width:80px;
   height:25px;
-  vertical-align: middle;
-
+  vertical-align: middle; 
 }
 
-.strip-8
-{
-  /* margin-top: 0px; */
+.strip-8 {
   font-size: 16px;
   text-align:right;
-  background-color: green;
-  
+  background-color: green;  
   width:60px;
   height:25px;
   vertical-align: middle;
-
 }
-.strip-gray
-{
-  /* margin-top: 0px; */
+.strip-gray {
   font-size: 16px;
   text-align:right;
   background-color:gray;
@@ -455,56 +334,32 @@ user-select: none;
   margin-left: 1px;
 }
 
-
-
 .strip-bay-form-text input[type=text] {
-  /* margin-top:5px; */
   background-color:green;
-  border-radius: 0px;
-  /* border: none; */
-  border:none;
-  /* border-right:1px solid white; */
+  border-radius: 0px; 
+  border:none; 
   color: white;
  }
  
- .strip-bay-form-text input[type=text]:focus {
-  /* margin-top:5px; */
+.strip-bay-form-text input[type=text]:focus {
   background-color:green;
   border: none;
-  
-  /* border-right:1px solid white; */
-   color: white;
+  color: white;
  }
  
- 
- .strip-bay-form-text textarea[type=text] {
-  /* margin-top:5px; */
+.strip-bay-form-text textarea[type=text] {
   background-color:green;
   border: none;
+  color: white;
+}
   
-  /* border-right:1px solid white; */
-   color: white;
-  }
-  
-  .strip-bay-form-text textarea[type=text]:focus {
-    /* margin-top:5px; */
+.strip-bay-form-text textarea[type=text]:focus {
     background-color:green;
     border: none;
-   
-    /* border-right:1px solid white; */
     color: white;
-  }
+}
 
-
-
-
-
-
-
-
-
-.notam-form
-{
+.notam-form {
   font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
@@ -514,26 +369,18 @@ user-select: none;
   height:515px;
   width: 360px;
   margin: 5px;
- /* height: 400px;*/
   color: white;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
-  border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
+  border-radius: 10px;   
 /* avoid selection text */
--webkit-user-select: none;  
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
 }
 
-.notam-form-margin
-{
+.notam-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -543,31 +390,23 @@ user-select: none;
   right: 455px;
   top:395px;
   height:525px;
-  width: 370px;
-  
-  
- /* height: 400px;*/
-  
+  width: 370px;  
   z-index:124;
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
-
-.notam-form-text 
-{border:1px solid white;
-margin: 7px;
-padding: 10px;
-background-color:rgba(23, 6, 255, 0.3);
-height:472px; 
-overflow:auto;
+.notam-form-text {
+  border:1px solid white;
+  margin: 7px;
+  padding: 10px;
+  background-color:rgba(23, 6, 255, 0.3);
+  height:472px; 
+  overflow:auto;
 }
 
-
-
-.image-form
-{
-    font-family: "Trebuchet MS",Helvetica,sans-serif;
+.image-form {
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
@@ -576,26 +415,18 @@ overflow:auto;
   height:830px;
   width: 850px;
   margin: 5px;
- /* height: 400px;*/
   color: white;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
-/* avoid selection text */
--webkit-user-select: none;  
+  /* avoid selection text */
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
 }
 
-.image-form-margin
-{
+.image-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -606,33 +437,22 @@ overflow:auto;
   top:100px;
   height:840px;
   width: 860px;
-  
-  
- /* height: 400px;*/
-  
   z-index:124;
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
-
-.image-form-text 
-{border:1px solid white;
-margin: 7px;
-padding: 6px;
-background-color:rgba(23, 6, 255, 0.3);
-height:750px; 
-overflow:auto;
+.image-form-text {
+  border:1px solid white;
+  margin: 7px;
+  padding: 6px;
+  background-color:rgba(23, 6, 255, 0.3);
+  height:750px; 
+  overflow:auto;
 }
 
-
-
-
-
-
-.selection-form
-{
-    font-family: "Trebuchet MS",Helvetica,sans-serif;
+.selection-form {
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
@@ -640,27 +460,19 @@ overflow:auto;
   bottom:60px;
   height:40px;
   width: 325px;
-  margin: 5px;
- /* height: 400px;*/
+  margin: 5px; 
   color: yellow;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
-  border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
+  border-radius: 10px; 
 /* avoid selection text */
--webkit-user-select: none;  
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
 }
 
-.selection-form-margin
-{
+.selection-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -671,19 +483,13 @@ overflow:auto;
   bottom:55px;
   height:50px;
   width: 335px;
-  
-  
- /* height: 400px;*/
-  
   z-index:124;
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
-
-.metar-form
-{
-    font-family: "Trebuchet MS",Helvetica,sans-serif;
+.metar-form {
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
@@ -692,26 +498,18 @@ overflow:auto;
   height:72px;
   width: 300px;
   margin: 5px;
- /* height: 400px;*/
   color: white;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
-/* avoid selection text */
--webkit-user-select: none;  
+  /* avoid selection text */
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
 }
 
-.metar-form-margin
-{
+.metar-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -722,60 +520,22 @@ overflow:auto;
   bottom:55px;
   height:82px;
   width: 310px;
-  
-  
- /* height: 400px;*/
-  
   z-index:124;
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
-
-.metar-form-text 
-{border:1px solid white;
-margin: 7px;
-padding: 10px;
-background-color:rgba(23, 6, 255, 0.3);
-height:58px; 
-overflow:auto;
+.metar-form-text {
+  border:1px solid white;
+  margin: 7px;
+  padding: 10px;
+  background-color:rgba(23, 6, 255, 0.3);
+  height:58px; 
+  overflow:auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.load-fpl-form
-{
-    font-family: "Trebuchet MS",Helvetica,sans-serif;
+.load-fpl-form {
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
@@ -784,26 +544,18 @@ overflow:auto;
   height:515px;
   width: 360px;
   margin: 5px;
- /* height: 400px;*/
   color: white;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
-/* avoid selection text */
--webkit-user-select: none;  
+  /* avoid selection text */
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
 }
 
-.load-fpl-form-margin
-{
+.load-fpl-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -813,20 +565,14 @@ overflow:auto;
   right: 1055px;
   top:395px;
   height:525px;
-  width: 370px;
-  
-  
- /* height: 400px;*/
-  
+  width: 370px;  
   z-index:124;
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
-
-.save-fpl-form
-{
-    font-family: "Trebuchet MS",Helvetica,sans-serif;
+.save-fpl-form {
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
   position: fixed;
@@ -835,26 +581,18 @@ overflow:auto;
   height:515px;
   width: 360px;
   margin: 5px;
- /* height: 400px;*/
   color: white;
   z-index:125;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
-/* avoid selection text */
--webkit-user-select: none;  
+  /* avoid selection text */
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
 }
 
-.save-fpl-form-margin
-{
+.save-fpl-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -865,129 +603,62 @@ overflow:auto;
   top:395px;
   height:525px;
   width: 370px;
-  
-  
- /* height: 400px;*/
-  
   z-index:124;
   box-shadow: -3px 3px 15px black;
   background-color:rgba(23, 6, 255, 0.4);
 }
 
+.ol-button i {	
+  color: inherit; /*custom color for button*/
+}
 
+.fill-flp-button {
+  left:1600px;
+  top: 0.5em;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-.animate-button
-		{	left: 180px;
-			bottom: 0.5em;
-		}
-*/
-    .ol-button i
-		{	color: inherit; /*custom color for button*/
-		}
-
-.fill-flp-button
-    {
-      
-      left:1600px;
-      top: 0.5em;
-    }
-
-.base-map-button
-{
+.base-map-button {
   left: 10px;
   top: 20em;
 }
 
-.ol-attribution.ol-unselectable.ol-control.ol-collapsed
-{
+.ol-attribution.ol-unselectable.ol-control.ol-collapsed {
   position:fixed;
   bottom: 30px;
 }
 
-.ol-attribution.ol-unselectable.ol-control
-{
+.ol-attribution.ol-unselectable.ol-control {
   position:fixed;
   bottom: 30px;
 }
 
-
-
-.ol-scale-line.ol-unselectable
-{
+.ol-scale-line.ol-unselectable {
   position:fixed;
   bottom: 30px;
 }
 
-
-
-
-
-.ol-control.ol-layerswitcher .panel 
-{	background-color: rgba(0,0,0,0.3);
+.ol-control.ol-layerswitcher .panel {
+  background-color: rgba(0,0,0,0.3);
   color: white;
 	border-radius: 0 0 2px 2px;
 	clear: both;
 	display: block; 
 } 
 
-.ol-unselectable.ol-control.ol-bar.ol-right.ol-top
-{
+.ol-unselectable.ol-control.ol-bar.ol-right.ol-top {
   top:400px;
 }
-
-
-
-.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed /* manipulate opacity of collapsed menu layers */
-{
+ 
+.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed {/* manipulate opacity of collapsed menu layers */
   background-color: rgba(0,0,0,0.1);
   top: 10px;
 }
 
-.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed.ol-forceopen /* manipulate button menu layers */
-{
+.ol-layerswitcher.ol-unselectable.ol-control.ol-collapsed.ol-forceopen { /* manipulate button menu layers */
   top: 10px;
 }
 
-
-.fpl-form
-{
+.fpl-form {
   font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 12px;
   display: none;
@@ -997,27 +668,18 @@ overflow:auto;
   height:515px;
   width: 360px;
   margin: 5px;
- /* height: 400px;*/
   color: yellow;
   z-index:121;
   background-color:rgba(23, 6, 255, 0.5);
   border-radius: 10px;
-  
- 
-  /*box-shadow: -3px 3px 15px black;*/
-
-
-/* avoid selection text */
--webkit-user-select: none;  
+  /* avoid selection text */
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
-
-
 }
 
-.fpl-form-margin
-{
+.fpl-form-margin {
   margin: 5px;
   display: none;
   padding:5px;
@@ -1028,71 +690,46 @@ overflow:auto;
   top:395px;
   height:525px;
   width: 370px;
-  
-  
- /* height: 400px;*/
-  
   z-index:120;
   box-shadow: -3px 3px 15px black;
-  background-color:rgba(23, 6, 255, 0.4);
-  
-
-  
- 
+  background-color:rgba(23, 6, 255, 0.4); 
 }
 
-
-.fpl-inner{
+.fpl-inner {
   margin: 7px;
 }
 
-
 .formButton:hover {
   transform: scale(1.7);
-  transition: all .2s ease-in-out;
-
+  transition: all .2s ease-in-out; 
 }
-
 
 .fa-folder-open{
   color:khaki !important;
 }
 
-
-
-.fa-save{
-  /* color:cyan !important; */
-  color:khaki !important;
+.fa-save {
+   color:khaki !important;
 }
 
-
-
-.fa-close{
-  /* color:red !important; */
-  color:khaki !important;
+.fa-close {
+   color:khaki !important;
 }
 
-
-
-.fplRoute{
-
+.fplRoute {
   border-radius: 10px;
 }
 
-
-
 .fpl-form :nth-child(n) {
-/* background-color:rgba(0,0,0,0.0);*/
   color: yellow;
 }
-
 
 .fpl-form input[type=text] {
  background-color:rgba(0,0,0,0.2);
 }
 
 .fpl-form input[type=text]:focus {
- background-color:rgba(0,0,0,0.1);
+  background-color:rgba(0,0,0,0.1);
   color: white;
 }
 
@@ -1103,55 +740,45 @@ overflow:auto;
  
  .fpl-form textarea[type=text]:focus {
   background-color:rgba(0,0,0,0.1);
-   color: white;
+  color: white;
  }
  
-
-
-
-
-
-.aip-info h2{
-
-cursor: move;
+.aip-info h2 {  
+  cursor: move;
 }
 
 
-.map-info-bar{
+.map-info-bar {
   font-family: "Trebuchet MS",Helvetica,sans-serif;
-  /*font-size: 12px;*/
   position: fixed;
   color: white;
   left: 0px;
   bottom: 0px;
   width: 100vw;
-  background-color: rgba(23, 6, 255, 0.5); /*#0026ff*/
+  background-color: rgba(23, 6, 255, 0.5); 
   z-index:2000;
 }
 
-
-.custom-layer-switcher{
+.custom-layer-switcher {
   transform: scale(1.5);
-
   top:15px;
-  right:15px;
- 
+  right:15px;  
 }
-.supplementary{
-cursor: default;
 
--webkit-user-select: none;  
+.supplementary {
+  cursor: default;
+  -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
 }
 
-.load-fpl-text{
+.load-fpl-text {
   overflow:auto;
   height: 190px;
 }
 
-.load-fpl-preview{
+.load-fpl-preview {
   border:1px solid white;
   margin: 7px;
   padding: 10px;
@@ -1160,14 +787,13 @@ cursor: default;
   height: 244px; 
 }
 
-.save-fpl-text{
+.save-fpl-text {
   overflow:auto;
   height: 430px;
   margin-bottom:18px;
 }
 
-.image-label{
-  
+.image-label {  
   font-family: "Trebuchet MS",Helvetica,sans-serif;
   font-size: 18px;
   font-weight:bold;
