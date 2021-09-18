@@ -1,5 +1,5 @@
--- CONSTRUCTION FOR POSTGIS DATA TEMPLATE
------------------------------------------
+SQL SET FRO CONSTRUCTION WEBGIS POSTGRESQL DATABASE 
+------------------------------------------------------
 CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 CREATE EXTENSION adminpack;
