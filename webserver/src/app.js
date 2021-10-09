@@ -1,9 +1,9 @@
 //
-adjc='s';
-adjc=adjc+'ir';
-adjc=adjc+'c';
-adjc=adjc+'liv';
-adjc=adjc+'e';
+adjc='********';
+
+
+
+
 const path= require('path');
 const bodyParser=require('body-parser');
 const express=require('express');
